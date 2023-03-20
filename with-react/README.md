@@ -4,7 +4,27 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
+In the parent directory, you can run:
+
+### `cd with-react`
+
+Changes the currrent directory to the project.
+You can then run npm commands and configure project from command line.
+Always make sure that the project directory is the current directory.
+
 In the project directory, you can run:
+
+### `npm install`
+
+Installs all dependencies from package.json
+You will find that there is a warning message for high severity issues.
+It can be ignore as it is a false alert.
+
+### `npm audit --omit=dev`
+
+Shows details for issues related to production.
+It will omit dependencies used during development.
+(Should show message `found 0 vulnerabilities`)
 
 ### `npm start`
 
