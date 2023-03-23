@@ -9,7 +9,7 @@ import {
   FormControl,
 } from "@mui/material";
 import { SubmitButton, UserDetailInput } from "../components/Inputs";
-import { TextLogo } from "../components/Visuals";
+import { SignMedia, Slider, TextLogo } from "../components/Visuals";
 
 const RegisterForm = ({
   onSubmit,
@@ -28,7 +28,7 @@ const RegisterForm = ({
 }) => {
   return (
     <form onSubmit={onSubmit}>
-      <FormControl>
+      <FormControl sx={{ px: { xs: 0, sm: 5 }, py: 5 }}>
         <CardContent>
           <Grid container spacing={2}>
             <Grid item xs={12}>
@@ -97,7 +97,20 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-
+  const slides = [
+    <SignMedia
+      imageUrl="https://source.unsplash.com/random/800x600"
+      alt="slide 1"
+    />,
+    <SignMedia
+      imageUrl="https://source.unsplash.com/random/800x601"
+      alt="slide 2"
+    />,
+    <SignMedia
+      imageUrl="https://source.unsplash.com/random/800x602"
+      alt="slide 3"
+    />,
+  ];
   const handlefullNameChange = (event) => {
     setFullName(event.target.value);
   };
@@ -129,7 +142,12 @@ const Register = () => {
   return (
     <React.Fragment>
       <Container
-        sx={{ height: "100vh", display: "flex", alignItems: "center" }}
+        sx={{
+          width: "100%",
+          height: "100vh",
+          display: "flex",
+          alignItems: "center",
+        }}
       >
         <Grid
           container
@@ -141,33 +159,45 @@ const Register = () => {
             <Card
               variant="outlined"
               sx={{
-                width: { xs: "80  %", sm: 480 },
+                width: { xs: "99%", sm: 480, md: 840, lg: 1080 },
                 borderColor: { sm: "primary.main" },
                 borderWidth: { xs: 0, sm: 1.8 },
                 borderRadius: { sm: 8 },
-                px: { xs: 0, sm: 5 },
-                py: 5,
+                mt: { sm: 80, md: 0 },
                 backdropFilter: "blur(10px)",
                 backgroundColor: "rgba(255, 255, 255, 0.8)",
               }}
             >
-              <CardHeader title={TextLogo(2)} />
-
-              <RegisterForm
-                onSubmit={handleSubmit}
-                fullName={fullName}
-                email={email}
-                username={username}
-                password={password}
-                confirmPassword={confirmPassword}
-                onFullNameChange={handlefullNameChange}
-                onEmailChange={handleEmailChange}
-                onUsernameChange={handleUsernameChange}
-                onPasswordChange={handlePasswordChange}
-                onConfirmPasswordChange={handleConfirmPasswordChange}
-                showPassword={showPassword}
-                onShowPasswordClick={handleClickShowPassword}
-              />
+              <Grid container direction="row">
+                <Grid item xs={12} md={4} lg={5}>
+                  <Slider items={slides} />
+                </Grid>
+                <Grid item xs={12} md={8} lg={7}>
+                  <CardHeader
+                    sx={{
+                      alignSelf: "center",
+                      textAlign: "center",
+                      pl: { xs: 30, lg: 50 },
+                    }}
+                    title={TextLogo(2)}
+                  />
+                  <RegisterForm
+                    onSubmit={handleSubmit}
+                    fullName={fullName}
+                    email={email}
+                    username={username}
+                    password={password}
+                    confirmPassword={confirmPassword}
+                    onFullNameChange={handlefullNameChange}
+                    onEmailChange={handleEmailChange}
+                    onUsernameChange={handleUsernameChange}
+                    onPasswordChange={handlePasswordChange}
+                    onConfirmPasswordChange={handleConfirmPasswordChange}
+                    showPassword={showPassword}
+                    onShowPasswordClick={handleClickShowPassword}
+                  />
+                </Grid>
+              </Grid>
             </Card>
           </Grid>
         </Grid>

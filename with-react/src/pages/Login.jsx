@@ -9,7 +9,7 @@ import {
   FormControl,
 } from "@mui/material";
 import { SubmitButton, UserDetailInput } from "../components/Inputs";
-import { TextLogo } from "../components/Visuals";
+import { TextLogo, Slider, SignMedia } from "../components/Visuals";
 
 const LoginForm = ({
   onSubmit,
@@ -22,7 +22,7 @@ const LoginForm = ({
 }) => {
   return (
     <form onSubmit={onSubmit}>
-      <FormControl>
+      <FormControl sx={{ px: { xs: 0, sm: 5 }, py: 5 }}>
         <CardContent>
           <UserDetailInput
             label="Username"
@@ -55,6 +55,20 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const slides = [
+    <SignMedia
+      imageUrl="https://source.unsplash.com/random/800x600"
+      alt="slide 1"
+    />,
+    <SignMedia
+      imageUrl="https://source.unsplash.com/random/800x601"
+      alt="slide 2"
+    />,
+    <SignMedia
+      imageUrl="https://source.unsplash.com/random/800x602"
+      alt="slide 3"
+    />,
+  ];
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
@@ -91,27 +105,39 @@ const Login = () => {
             <Card
               variant="outlined"
               sx={{
-                width: { xs: "80  %", sm: 480 },
+                width: { xs: "99%", sm: 480, md: 720, lg: 960, xl: "99%" },
                 borderColor: { sm: "primary.main" },
                 borderWidth: { xs: 0, sm: 1.8 },
                 borderRadius: { sm: 8 },
-                px: { xs: 0, sm: 5 },
-                py: 5,
+
                 backdropFilter: "blur(10px)",
                 backgroundColor: "rgba(255, 255, 255, 0.8)",
               }}
             >
-              <CardHeader title={TextLogo(2)} />
-
-              <LoginForm
-                onSubmit={handleSubmit}
-                username={username}
-                password={password}
-                onUsernameChange={handleUsernameChange}
-                onPasswordChange={handlePasswordChange}
-                showPassword={showPassword}
-                onShowPasswordClick={handleClickShowPassword}
-              />
+              <Grid container direction="row">
+                <Grid item xs={12} md={4} lg={5}>
+                  <Slider items={slides} />
+                </Grid>
+                <Grid item xs={12} md={8} lg={7}>
+                  <CardHeader
+                    sx={{
+                      alignSelf: "center",
+                      textAlign: "center",
+                      pl: { xs: 40, lg: 60 },
+                    }}
+                    title={TextLogo(2)}
+                  />
+                  <LoginForm
+                    onSubmit={handleSubmit}
+                    username={username}
+                    password={password}
+                    onUsernameChange={handleUsernameChange}
+                    onPasswordChange={handlePasswordChange}
+                    showPassword={showPassword}
+                    onShowPasswordClick={handleClickShowPassword}
+                  />
+                </Grid>
+              </Grid>
             </Card>
           </Grid>
         </Grid>

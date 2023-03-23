@@ -3,7 +3,8 @@ import "./styles/App.css";
 import { ThemeProvider } from "@mui/material/styles";
 import { theme } from "./styles/theme";
 import { Login, Register } from "./pages";
-
+import { register } from "swiper/element/bundle";
+register();
 function App() {
   return (
     <ThemeProvider theme={theme}>
