@@ -23,6 +23,10 @@ const variants = {
   icbFillDeeporange400: "bg-deep_orange_400",
   icbFillRed300: "bg-red_300",
   icbFillWhiteA700: "bg-white_A700",
+  OutlineGray500:
+    "bg-white_A700 border border-gray_600 border-solid text-black",
+  NavyBlue : "bg-navy_blue text-white_A700",
+  DarkBlueBlack :"bg-dark_blueblack text-white_A700",
 };
 const sizes = {
   sm: "p-[12px] sm:p-[6px] md:p-[8px]",
@@ -33,6 +37,7 @@ const sizes = {
   lgIcn: "p-[13px] sm:p-[6px] md:p-[8px]",
   xlIcn: "md:p-[12px] p-[18px] sm:px-[15px] sm:py-[9px]",
   "2xlIcn": "md:p-[15px] p-[22px] sm:px-[15px] sm:py-[11px]",
+  mdNavIcn: "p-[10px] sm:p-[5px] md:p-[6px]",
 };
 
 const Button = ({
@@ -82,6 +87,7 @@ Button.propTypes = {
     "icbFillDeeporange400",
     "icbFillRed300",
     "icbFillWhiteA700",
+    "OutlineGray500",
   ]),
   size: PropTypes.oneOf([
     "sm",
@@ -92,6 +98,7 @@ Button.propTypes = {
     "lgIcn",
     "xlIcn",
     "2xlIcn",
+    "mdNavIcn",
   ]),
 };
 Button.defaultProps = {

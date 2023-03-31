@@ -11,10 +11,12 @@ const shapes = {
   CustomBorderTL10:
     "rounded-bl-[10px] rounded-br-[0] rounded-tl-[10px] rounded-tr-[0]",
   RoundedBorder10: "rounded-radius10",
+  RoundedBorder50: "rounded-[20px]",
   srcRoundedBorder10: "rounded-radius10",
 };
 const sizes = {
   sm: "md:p-[11px] p-[16px] sm:px-[15px] sm:py-[8px]",
+  smNav: "md:p-[5px] p-[9px] sm:px-[15px] sm:py-[8px]",
   md: "sm:pb-[10px] md:pb-[13px] pb-[20px] sm:pt-[12px] md:pt-[15px] pt-[23px] md:px-[13px] sm:px-[15px] px-[20px]",
   smSrc: "md:p-[13px] p-[20px] sm:px-[15px] sm:py-[10px]",
 };
@@ -74,6 +76,7 @@ Input.propTypes = {
     "CustomBorderTL10",
     "RoundedBorder10",
     "srcRoundedBorder10",
+    "RoundedBorder40",
   ]),
   variant: PropTypes.oneOf([
     "FillWhiteA70033",

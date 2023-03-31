@@ -1,4 +1,12 @@
 import React from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { 
+  faCoffee,
+ faArrowDown ,
+ faArrowTurnDown,
+ faCartShopping,
+ faMagnifyingGlass
+} from '@fortawesome/free-solid-svg-icons';
 import {
   Column,
   Row,
@@ -13,6 +21,7 @@ import {
   Input,
 } from "../components";
 import { useNavigate } from "react-router-dom";
+import Sticky from 'react-stickynode';
 
 const Home1Page = () => {
   const navigate = useNavigate();
@@ -49,15 +58,17 @@ const Home1Page = () => {
               >
                 Never Stop Learning
     </Button> */}
-      <Column className="bg-gray_100 flex flex-col font-inter items-center justify-start mx-[auto] w-[100%]">
-        <header className="w-[100%]">
+    
+      <Column className="bg-light_green flex flex-col font-inter items-center justify-start mx-[auto] w-[100%]">
+      {/* <Sticky bg-white_A700 enabled={true} className="w-[100%]"> */}
+      <header className=" bg-light_green rounded-radius30 w-[100%]">
           <Row className="flex flex-row md:flex-wrap sm:flex-wrap items-center max-w-[1440px] ml-[auto] mr-[auto] md:p-[15px] p-[22px] sm:pl-[15px] sm:pr-[15px] sm:px-[15px] sm:py-[11px] w-[100%]">
             <Row className="header-row w-[13%] sm:w-[100%] sm:mx-[0] sm:px-[0] flex-row flex">
               <Row className="flex flex-row md:flex-wrap sm:flex-wrap items-center justify-center">
                 <Img
-                  src="images/img_location.svg"
+                  src="images/logo.png"
                   className="flex-shrink-0 sm:h-[16px] md:h-[21px] h-[30px] max-w-[100%] sm:w-[15px] md:w-[20px] w-[30px]"
-                  alt="location"
+                  alt="logo"
                 />
                 <Text
                   className="flex-grow font-semibold ml-[12px] sm:ml-[6px] md:ml-[8px] text-black_900"
@@ -74,134 +85,65 @@ const Home1Page = () => {
               </div>
             </Row>
             <Row className="flex flex-row md:flex-wrap sm:flex-wrap sm:hidden md:ml-[37px] ml-[54px] sm:mx-[0] sm:px-[0] sm:w-[100%] w-[53%] common-row-list">
-              <ul className="flex flex-row items-center justify-center sm:hidden">
-                <li className="w-[auto] sm:w-[100%] sm:my-[10px] my-[2px]">
-                  <a
+            
+                  <Input
+                    className="font-medium p-[0] text-[16px] placeholder:text-gray_700 text-gray_700 w-[100%]"
+                    wrapClassName="flex p-[0] sm:mx-[0] sm:w-[100%] w-[100%]"
+                    type="text"
+                    name="search"
+                    placeholder="Search"
+                  size="smNav"
+                  variant="OutlineGray300"
+                  ></Input>
+                  <Button
+                    className="cursor-pointer font-medium min-w-[10%] text-[16px] text-center text-white_A700 "
+                    shape="CustomBorderLR10"
+                    size="mdNavIcn"
+                    variant="DarkBlueBlack"
+                  >
+                    <FontAwesomeIcon icon={faMagnifyingGlass}></FontAwesomeIcon>
+                  </Button>
+             
+           </Row>
+            <Row className="flex flex-row md:flex-wrap sm:flex-wrap sm:hidden items-end justify-center md:ml-[37px] ml-[54px] sm:mx-[0] sm:px-[0] sm:w-[100%] w-[8%]">
+              <a
                     href={"javascript:"}
-                    className="common-pointer cursor-pointer font-medium text-[16px] text-gray_901"
+                    className="common-pointer cursor-pointer font-medium text-[20px] text-gray_901"
                     onClick={handleNavigate4}
                     rel="noreferrer"
                   >
-                    Shop
+                    <FontAwesomeIcon icon={faCartShopping} />
                   </a>
-                </li>
-                <li className="w-[22%] ml-[25px] sm:w-[100%] sm:my-[10px] sm:mx-[0] md:ml-[17px]">
-                  <SelectBox
-                    className="font-medium text-[16px] text-gray_901"
-                    placeholderClassName="text-gray_901"
-                    name="forkindergarten"
-                    placeholder="For Kindergarten"
-                    isSearchable={false}
-                    isMulti={false}
-                    indicator={
-                      <Img
-                        src="images/img_arrowdown_gray_901.svg"
-                        className="w-[24px] h-[24px] mr-[0] sm:h-[13px] sm:w-[12px] md:h-[17px] md:w-[16px] max-w-[100%]"
-                        alt="arrow_down"
-                      />
-                    }
-                  ></SelectBox>
-                </li>
-                <li className="w-[21%] ml-[24px] sm:w-[100%] sm:my-[10px] sm:mx-[0] md:ml-[16px]">
-                  <SelectBox
-                    className="font-medium text-[16px] text-gray_901"
-                    placeholderClassName="text-gray_901"
-                    name="forhighschool"
-                    placeholder="For High School"
-                    isSearchable={false}
-                    isMulti={false}
-                    indicator={
-                      <Img
-                        src="images/img_arrowdown_gray_901.svg"
-                        className="w-[24px] h-[24px] mr-[0] sm:h-[13px] sm:w-[12px] md:h-[17px] md:w-[16px] max-w-[100%]"
-                        alt="arrow_down"
-                      />
-                    }
-                  ></SelectBox>
-                </li>
-                <li className="w-[16%] ml-[24px] sm:w-[100%] sm:my-[10px] sm:mx-[0] md:ml-[16px]">
-                  <SelectBox
-                    className="font-medium text-[16px] text-gray_901"
-                    placeholderClassName="text-gray_901"
-                    name="forcollege"
-                    placeholder="For College"
-                    isSearchable={false}
-                    isMulti={false}
-                    indicator={
-                      <Img
-                        src="images/img_arrowdown_gray_901.svg"
-                        className="w-[24px] h-[24px] mr-[0] sm:h-[13px] sm:w-[12px] md:h-[17px] md:w-[16px] max-w-[100%]"
-                        alt="arrow_down"
-                      />
-                    }
-                  ></SelectBox>
-                </li>
-                <li className="w-[13%] ml-[24px] sm:w-[100%] sm:my-[10px] sm:mx-[0] md:ml-[16px]">
-                  <SelectBox
-                    className="common-pointer font-medium text-[16px] text-gray_901"
-                    onClick={handleNavigate3}
-                    placeholderClassName="text-gray_901"
-                    name="courses"
-                    placeholder="Courses"
-                    isSearchable={false}
-                    isMulti={false}
-                    indicator={
-                      <Img
-                        src="images/img_arrowdown_gray_901.svg"
-                        className="w-[24px] h-[24px] mr-[0] sm:h-[13px] sm:w-[12px] md:h-[17px] md:w-[16px] max-w-[100%]"
-                        alt="arrow_down"
-                      />
-                    }
-                  ></SelectBox>
-                </li>
-                <li className="w-[auto] ml-[24px] sm:ml-[12px] sm:w-[100%] sm:my-[10px] md:ml-[16px] my-[2px]">
-                  <a
-                    href={"javascript:"}
-                    className="common-pointer cursor-pointer font-medium text-[16px] text-gray_901"
-                    onClick={handleNavigate2}
-                    rel="noreferrer"
-                  >
-                    Mentors
-                  </a>
-                </li>
-              </ul>
             </Row>
-            <Row className="flex flex-row md:flex-wrap sm:flex-wrap sm:hidden items-end justify-center md:ml-[37px] ml-[54px] sm:mx-[0] sm:px-[0] sm:w-[100%] w-[8%]">
-              <Text
-                className="flex-grow font-medium mb-[4px] sm:mt-[3px] md:mt-[4px] mt-[7px] text-gray_901"
-                variant="body5"
-              >
-                Cart (0)
-              </Text>
-              <Img
-                src="images/img_bag.svg"
-                className="flex-shrink-0 sm:h-[16px] md:h-[21px] h-[30px] max-w-[100%] ml-[10px] sm:ml-[5px] md:ml-[6px] sm:w-[15px] md:w-[20px] w-[30px]"
-                alt="bag"
-              />
+            <Row className="sm:hidden md:ml-[5px] ml-[5px] sm:mx-[0] sm:px-[0] sm:w-[50%] w-[6%]">
+              <Button 
+                className="cursor-pointer font-medium min-w-[20%] text-[12px] text-center text-deep_orange_400 w-[max-content]"
+                size="mdNavIcn"
+                variant="OutlineGray500"
+                shape="RoundedBorder1"
+                onClick = {(event)=> alert("dmy")}>
+                  <b>Login</b>
+              </Button>
             </Row>
-            <Row
-              className="common-pointer flex flex-row md:flex-wrap sm:flex-wrap sm:hidden items-end justify-center md:ml-[22px] ml-[32px] sm:mx-[0] sm:px-[0] w-[10%] sm:w-[100%]"
-              onClick={handleNavigate5}
-            >
-              <Text
-                className="flex-grow font-medium mb-[4px] sm:mt-[3px] md:mt-[4px] mt-[7px] text-gray_901"
-                variant="body5"
-              >
-                My Account
-              </Text>
-              <Img
-                src="images/img_user_30X30.svg"
-                className="flex-shrink-0 sm:h-[16px] md:h-[21px] h-[30px] max-w-[100%] ml-[10px] sm:ml-[5px] md:ml-[6px] sm:w-[15px] md:w-[20px] w-[30px]"
-                alt="user"
-              />
+            <Row className="sm:hidden md:ml-[2px] ml-[2px] sm:mx-[0] sm:px-[0] sm:w-[50%] w-[6%]">
+              <Button 
+                className="cursor-pointer font-medium min-w-[20%] text-[12px] text-center text-deep_orange_400 w-[max-content] "
+                size="mdNavIcn"
+                shape="RoundedBorder1"
+                variant="DarkBlueBlack"
+                onClick = {(event)=> alert("dmy")}>
+                  <b>Signup</b>
+              </Button>
             </Row>
           </Row>
         </header>
+      {/* </Sticky> */}
+       
         <Column className="flex flex-col items-center justify-start sm:mt-[28px] md:mt-[37px] mt-[54px] w-[100%]">
           <Row className="flex flex-row md:flex-wrap sm:flex-wrap items-center max-w-[1317px] ml-[auto] mr-[auto] sm:mx-[0] sm:pl-[15px] sm:pr-[15px] sm:px-[0] w-[100%]">
             <Column className="flex flex-col sm:mx-[0] sm:px-[0] sm:w-[100%] w-[47%]">
               <Button
-                className="cursor-pointer font-medium min-w-[40%] text-[20px] text-center text-deep_orange_400 w-[max-content]"
+                className="cursor-pointer font-medium min-w-[40%] text-[20px] text-center text-navy_blue w-[max-content]"
                 size="sm"
                 variant="FillWhiteA700"
               >
@@ -217,56 +159,20 @@ const Home1Page = () => {
                   <br />
                   by online courses
                   <br />
-                  with Educatsy
+                  with Skill-Learn
                 </Text>
                 <Text
                   className="font-normal leading-[30.00px] md:leading-[normal] sm:leading-[normal] sm:mt-[15px] md:mt-[20px] mt-[30px] not-italic text-gray_700 w-[100%]"
                   variant="body5"
                 >
-                  Educatsy is a Global training provider based across the UK
-                  that specializes in accredited and bespoke training courses.
-                  We crush the barriers to getting a degree.
+                  Skill-Learn aims to provide a platform where individuals can share their skills online
+                   and get fairly compensated. We believe that everyone has something valuable to offer, 
+                   and our platform offers a supportive and collaborative environment where users can connect, 
+                   learn from others.
+
                 </Text>
               </Column>
-              <Row className="bg-white_A700 flex flex-row md:flex-wrap sm:flex-wrap items-center justify-end sm:mt-[21px] md:mt-[27px] mt-[40px] sm:p-[2px] md:p-[3px] p-[5px] rounded-radius10 w-[100%]">
-                <SelectBox
-                  className="font-medium sm:mx-[0] text-[16px] text-gray_700_99 sm:w-[100%] w-[22%]"
-                  placeholderClassName="text-gray_700_99"
-                  name="Courses One"
-                  placeholder="Kindergarten"
-                  isSearchable={false}
-                  isMulti={false}
-                  indicator={
-                    <Img
-                      src="images/img_arrowdown_red_300.svg"
-                      className="w-[24px] h-[24px] mr-[0] sm:h-[13px] sm:w-[12px] md:h-[17px] md:w-[16px] max-w-[100%]"
-                      alt="arrow_down"
-                    />
-                  }
-                ></SelectBox>
-                <Line className="bg-bluegray_100 sm:h-[16px] md:h-[21px] h-[30px] sm:ml-[10px] md:ml-[13px] ml-[20px] my-[10px] sm:my-[5px] md:my-[6px] w-[1px]" />
-                <Text
-                  className="font-medium sm:ml-[10px] md:ml-[13px] ml-[20px] text-gray_700_99 w-[auto]"
-                  variant="body5"
-                >
-                  Class/Course
-                </Text>
-                <Button
-                  className="flex items-center justify-center md:ml-[114px] min-w-[24%] ml-[167px] sm:ml-[88px] text-center w-[max-content]"
-                  leftIcon={
-                    <Img
-                      src="images/img_search.svg"
-                      className="mr-[5px] sm:mr-[2px] md:mr-[3px] text-center"
-                      alt="search"
-                    />
-                  }
-                  size="md"
-                >
-                  <div className="bg-transparent cursor-pointer font-medium text-[16px] text-white_A700">
-                    Search
-                  </div>
-                </Button>
-              </Row>
+              
             </Column>
             <Img
               src="images/img_image.png"
@@ -289,16 +195,21 @@ const Home1Page = () => {
                   className="font-inter font-normal leading-[30.00px] md:leading-[normal] sm:leading-[normal] sm:mt-[10px] md:mt-[13px] mt-[20px] not-italic text-center text-gray_700 w-[100%]"
                   variant="body5"
                 >
-                  High-definition video is video of higher resolution and
-                  quality than standard-definition. While there is no
-                  standardized meaning for high-definition, generally any video
-                  image with considerably more than
+                  At Skill-Learn, we take great pride in the quality 
+                  and relevance of the videos on our platform. Our courses
+                  are created by experts in their fields and are designed 
+                  to be engaging, informative, and practical. Our commitment to 
+                  providing high-quality content ensures that you will get the most out of your learning 
+                  experience and be able to apply your new skills to your personal 
+                  or professional life. 
+
                   <br />
-                  480 vertical scan lines or 576 vertical lines is considered
-                  high-definition.
+                  Join our platform today and start your journey 
+                  towards personal and professional growth!
                 </Text>
                 <Button
                   className="common-pointer cursor-pointer font-inter font-medium min-w-[20%] sm:mt-[21px] md:mt-[27px] mt-[40px] text-[16px] text-center text-white_A700 w-[max-content]"
+                  variant = "DarkBlueBlack"
                   onClick={handleNavigate1}
                   size="lg"
                 >
@@ -312,123 +223,61 @@ const Home1Page = () => {
                 >
                   <Row className="flex flex-row md:flex-wrap sm:flex-wrap items-center justify-between my-[0] w-[100%]">
                     <Text
-                      className="text-deep_orange_400 w-[auto]"
+                      className="text-navy_blue w-[auto]"
                       variant="body6"
                     >
                       +
                     </Text>
                     <Text
-                      className="text-deep_orange_400 w-[auto]"
+                      className="text-navy_blue w-[auto]"
                       variant="body6"
                     >
                       +
                     </Text>
                     <Text
-                      className="text-deep_orange_400 w-[auto]"
+                      className="text-navy_blue w-[auto]"
                       variant="body6"
                     >
                       +
                     </Text>
                     <Text
-                      className="text-deep_orange_400 w-[auto]"
+                      className="text-navy_blue w-[auto]"
                       variant="body6"
                     >
                       +
                     </Text>
                     <Text
-                      className="text-deep_orange_400 w-[auto]"
+                      className="text-navy_blue w-[auto]"
                       variant="body6"
                     >
                       +
                     </Text>
                     <Text
-                      className="text-deep_orange_400 w-[auto]"
+                      className="text-navy_blue w-[auto]"
                       variant="body6"
                     >
                       +
                     </Text>
                     <Text
-                      className="text-deep_orange_400 w-[auto]"
+                      className="text-navy_blue w-[auto]"
                       variant="body6"
                     >
                       +
                     </Text>
                     <Text
-                      className="text-deep_orange_400 w-[auto]"
+                      className="text-navy_blue w-[auto]"
                       variant="body6"
                     >
                       +
                     </Text>
                     <Text
-                      className="text-deep_orange_400 w-[auto]"
+                      className="text-navy_blue w-[auto]"
                       variant="body6"
                     >
                       +
                     </Text>
                     <Text
-                      className="text-deep_orange_400 w-[auto]"
-                      variant="body6"
-                    >
-                      +
-                    </Text>
-                  </Row>
-                  <Row className="flex flex-row md:flex-wrap sm:flex-wrap items-center justify-between my-[0] w-[100%]">
-                    <Text
-                      className="text-deep_orange_400 w-[auto]"
-                      variant="body6"
-                    >
-                      +
-                    </Text>
-                    <Text
-                      className="text-deep_orange_400 w-[auto]"
-                      variant="body6"
-                    >
-                      +
-                    </Text>
-                    <Text
-                      className="text-deep_orange_400 w-[auto]"
-                      variant="body6"
-                    >
-                      +
-                    </Text>
-                    <Text
-                      className="text-deep_orange_400 w-[auto]"
-                      variant="body6"
-                    >
-                      +
-                    </Text>
-                    <Text
-                      className="text-deep_orange_400 w-[auto]"
-                      variant="body6"
-                    >
-                      +
-                    </Text>
-                    <Text
-                      className="text-deep_orange_400 w-[auto]"
-                      variant="body6"
-                    >
-                      +
-                    </Text>
-                    <Text
-                      className="text-deep_orange_400 w-[auto]"
-                      variant="body6"
-                    >
-                      +
-                    </Text>
-                    <Text
-                      className="text-deep_orange_400 w-[auto]"
-                      variant="body6"
-                    >
-                      +
-                    </Text>
-                    <Text
-                      className="text-deep_orange_400 w-[auto]"
-                      variant="body6"
-                    >
-                      +
-                    </Text>
-                    <Text
-                      className="text-deep_orange_400 w-[auto]"
+                      className="text-navy_blue w-[auto]"
                       variant="body6"
                     >
                       +
@@ -436,123 +285,61 @@ const Home1Page = () => {
                   </Row>
                   <Row className="flex flex-row md:flex-wrap sm:flex-wrap items-center justify-between my-[0] w-[100%]">
                     <Text
-                      className="text-deep_orange_400 w-[auto]"
+                      className="text-navy_blue w-[auto]"
                       variant="body6"
                     >
                       +
                     </Text>
                     <Text
-                      className="text-deep_orange_400 w-[auto]"
+                      className="text-navy_blue w-[auto]"
                       variant="body6"
                     >
                       +
                     </Text>
                     <Text
-                      className="text-deep_orange_400 w-[auto]"
+                      className="text-navy_blue w-[auto]"
                       variant="body6"
                     >
                       +
                     </Text>
                     <Text
-                      className="text-deep_orange_400 w-[auto]"
+                      className="text-navy_blue w-[auto]"
                       variant="body6"
                     >
                       +
                     </Text>
                     <Text
-                      className="text-deep_orange_400 w-[auto]"
+                      className="text-navy_blue w-[auto]"
                       variant="body6"
                     >
                       +
                     </Text>
                     <Text
-                      className="text-deep_orange_400 w-[auto]"
+                      className="text-navy_blue w-[auto]"
                       variant="body6"
                     >
                       +
                     </Text>
                     <Text
-                      className="text-deep_orange_400 w-[auto]"
+                      className="text-navy_blue w-[auto]"
                       variant="body6"
                     >
                       +
                     </Text>
                     <Text
-                      className="text-deep_orange_400 w-[auto]"
+                      className="text-navy_blue w-[auto]"
                       variant="body6"
                     >
                       +
                     </Text>
                     <Text
-                      className="text-deep_orange_400 w-[auto]"
+                      className="text-navy_blue w-[auto]"
                       variant="body6"
                     >
                       +
                     </Text>
                     <Text
-                      className="text-deep_orange_400 w-[auto]"
-                      variant="body6"
-                    >
-                      +
-                    </Text>
-                  </Row>
-                  <Row className="flex flex-row md:flex-wrap sm:flex-wrap items-center justify-between my-[0] w-[100%]">
-                    <Text
-                      className="text-deep_orange_400 w-[auto]"
-                      variant="body6"
-                    >
-                      +
-                    </Text>
-                    <Text
-                      className="text-deep_orange_400 w-[auto]"
-                      variant="body6"
-                    >
-                      +
-                    </Text>
-                    <Text
-                      className="text-deep_orange_400 w-[auto]"
-                      variant="body6"
-                    >
-                      +
-                    </Text>
-                    <Text
-                      className="text-deep_orange_400 w-[auto]"
-                      variant="body6"
-                    >
-                      +
-                    </Text>
-                    <Text
-                      className="text-deep_orange_400 w-[auto]"
-                      variant="body6"
-                    >
-                      +
-                    </Text>
-                    <Text
-                      className="text-deep_orange_400 w-[auto]"
-                      variant="body6"
-                    >
-                      +
-                    </Text>
-                    <Text
-                      className="text-deep_orange_400 w-[auto]"
-                      variant="body6"
-                    >
-                      +
-                    </Text>
-                    <Text
-                      className="text-deep_orange_400 w-[auto]"
-                      variant="body6"
-                    >
-                      +
-                    </Text>
-                    <Text
-                      className="text-deep_orange_400 w-[auto]"
-                      variant="body6"
-                    >
-                      +
-                    </Text>
-                    <Text
-                      className="text-deep_orange_400 w-[auto]"
+                      className="text-navy_blue w-[auto]"
                       variant="body6"
                     >
                       +
@@ -560,123 +347,61 @@ const Home1Page = () => {
                   </Row>
                   <Row className="flex flex-row md:flex-wrap sm:flex-wrap items-center justify-between my-[0] w-[100%]">
                     <Text
-                      className="text-deep_orange_400 w-[auto]"
+                      className="text-navy_blue w-[auto]"
                       variant="body6"
                     >
                       +
                     </Text>
                     <Text
-                      className="text-deep_orange_400 w-[auto]"
+                      className="text-navy_blue w-[auto]"
                       variant="body6"
                     >
                       +
                     </Text>
                     <Text
-                      className="text-deep_orange_400 w-[auto]"
+                      className="text-navy_blue w-[auto]"
                       variant="body6"
                     >
                       +
                     </Text>
                     <Text
-                      className="text-deep_orange_400 w-[auto]"
+                      className="text-navy_blue w-[auto]"
                       variant="body6"
                     >
                       +
                     </Text>
                     <Text
-                      className="text-deep_orange_400 w-[auto]"
+                      className="text-navy_blue w-[auto]"
                       variant="body6"
                     >
                       +
                     </Text>
                     <Text
-                      className="text-deep_orange_400 w-[auto]"
+                      className="text-navy_blue w-[auto]"
                       variant="body6"
                     >
                       +
                     </Text>
                     <Text
-                      className="text-deep_orange_400 w-[auto]"
+                      className="text-navy_blue w-[auto]"
                       variant="body6"
                     >
                       +
                     </Text>
                     <Text
-                      className="text-deep_orange_400 w-[auto]"
+                      className="text-navy_blue w-[auto]"
                       variant="body6"
                     >
                       +
                     </Text>
                     <Text
-                      className="text-deep_orange_400 w-[auto]"
+                      className="text-navy_blue w-[auto]"
                       variant="body6"
                     >
                       +
                     </Text>
                     <Text
-                      className="text-deep_orange_400 w-[auto]"
-                      variant="body6"
-                    >
-                      +
-                    </Text>
-                  </Row>
-                  <Row className="flex flex-row md:flex-wrap sm:flex-wrap items-center justify-between my-[0] w-[100%]">
-                    <Text
-                      className="text-deep_orange_400 w-[auto]"
-                      variant="body6"
-                    >
-                      +
-                    </Text>
-                    <Text
-                      className="text-deep_orange_400 w-[auto]"
-                      variant="body6"
-                    >
-                      +
-                    </Text>
-                    <Text
-                      className="text-deep_orange_400 w-[auto]"
-                      variant="body6"
-                    >
-                      +
-                    </Text>
-                    <Text
-                      className="text-deep_orange_400 w-[auto]"
-                      variant="body6"
-                    >
-                      +
-                    </Text>
-                    <Text
-                      className="text-deep_orange_400 w-[auto]"
-                      variant="body6"
-                    >
-                      +
-                    </Text>
-                    <Text
-                      className="text-deep_orange_400 w-[auto]"
-                      variant="body6"
-                    >
-                      +
-                    </Text>
-                    <Text
-                      className="text-deep_orange_400 w-[auto]"
-                      variant="body6"
-                    >
-                      +
-                    </Text>
-                    <Text
-                      className="text-deep_orange_400 w-[auto]"
-                      variant="body6"
-                    >
-                      +
-                    </Text>
-                    <Text
-                      className="text-deep_orange_400 w-[auto]"
-                      variant="body6"
-                    >
-                      +
-                    </Text>
-                    <Text
-                      className="text-deep_orange_400 w-[auto]"
+                      className="text-navy_blue w-[auto]"
                       variant="body6"
                     >
                       +
@@ -684,123 +409,61 @@ const Home1Page = () => {
                   </Row>
                   <Row className="flex flex-row md:flex-wrap sm:flex-wrap items-center justify-between my-[0] w-[100%]">
                     <Text
-                      className="text-deep_orange_400 w-[auto]"
+                      className="text-navy_blue w-[auto]"
                       variant="body6"
                     >
                       +
                     </Text>
                     <Text
-                      className="text-deep_orange_400 w-[auto]"
+                      className="text-navy_blue w-[auto]"
                       variant="body6"
                     >
                       +
                     </Text>
                     <Text
-                      className="text-deep_orange_400 w-[auto]"
+                      className="text-navy_blue w-[auto]"
                       variant="body6"
                     >
                       +
                     </Text>
                     <Text
-                      className="text-deep_orange_400 w-[auto]"
+                      className="text-navy_blue w-[auto]"
                       variant="body6"
                     >
                       +
                     </Text>
                     <Text
-                      className="text-deep_orange_400 w-[auto]"
+                      className="text-navy_blue w-[auto]"
                       variant="body6"
                     >
                       +
                     </Text>
                     <Text
-                      className="text-deep_orange_400 w-[auto]"
+                      className="text-navy_blue w-[auto]"
                       variant="body6"
                     >
                       +
                     </Text>
                     <Text
-                      className="text-deep_orange_400 w-[auto]"
+                      className="text-navy_blue w-[auto]"
                       variant="body6"
                     >
                       +
                     </Text>
                     <Text
-                      className="text-deep_orange_400 w-[auto]"
+                      className="text-navy_blue w-[auto]"
                       variant="body6"
                     >
                       +
                     </Text>
                     <Text
-                      className="text-deep_orange_400 w-[auto]"
+                      className="text-navy_blue w-[auto]"
                       variant="body6"
                     >
                       +
                     </Text>
                     <Text
-                      className="text-deep_orange_400 w-[auto]"
-                      variant="body6"
-                    >
-                      +
-                    </Text>
-                  </Row>
-                  <Row className="flex flex-row md:flex-wrap sm:flex-wrap items-center justify-between my-[0] w-[100%]">
-                    <Text
-                      className="text-deep_orange_400 w-[auto]"
-                      variant="body6"
-                    >
-                      +
-                    </Text>
-                    <Text
-                      className="text-deep_orange_400 w-[auto]"
-                      variant="body6"
-                    >
-                      +
-                    </Text>
-                    <Text
-                      className="text-deep_orange_400 w-[auto]"
-                      variant="body6"
-                    >
-                      +
-                    </Text>
-                    <Text
-                      className="text-deep_orange_400 w-[auto]"
-                      variant="body6"
-                    >
-                      +
-                    </Text>
-                    <Text
-                      className="text-deep_orange_400 w-[auto]"
-                      variant="body6"
-                    >
-                      +
-                    </Text>
-                    <Text
-                      className="text-deep_orange_400 w-[auto]"
-                      variant="body6"
-                    >
-                      +
-                    </Text>
-                    <Text
-                      className="text-deep_orange_400 w-[auto]"
-                      variant="body6"
-                    >
-                      +
-                    </Text>
-                    <Text
-                      className="text-deep_orange_400 w-[auto]"
-                      variant="body6"
-                    >
-                      +
-                    </Text>
-                    <Text
-                      className="text-deep_orange_400 w-[auto]"
-                      variant="body6"
-                    >
-                      +
-                    </Text>
-                    <Text
-                      className="text-deep_orange_400 w-[auto]"
+                      className="text-navy_blue w-[auto]"
                       variant="body6"
                     >
                       +
@@ -808,61 +471,61 @@ const Home1Page = () => {
                   </Row>
                   <Row className="flex flex-row md:flex-wrap sm:flex-wrap items-center justify-between my-[0] w-[100%]">
                     <Text
-                      className="text-deep_orange_400 w-[auto]"
+                      className="text-navy_blue w-[auto]"
                       variant="body6"
                     >
                       +
                     </Text>
                     <Text
-                      className="text-deep_orange_400 w-[auto]"
+                      className="text-navy_blue w-[auto]"
                       variant="body6"
                     >
                       +
                     </Text>
                     <Text
-                      className="text-deep_orange_400 w-[auto]"
+                      className="text-navy_blue w-[auto]"
                       variant="body6"
                     >
                       +
                     </Text>
                     <Text
-                      className="text-deep_orange_400 w-[auto]"
+                      className="text-navy_blue w-[auto]"
                       variant="body6"
                     >
                       +
                     </Text>
                     <Text
-                      className="text-deep_orange_400 w-[auto]"
+                      className="text-navy_blue w-[auto]"
                       variant="body6"
                     >
                       +
                     </Text>
                     <Text
-                      className="text-deep_orange_400 w-[auto]"
+                      className="text-navy_blue w-[auto]"
                       variant="body6"
                     >
                       +
                     </Text>
                     <Text
-                      className="text-deep_orange_400 w-[auto]"
+                      className="text-navy_blue w-[auto]"
                       variant="body6"
                     >
                       +
                     </Text>
                     <Text
-                      className="text-deep_orange_400 w-[auto]"
+                      className="text-navy_blue w-[auto]"
                       variant="body6"
                     >
                       +
                     </Text>
                     <Text
-                      className="text-deep_orange_400 w-[auto]"
+                      className="text-navy_blue w-[auto]"
                       variant="body6"
                     >
                       +
                     </Text>
                     <Text
-                      className="text-deep_orange_400 w-[auto]"
+                      className="text-navy_blue w-[auto]"
                       variant="body6"
                     >
                       +
@@ -870,61 +533,309 @@ const Home1Page = () => {
                   </Row>
                   <Row className="flex flex-row md:flex-wrap sm:flex-wrap items-center justify-between my-[0] w-[100%]">
                     <Text
-                      className="text-deep_orange_400 w-[auto]"
+                      className="text-navy_blue w-[auto]"
                       variant="body6"
                     >
                       +
                     </Text>
                     <Text
-                      className="text-deep_orange_400 w-[auto]"
+                      className="text-navy_blue w-[auto]"
                       variant="body6"
                     >
                       +
                     </Text>
                     <Text
-                      className="text-deep_orange_400 w-[auto]"
+                      className="text-navy_blue w-[auto]"
                       variant="body6"
                     >
                       +
                     </Text>
                     <Text
-                      className="text-deep_orange_400 w-[auto]"
+                      className="text-navy_blue w-[auto]"
                       variant="body6"
                     >
                       +
                     </Text>
                     <Text
-                      className="text-deep_orange_400 w-[auto]"
+                      className="text-navy_blue w-[auto]"
                       variant="body6"
                     >
                       +
                     </Text>
                     <Text
-                      className="text-deep_orange_400 w-[auto]"
+                      className="text-navy_blue w-[auto]"
                       variant="body6"
                     >
                       +
                     </Text>
                     <Text
-                      className="text-deep_orange_400 w-[auto]"
+                      className="text-navy_blue w-[auto]"
                       variant="body6"
                     >
                       +
                     </Text>
                     <Text
-                      className="text-deep_orange_400 w-[auto]"
+                      className="text-navy_blue w-[auto]"
                       variant="body6"
                     >
                       +
                     </Text>
                     <Text
-                      className="text-deep_orange_400 w-[auto]"
+                      className="text-navy_blue w-[auto]"
                       variant="body6"
                     >
                       +
                     </Text>
                     <Text
-                      className="text-deep_orange_400 w-[auto]"
+                      className="text-navy_blue w-[auto]"
+                      variant="body6"
+                    >
+                      +
+                    </Text>
+                  </Row>
+                  <Row className="flex flex-row md:flex-wrap sm:flex-wrap items-center justify-between my-[0] w-[100%]">
+                    <Text
+                      className="text-navy_blue w-[auto]"
+                      variant="body6"
+                    >
+                      +
+                    </Text>
+                    <Text
+                      className="text-navy_blue w-[auto]"
+                      variant="body6"
+                    >
+                      +
+                    </Text>
+                    <Text
+                      className="text-navy_blue w-[auto]"
+                      variant="body6"
+                    >
+                      +
+                    </Text>
+                    <Text
+                      className="text-navy_blue w-[auto]"
+                      variant="body6"
+                    >
+                      +
+                    </Text>
+                    <Text
+                      className="text-navy_blue w-[auto]"
+                      variant="body6"
+                    >
+                      +
+                    </Text>
+                    <Text
+                      className="text-navy_blue w-[auto]"
+                      variant="body6"
+                    >
+                      +
+                    </Text>
+                    <Text
+                      className="text-navy_blue w-[auto]"
+                      variant="body6"
+                    >
+                      +
+                    </Text>
+                    <Text
+                      className="text-navy_blue w-[auto]"
+                      variant="body6"
+                    >
+                      +
+                    </Text>
+                    <Text
+                      className="text-navy_blue w-[auto]"
+                      variant="body6"
+                    >
+                      +
+                    </Text>
+                    <Text
+                      className="text-navy_blue w-[auto]"
+                      variant="body6"
+                    >
+                      +
+                    </Text>
+                  </Row>
+                  <Row className="flex flex-row md:flex-wrap sm:flex-wrap items-center justify-between my-[0] w-[100%]">
+                    <Text
+                      className="text-navy_blue w-[auto]"
+                      variant="body6"
+                    >
+                      +
+                    </Text>
+                    <Text
+                      className="text-navy_blue w-[auto]"
+                      variant="body6"
+                    >
+                      +
+                    </Text>
+                    <Text
+                      className="text-navy_blue w-[auto]"
+                      variant="body6"
+                    >
+                      +
+                    </Text>
+                    <Text
+                      className="text-navy_blue w-[auto]"
+                      variant="body6"
+                    >
+                      +
+                    </Text>
+                    <Text
+                      className="text-navy_blue w-[auto]"
+                      variant="body6"
+                    >
+                      +
+                    </Text>
+                    <Text
+                      className="text-navy_blue w-[auto]"
+                      variant="body6"
+                    >
+                      +
+                    </Text>
+                    <Text
+                      className="text-navy_blue w-[auto]"
+                      variant="body6"
+                    >
+                      +
+                    </Text>
+                    <Text
+                      className="text-navy_blue w-[auto]"
+                      variant="body6"
+                    >
+                      +
+                    </Text>
+                    <Text
+                      className="text-navy_blue w-[auto]"
+                      variant="body6"
+                    >
+                      +
+                    </Text>
+                    <Text
+                      className="text-navy_blue w-[auto]"
+                      variant="body6"
+                    >
+                      +
+                    </Text>
+                  </Row>
+                  <Row className="flex flex-row md:flex-wrap sm:flex-wrap items-center justify-between my-[0] w-[100%]">
+                    <Text
+                      className="text-navy_blue w-[auto]"
+                      variant="body6"
+                    >
+                      +
+                    </Text>
+                    <Text
+                      className="text-navy_blue w-[auto]"
+                      variant="body6"
+                    >
+                      +
+                    </Text>
+                    <Text
+                      className="text-navy_blue w-[auto]"
+                      variant="body6"
+                    >
+                      +
+                    </Text>
+                    <Text
+                      className="text-navy_blue w-[auto]"
+                      variant="body6"
+                    >
+                      +
+                    </Text>
+                    <Text
+                      className="text-navy_blue w-[auto]"
+                      variant="body6"
+                    >
+                      +
+                    </Text>
+                    <Text
+                      className="text-navy_blue w-[auto]"
+                      variant="body6"
+                    >
+                      +
+                    </Text>
+                    <Text
+                      className="text-navy_blue w-[auto]"
+                      variant="body6"
+                    >
+                      +
+                    </Text>
+                    <Text
+                      className="text-navy_blue w-[auto]"
+                      variant="body6"
+                    >
+                      +
+                    </Text>
+                    <Text
+                      className="text-navy_blue w-[auto]"
+                      variant="body6"
+                    >
+                      +
+                    </Text>
+                    <Text
+                      className="text-navy_blue w-[auto]"
+                      variant="body6"
+                    >
+                      +
+                    </Text>
+                  </Row>
+                  <Row className="flex flex-row md:flex-wrap sm:flex-wrap items-center justify-between my-[0] w-[100%]">
+                    <Text
+                      className="text-navy_blue w-[auto]"
+                      variant="body6"
+                    >
+                      +
+                    </Text>
+                    <Text
+                      className="text-navy_blue w-[auto]"
+                      variant="body6"
+                    >
+                      +
+                    </Text>
+                    <Text
+                      className="text-navy_blue w-[auto]"
+                      variant="body6"
+                    >
+                      +
+                    </Text>
+                    <Text
+                      className="text-navy_blue w-[auto]"
+                      variant="body6"
+                    >
+                      +
+                    </Text>
+                    <Text
+                      className="text-navy_blue w-[auto]"
+                      variant="body6"
+                    >
+                      +
+                    </Text>
+                    <Text
+                      className="text-navy_blue w-[auto]"
+                      variant="body6"
+                    >
+                      +
+                    </Text>
+                    <Text
+                      className="text-navy_blue w-[auto]"
+                      variant="body6"
+                    >
+                      +
+                    </Text>
+                    <Text
+                      className="text-navy_blue w-[auto]"
+                      variant="body6"
+                    >
+                      +
+                    </Text>
+                    <Text
+                      className="text-dark_blueblack w-[auto]"
+                      variant="body6"
+                    >
+                      +
+                    </Text>
+                    <Text
+                      className="text-navy_blue w-[auto]"
                       variant="body6"
                     >
                       +
@@ -972,7 +883,7 @@ const Home1Page = () => {
                 className="sm:gap-[15px] md:gap-[20px] gap-[30px] grid sm:grid-cols-1 md:grid-cols-2 grid-cols-3 min-h-[auto] sm:mt-[31px] md:mt-[41px] mt-[60px] w-[100%]"
                 orientation="horizontal"
               >
-                <Row className="bg-white_A700 flex flex-row md:flex-wrap sm:flex-wrap items-center md:p-[10px] p-[15px] sm:p-[7px] rounded-radius10 w-[100%]">
+                <Row className="bg-gray_100 flex flex-row md:flex-wrap sm:flex-wrap items-center md:p-[10px] p-[15px] sm:p-[7px] rounded-radius10 w-[100%]">
                   <Stack className="bg-red_50 h-[70px] md:p-[13px] sm:p-[15px] p-[20px] relative rounded-radius10 sm:w-[37px] md:w-[48px] w-[70px]">
                     <Img
                       src="images/img_volume.svg"
@@ -985,10 +896,10 @@ const Home1Page = () => {
                     as="h5"
                     variant="h5"
                   >
-                    Audio Classes
+                    Group Classes
                   </Text>
                 </Row>
-                <Row className="bg-white_A700 flex flex-row md:flex-wrap sm:flex-wrap items-center md:p-[10px] p-[15px] sm:p-[7px] rounded-radius10 w-[100%]">
+                <Row className="bg-gray_100 flex flex-row md:flex-wrap sm:flex-wrap items-center md:p-[10px] p-[15px] sm:p-[7px] rounded-radius10 w-[100%]">
                   <Stack className="bg-gray_50 h-[70px] md:p-[13px] sm:p-[15px] p-[20px] relative rounded-radius10 sm:w-[37px] md:w-[48px] w-[70px]">
                     <Img
                       src="images/img_user_1.svg"
@@ -1001,10 +912,10 @@ const Home1Page = () => {
                     as="h5"
                     variant="h5"
                   >
-                    Live Classes
+                    Live Sessions
                   </Text>
                 </Row>
-                <Row className="bg-white_A700 flex flex-row md:flex-wrap sm:flex-wrap items-center md:p-[10px] p-[15px] sm:p-[7px] rounded-radius10 w-[100%]">
+                <Row className="bg-gray_100 flex flex-row md:flex-wrap sm:flex-wrap items-center md:p-[10px] p-[15px] sm:p-[7px] rounded-radius10 w-[100%]">
                   <Stack className="bg-cyan_50 h-[70px] md:p-[13px] sm:p-[15px] p-[20px] relative rounded-radius10 sm:w-[37px] md:w-[48px] w-[70px]">
                     <Img
                       src="images/img_vector.svg"
