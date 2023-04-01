@@ -14,6 +14,9 @@ import { Input } from "./Input";
 import { CheckBox } from "./CheckBox";
 import { PagerIndicator } from "./PagerIndicator";
 import { SelectBox } from "./SelectBox";
+import { NavBarP } from "./NavBarP";
+import { PlusSigns } from "./PlusSigns";
+import {Footer} from "./Footer"
 export {
   Column,
   Datepicker,
@@ -31,4 +34,7 @@ export {
   CheckBox,
   PagerIndicator,
   SelectBox,
+  NavBarP,
+  PlusSigns,
+  Footer,
 };
