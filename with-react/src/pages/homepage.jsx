@@ -14,7 +14,7 @@ import {
   Input,
   NavBarP,
   PlusSigns,
-  Footer
+  Footer,
 } from "../components";
 import { useNavigate } from "react-router-dom";
 
@@ -45,11 +45,9 @@ const Home1Page = () => {
 
   return (
     <>
-    
       <Column className="bg-light_green flex flex-col font-inter items-center justify-start mx-[auto] w-[100%]">
-     
-      <NavBarP></NavBarP>
-       
+        <NavBarP />
+
         <Column className="flex flex-col items-center justify-start sm:mt-[28px] md:mt-[37px] mt-[54px] w-[100%]">
           <Row className="flex flex-row md:flex-wrap sm:flex-wrap items-center max-w-[1317px] ml-[auto] mr-[auto] sm:mx-[0] sm:pl-[15px] sm:pr-[15px] sm:px-[0] w-[100%]">
             <Column className="flex flex-col sm:mx-[0] sm:px-[0] sm:w-[100%] w-[47%]">
@@ -76,14 +74,13 @@ const Home1Page = () => {
                   className="font-normal leading-[30.00px] md:leading-[normal] sm:leading-[normal] sm:mt-[15px] md:mt-[20px] mt-[30px] not-italic text-gray_700 w-[100%]"
                   variant="body5"
                 >
-                  Skill-Learn aims to provide a platform where individuals can share their skills online
-                   and get fairly compensated. We believe that everyone has something valuable to offer, 
-                   and our platform offers a supportive and collaborative environment where users can connect, 
-                   learn from others.
-
+                  Skill-Learn aims to provide a platform where individuals can
+                  share their skills online and get fairly compensated. We
+                  believe that everyone has something valuable to offer, and our
+                  platform offers a supportive and collaborative environment
+                  where users can connect, learn from others.
                 </Text>
               </Column>
-              
             </Column>
             <Img
               src="images/img_image.png"
@@ -106,21 +103,20 @@ const Home1Page = () => {
                   className="font-inter font-normal leading-[30.00px] md:leading-[normal] sm:leading-[normal] sm:mt-[10px] md:mt-[13px] mt-[20px] not-italic text-center text-gray_700 w-[100%]"
                   variant="body5"
                 >
-                  At Skill-Learn, we take great pride in the quality 
-                  and relevance of the videos on our platform. Our courses
-                  are created by experts in their fields and are designed 
-                  to be engaging, informative, and practical. Our commitment to 
-                  providing high-quality content ensures that you will get the most out of your learning 
-                  experience and be able to apply your new skills to your personal 
-                  or professional life. 
-
+                  At Skill-Learn, we take great pride in the quality and
+                  relevance of the videos on our platform. Our courses are
+                  created by experts in their fields and are designed to be
+                  engaging, informative, and practical. Our commitment to
+                  providing high-quality content ensures that you will get the
+                  most out of your learning experience and be able to apply your
+                  new skills to your personal or professional life.
                   <br />
-                  Join our platform today and start your journey 
-                  towards personal and professional growth!
+                  Join our platform today and start your journey towards
+                  personal and professional growth!
                 </Text>
                 <Button
                   className="common-pointer cursor-pointer font-inter font-medium min-w-[20%] sm:mt-[21px] md:mt-[27px] mt-[40px] text-[16px] text-center text-white_A700 w-[max-content]"
-                  variant = "DarkBlueBlack"
+                  variant="DarkBlueBlack"
                   onClick={handleNavigate1}
                   size="lg"
                 >
@@ -140,7 +136,6 @@ const Home1Page = () => {
                     className="max-w-[100%] rounded-radius16 w-[23%]"
                     alt="portraitlittle"
                   />
-                  
                 </Row>
               </Column>
               <List
@@ -211,10 +206,9 @@ const Home1Page = () => {
                 className="font-inter font-normal leading-[30.00px] md:leading-[normal] sm:leading-[normal] sm:mt-[10px] md:mt-[13px] mt-[20px] not-italic text-center text-gray_700 w-[100%]"
                 variant="body5"
               >
-                At Skill-Learn, we offer a wide range of courses taught by experts
-                 in their fields. Here are some of our most popular courses:
-
-
+                At Skill-Learn, we offer a wide range of courses taught by
+                experts in their fields. Here are some of our most popular
+                courses:
               </Text>
             </Column>
             <Column className="flex flex-col items-center justify-start sm:mt-[23px] md:mt-[30px] mt-[45px] w-[100%]">
@@ -457,7 +451,7 @@ const Home1Page = () => {
               className="common-pointer cursor-pointer font-medium min-w-[16%] sm:mt-[31px] md:mt-[41px] mt-[60px] text-[16px] text-center text-white_A700 w-[max-content]"
               onClick={handleNavigate}
               size="lg"
-              variant = "DarkBlueBlack"
+              variant="DarkBlueBlack"
             >
               Visit More Classes
             </Button>
@@ -498,7 +492,7 @@ const Home1Page = () => {
                 <Button
                   className="cursor-pointer font-medium min-w-[37%] sm:mt-[21px] md:mt-[27px] mt-[40px] text-[16px] text-center text-white_A700 w-[max-content]"
                   size="lg"
-                  variant = "DarkBlueBlack"
+                  variant="DarkBlueBlack"
                 >
                   Register Now
                 </Button>
@@ -514,7 +508,7 @@ const Home1Page = () => {
             <Img
               src="images/img_image_521X510.png"
               className="max-w-[100%] sm:w-[100%] w-[47%] rounded-radius20"
-              shapes = "RoundedBorder10"
+              shapes="RoundedBorder10"
               alt="Image Two"
             />
             <Column className="flex flex-col md:ml-[55px] ml-[80px] sm:mx-[0] sm:px-[0] rounded-radius10 sm:w-[100%] w-[46%]">
@@ -527,7 +521,8 @@ const Home1Page = () => {
                   Want to share your
                   <br />
                   knowledge? Join us
-                  <br />as Educator
+                  <br />
+                  as Educator
                 </Text>
                 <Text
                   className="font-inter font-normal leading-[30.00px] md:leading-[normal] sm:leading-[normal] sm:mt-[10px] md:mt-[13px] mt-[20px] not-italic text-gray_700 w-[100%]"
@@ -542,7 +537,7 @@ const Home1Page = () => {
                 className="common-pointer cursor-pointer font-medium min-w-[41%] sm:mt-[21px] md:mt-[27px] mt-[40px] text-[16px] text-center text-white_A700 w-[max-content]"
                 onClick={handleNavigate11}
                 size="lg"
-                variant = "DarkBlueBlack"
+                variant="DarkBlueBlack"
               >
                 Career Information
               </Button>
@@ -551,7 +546,6 @@ const Home1Page = () => {
           <Column className="bg-black_902 flex flex-col font-metropolis items-center justify-start max-w-[1280px] ml-[auto] mr-[auto] md:mt-[103px] mt-[150px] sm:mt-[79px] sm:mx-[0] sm:p-[15px] md:p-[34px] p-[50px] sm:pl-[15px] sm:pr-[15px] rounded-radius20 w-[100%]">
             <Column className="flex flex-col items-center justify-start md:mb-[10px] mb-[15px] sm:mb-[7px] mt-[11px] sm:mt-[5px] md:mt-[7px] sm:px-[0] w-[100%]">
               <Row className="flex flex-row md:flex-wrap sm:flex-wrap items-start sm:mx-[0] sm:px-[0] sm:w-[100%] w-[98%]">
-               
                 <Column className="flex flex-col items-center justify-start ml-[114px] md:ml-[78px] sm:mx-[0] sm:px-[0] sm:w-[100%] w-[74%]">
                   <Row className="flex flex-row items-center md:flex-wrap sm:flex-wrap items-start justify-between w-[100%]">
                     <Text
@@ -561,7 +555,6 @@ const Home1Page = () => {
                     >
                       Subscribe To Get Updates <br></br>On New Courses
                     </Text>
-                   
                   </Row>
                   <Row className="flex flex-row md:flex-wrap sm:flex-wrap font-inter items-start md:ml-[20px] ml-[30px] sm:mx-[0] sm:px-[0] sm:w-[100%] w-[86%]">
                     <Text
@@ -571,36 +564,31 @@ const Home1Page = () => {
                       20k+ students daily learn with Educatsy. Subscribe for new
                       courses.
                     </Text>
-                   
                   </Row>
                 </Column>
               </Row>
               <Row className="flex flex-row md:flex-wrap sm:flex-wrap font-inter items-center sm:mt-[15px] md:mt-[20px] mt-[30px] sm:mx-[0] sm:px-[0] sm:w-[100%] w-[45%]">
-              
-                  <Input
-                    className="font-medium p-[0] text-[16px] placeholder:text-white_A700 text-white_A700 w-[95%]"
-                    wrapClassName="sm:mx-[0] sm:w-[100%] w-[73%]"
-                    type="email"
-                    name="email"
-                    placeholder="enter your email"
-                  ></Input>
-                  <Button
-                    className="cursor-pointer font-medium min-w-[28%] text-[16px] text-center text-white_A700 w-[max-content]"
-                    shape="CustomBorderLR10"
-                    size="lg"
-                  >
-                    Subscribe
-                  </Button>
-                
+                <Input
+                  className="font-medium p-[0] text-[16px] placeholder:text-white_A700 text-white_A700 w-[95%]"
+                  wrapClassName="sm:mx-[0] sm:w-[100%] w-[73%]"
+                  type="email"
+                  name="email"
+                  placeholder="enter your email"
+                ></Input>
+                <Button
+                  className="cursor-pointer font-medium min-w-[28%] text-[16px] text-center text-white_A700 w-[max-content]"
+                  shape="CustomBorderLR10"
+                  size="lg"
+                >
+                  Subscribe
+                </Button>
               </Row>
             </Column>
           </Column>
-          
-          <Footer></Footer>
 
+          <Footer></Footer>
         </Column>
       </Column>
-      
     </>
   );
 };

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { styled } from "@mui/material/styles";
 import { TextField, InputAdornment, IconButton } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
@@ -8,26 +8,33 @@ const InputField = styled(TextField)({
 });
 
 const UserDetailInput = ({
+  id,
   label,
   type,
   value,
   onChange,
-  showPassword,
-  handleClickShowPassword,
-  autocomplete,
+  autoComplete,
   disabled = false,
+  required = true,
+  ...props
 }) => {
+  const [showPassword, setShowPassword] = useState(false);
+  const handleClickShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
   return (
     <InputField
-      disabled={disabled}
       fullWidth
+      id={id}
       label={label}
-      variant="filled"
-      type={type === "password" ? (showPassword ? "text" : "password") : type}
       value={value}
       onChange={onChange}
-      helperText="some hint here would be nice..."
-      autoComplete={autocomplete}
+      type={type === "password" ? (showPassword ? "text" : "password") : type}
+      disabled={disabled}
+      required={required}
+      variant="filled"
+      margin="normal"
+      autoComplete={autoComplete}
       InputProps={
         type === "password"
           ? {
@@ -45,6 +52,7 @@ const UserDetailInput = ({
             }
           : {}
       }
+      {...props}
     />
   );
 };

@@ -2,9 +2,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./styles/App.css";
 import { ThemeProvider } from "@mui/material/styles";
 import { theme } from "./styles/theme";
-import { Login, Register, Home, Home1 } from "./pages";
-import { register } from "swiper/element/bundle";
-register();
+import { Login, Signup, Home, Home1 } from "./pages";
+
 function App() {
   return (
     <ThemeProvider theme={theme}>
@@ -18,11 +17,11 @@ function App() {
       >
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Login />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
+            <Route path="/" element={<Login theme={theme} />} />
+            <Route path="/login" element={<Login theme={theme} />} />
+            <Route path="/Signup" element={<Signup theme={theme} />} />
             <Route path="/home" element={<Home />} />
-            <Route path="/home1" element={<Home1 />} />
+            {/* <Route path="/home1" element={<Home1 />} /> */}
           </Routes>
         </BrowserRouter>
       </div>

@@ -141,8 +141,15 @@ export const theme = createTheme({
     // your shape object
   },
   breakpoints: {
-    // your breakpoints object
+    values: {
+      xs: 0, // extra small devices
+      sm: 600, // small devices
+      md: 960, // medium devices
+      lg: 1280, // large devices
+      xl: 1920, // extra large devices
+    },
   },
+
   components: {
     MuiButton: {
       styleOverrides: {

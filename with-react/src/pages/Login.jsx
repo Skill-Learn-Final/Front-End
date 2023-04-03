@@ -7,9 +7,12 @@ import {
   Container,
   CardHeader,
   FormControl,
+  IconButton,
 } from "@mui/material";
-import { SubmitButton, UserDetailInput } from "../components/Inputs";
-import { TextLogo, Slider, SignMedia } from "../components/Visuals";
+import { SubmitButton, UserDetailInput } from "../components/MInputs";
+import { TextLogo, SignMedia } from "../components/MVisuals";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
 const LoginForm = ({
   onSubmit,
@@ -17,8 +20,6 @@ const LoginForm = ({
   password,
   onUsernameChange,
   onPasswordChange,
-  showPassword,
-  onShowPasswordClick,
 }) => {
   return (
     <form onSubmit={onSubmit}>
@@ -29,16 +30,14 @@ const LoginForm = ({
             type="text"
             value={username}
             onChange={onUsernameChange}
-            autocomplete="username"
+            autoComplete="username"
           />
           <UserDetailInput
             label="Password"
             type="password"
             value={password}
             onChange={onPasswordChange}
-            showPassword={showPassword}
-            handleClickShowPassword={onShowPasswordClick}
-            autocomplete="current-password"
+            autoComplete="current-password"
           />
         </CardContent>
         <CardActions sx={{ justifyContent: "flex-end" }}>
@@ -51,24 +50,9 @@ const LoginForm = ({
   );
 };
 
-const Login = () => {
-  const [showPassword, setShowPassword] = useState(false);
+const Login = ({ onClose }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const slides = [
-    <SignMedia
-      imageUrl="https://source.unsplash.com/random/800x600"
-      alt="slide 1"
-    />,
-    <SignMedia
-      imageUrl="https://source.unsplash.com/random/800x601"
-      alt="slide 2"
-    />,
-    <SignMedia
-      imageUrl="https://source.unsplash.com/random/800x602"
-      alt="slide 3"
-    />,
-  ];
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
@@ -77,9 +61,7 @@ const Login = () => {
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
   };
-  const handleClickShowPassword = () => {
-    setShowPassword(!showPassword);
-  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     // handle form submission here
@@ -116,7 +98,10 @@ const Login = () => {
             >
               <Grid container direction="row">
                 <Grid item xs={12} md={4} lg={5}>
-                  <Slider items={slides} />
+                  <SignMedia
+                    imageUrl="https://source.unsplash.com/random/800x600"
+                    alt="A portfolio image describing some aspect of the platform."
+                  />
                 </Grid>
                 <Grid item xs={12} md={8} lg={7}>
                   <CardHeader
@@ -126,6 +111,11 @@ const Login = () => {
                       pl: { xs: 40, lg: 60 },
                     }}
                     title={TextLogo(2)}
+                    action={
+                      <IconButton onClick={onClose}>
+                        <FontAwesomeIcon icon={faXmark} />
+                      </IconButton>
+                    }
                   />
                   <LoginForm
                     onSubmit={handleSubmit}
@@ -133,8 +123,6 @@ const Login = () => {
                     password={password}
                     onUsernameChange={handleUsernameChange}
                     onPasswordChange={handlePasswordChange}
-                    showPassword={showPassword}
-                    onShowPasswordClick={handleClickShowPassword}
                   />
                 </Grid>
               </Grid>

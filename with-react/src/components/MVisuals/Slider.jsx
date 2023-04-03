@@ -18,8 +18,12 @@ const Slider = ({ items }) => {
         pagination={{ clickable: true }}
         className="h-100"
       >
-        {items.map((item, index) => {
-          return <SwiperSlide className="h-100">{item}</SwiperSlide>;
+        {items.map((item, key, index) => {
+          return (
+            <SwiperSlide key={key} className="h-100">
+              {item}
+            </SwiperSlide>
+          );
         })}
       </Swiper>
     </Box>

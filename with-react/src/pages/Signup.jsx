@@ -7,11 +7,14 @@ import {
   Container,
   CardHeader,
   FormControl,
+  IconButton,
 } from "@mui/material";
-import { SubmitButton, UserDetailInput } from "../components/Inputs";
-import { SignMedia, Slider, TextLogo } from "../components/Visuals";
+import { SubmitButton, UserDetailInput } from "../components/MInputs";
+import { SignMedia, TextLogo } from "../components/MVisuals";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
-const RegisterForm = ({
+const SignupForm = ({
   onSubmit,
   fullName,
   email,
@@ -23,8 +26,6 @@ const RegisterForm = ({
   onUsernameChange,
   onPasswordChange,
   onConfirmPasswordChange,
-  showPassword,
-  onShowPasswordClick,
 }) => {
   return (
     <form onSubmit={onSubmit}>
@@ -37,7 +38,7 @@ const RegisterForm = ({
                 type="text"
                 value={fullName}
                 onChange={onFullNameChange}
-                autocomplete="name"
+                autoComplete="name"
               />
             </Grid>
             <Grid item xs={12}>
@@ -46,7 +47,7 @@ const RegisterForm = ({
                 type="email"
                 value={email}
                 onChange={onEmailChange}
-                autocomplete="email"
+                autoComplete="email"
               />
             </Grid>
             <Grid item xs={12}>
@@ -55,7 +56,7 @@ const RegisterForm = ({
                 type="text"
                 value={username}
                 onChange={onUsernameChange}
-                autocomplete="username"
+                autoComplete="username"
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -64,9 +65,7 @@ const RegisterForm = ({
                 type="password"
                 value={password}
                 onChange={onPasswordChange}
-                showPassword={showPassword}
-                handleClickShowPassword={onShowPasswordClick}
-                autocomplete="new-password"
+                autoComplete="new-password"
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -75,9 +74,7 @@ const RegisterForm = ({
                 type="password"
                 value={confirmPassword}
                 onChange={onConfirmPasswordChange}
-                showPassword={showPassword}
-                handleClickShowPassword={onShowPasswordClick}
-                autocomplete="new-password"
+                autoComplete="new-password"
               />
             </Grid>
           </Grid>
@@ -90,27 +87,13 @@ const RegisterForm = ({
   );
 };
 
-const Register = () => {
+const Signup = ({ onClose }) => {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
-  const slides = [
-    <SignMedia
-      imageUrl="https://source.unsplash.com/random/800x600"
-      alt="slide 1"
-    />,
-    <SignMedia
-      imageUrl="https://source.unsplash.com/random/800x601"
-      alt="slide 2"
-    />,
-    <SignMedia
-      imageUrl="https://source.unsplash.com/random/800x602"
-      alt="slide 3"
-    />,
-  ];
+
   const handlefullNameChange = (event) => {
     setFullName(event.target.value);
   };
@@ -131,9 +114,6 @@ const Register = () => {
     setConfirmPassword(event.target.value);
   };
 
-  const handleClickShowPassword = () => {
-    setShowPassword(!showPassword);
-  };
   const handleSubmit = (event) => {
     event.preventDefault();
     // handle form submission here
@@ -163,14 +143,16 @@ const Register = () => {
                 borderColor: { sm: "primary.main" },
                 borderWidth: { xs: 0, sm: 1.8 },
                 borderRadius: { sm: 8 },
-                mt: { sm: 80, md: 0 },
                 backdropFilter: "blur(10px)",
                 backgroundColor: "rgba(255, 255, 255, 0.8)",
               }}
             >
               <Grid container direction="row">
                 <Grid item xs={12} md={4} lg={5}>
-                  <Slider items={slides} />
+                  <SignMedia
+                    imageUrl="https://source.unsplash.com/random/800x600"
+                    alt="A portfolio image describing some aspect of the platform."
+                  />
                 </Grid>
                 <Grid item xs={12} md={8} lg={7}>
                   <CardHeader
@@ -180,8 +162,13 @@ const Register = () => {
                       pl: { xs: 30, lg: 50 },
                     }}
                     title={TextLogo(2)}
+                    action={
+                      <IconButton onClick={onClose}>
+                        <FontAwesomeIcon icon={faXmark} />
+                      </IconButton>
+                    }
                   />
-                  <RegisterForm
+                  <SignupForm
                     onSubmit={handleSubmit}
                     fullName={fullName}
                     email={email}
@@ -193,8 +180,6 @@ const Register = () => {
                     onUsernameChange={handleUsernameChange}
                     onPasswordChange={handlePasswordChange}
                     onConfirmPasswordChange={handleConfirmPasswordChange}
-                    showPassword={showPassword}
-                    onShowPasswordClick={handleClickShowPassword}
                   />
                 </Grid>
               </Grid>
@@ -206,4 +191,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default Signup;
