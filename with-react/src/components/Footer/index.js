@@ -27,7 +27,7 @@ import Sticky from 'react-stickynode';
 export const Footer = ()=>{
 return(
     
-    <footer className="bg-gray_100 font-inter w-[100%]">
+    <footer className="bg-light_green font-inter w-[100%]">
     <Row className="flex flex-row md:flex-wrap sm:flex-wrap items-start justify-between max-w-[1280px] sm:mb-[42px] md:mb-[55px] mb-[80px] ml-[auto] mr-[auto] mt-[100px] sm:mt-[53px] md:mt-[68px] sm:mx-[0] mx-[auto] sm:pl-[15px] sm:pr-[15px] sm:px-[0] w-[100%]">
       <Column className="flex flex-col justify-start sm:mx-[0] sm:px-[0] sm:w-[100%] w-[16%] common-column-list">
         <ul className="flex flex-col">
@@ -178,15 +178,7 @@ return(
                 Blog
               </a>
             </li>
-            <li className="w-[auto] mt-[17px] sm:mt-[9px] md:mt-[11px]">
-              <a
-                href={"javascript:"}
-                className="cursor-pointer font-normal not-italic text-[16px] text-gray_700"
-                rel="noreferrer"
-              >
-                Teaching Center
-              </a>
-            </li>
+            
           </ul>
         </Column>
       </Column>
@@ -231,15 +223,7 @@ return(
                 Admissions
               </a>
             </li>
-            <li className="w-[auto] mt-[17px] sm:mt-[9px] md:mt-[11px]">
-              <a
-                href={"javascript:"}
-                className="cursor-pointer font-normal not-italic text-[16px] text-gray_700"
-                rel="noreferrer"
-              >
-                Testimonial
-              </a>
-            </li>
+           
             <li className="w-[auto] mt-[17px] sm:mt-[9px] md:mt-[11px]">
               <a
                 href={"javascript:"}
@@ -247,68 +231,6 @@ return(
                 rel="noreferrer"
               >
                 Programs
-              </a>
-            </li>
-          </ul>
-        </Column>
-      </Column>
-      <Column className="flex flex-col justify-start sm:mx-[0] sm:px-[0] sm:w-[100%] w-[6%]">
-        <Text className="text-gray_901 w-[auto]" variant="body2">
-          More
-        </Text>
-        <Column className="flex flex-col justify-start sm:mt-[10px] md:mt-[13px] mt-[20px] w-[100%] common-column-list">
-          <ul className="flex flex-col">
-            <li className="w-[auto]">
-              <Text
-                className="cursor-pointer font-normal not-italic text-gray_700"
-                variant="body5"
-              >
-                Press
-              </Text>
-            </li>
-            <li className="w-[auto] mt-[17px] sm:mt-[9px] md:mt-[11px]">
-              <a
-                href={"javascript:"}
-                className="cursor-pointer font-normal not-italic text-[16px] text-gray_700"
-                rel="noreferrer"
-              >
-                Investors
-              </a>
-            </li>
-            <li className="w-[auto] mt-[17px] sm:mt-[9px] md:mt-[11px]">
-              <a
-                href={"javascript:"}
-                className="cursor-pointer font-normal not-italic text-[16px] text-gray_700"
-                rel="noreferrer"
-              >
-                Terms
-              </a>
-            </li>
-            <li className="w-[auto] mt-[17px] sm:mt-[9px] md:mt-[11px]">
-              <a
-                href={"javascript:"}
-                className="cursor-pointer font-normal not-italic text-[16px] text-gray_700"
-                rel="noreferrer"
-              >
-                Privacy
-              </a>
-            </li>
-            <li className="w-[auto] mt-[17px] sm:mt-[9px] md:mt-[11px]">
-              <a
-                href={"javascript:"}
-                className="cursor-pointer font-normal not-italic text-[16px] text-gray_700"
-                rel="noreferrer"
-              >
-                Help
-              </a>
-            </li>
-            <li className="w-[auto] mt-[17px] sm:mt-[9px] md:mt-[11px]">
-              <a
-                href={"javascript:"}
-                className="cursor-pointer font-normal not-italic text-[16px] text-gray_700"
-                rel="noreferrer"
-              >
-                Contact
               </a>
             </li>
           </ul>

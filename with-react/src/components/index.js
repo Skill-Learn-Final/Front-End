@@ -16,7 +16,10 @@ import { PagerIndicator } from "./PagerIndicator";
 import { SelectBox } from "./SelectBox";
 import { NavBarP } from "./NavBarP";
 import { PlusSigns } from "./PlusSigns";
-import {Footer} from "./Footer"
+import {Footer} from "./Footer";
+import { Rating } from "./Rating";
+import { Subscribe } from "./Subscribe";
+import {PopularCourses} from "./Custom"
 export {
   Column,
   Datepicker,
@@ -37,4 +40,7 @@ export {
   NavBarP,
   PlusSigns,
   Footer,
+  Rating,
+  Subscribe,
+  PopularCourses
 };

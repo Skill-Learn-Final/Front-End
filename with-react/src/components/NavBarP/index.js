@@ -84,7 +84,7 @@ return(
   </Row>
   <Row className="sm:hidden md:ml-[5px] ml-[5px] sm:mx-[0] sm:px-[0] sm:w-[50%] w-[6%]">
     <Button 
-      className="cursor-pointer font-medium min-w-[20%] text-[12px] text-center text-deep_orange_400 w-[max-content]"
+      className="cursor-pointer font-medium min-w-[20%] text-[12px] text-center w-[max-content]"
       size="mdNavIcn"
       variant="OutlineGray500"
       shape="RoundedBorder1"
@@ -94,7 +94,7 @@ return(
   </Row>
   <Row className="sm:hidden md:ml-[2px] ml-[2px] sm:mx-[0] sm:px-[0] sm:w-[50%] w-[6%]">
     <Button 
-      className="cursor-pointer font-medium min-w-[20%] text-[12px] text-center text-deep_orange_400 w-[max-content] "
+      className="cursor-pointer font-medium min-w-[20%] text-[12px] text-center text-white_A700 w-[max-content] "
       size="mdNavIcn"
       shape="RoundedBorder1"
       variant="DarkBlueBlack"
