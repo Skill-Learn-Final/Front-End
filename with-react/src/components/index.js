@@ -16,10 +16,13 @@ import { PagerIndicator } from "./PagerIndicator";
 import { SelectBox } from "./SelectBox";
 import { NavBarP } from "./NavBarP";
 import { PlusSigns } from "./PlusSigns";
-import {Footer} from "./Footer";
+import { Footer } from "./Footer";
 import { Rating } from "./Rating";
 import { Subscribe } from "./Subscribe";
-import {PopularCourses} from "./Custom"
+import { PopularCourses } from "./Custom";
+import { CourseDet } from "./Custom";
+import { CourseDetHome } from "./Custom";
+import { Nav } from "./Nav";
 export {
   Column,
   Datepicker,
@@ -42,5 +45,8 @@ export {
   Footer,
   Rating,
   Subscribe,
-  PopularCourses
+  PopularCourses,
+  CourseDet,
+  CourseDetHome,
+  Nav,
 };

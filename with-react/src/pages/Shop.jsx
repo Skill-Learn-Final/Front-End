@@ -17,6 +17,8 @@ import {
   Rating,
   Subscribe,
   PopularCourses,
+  CourseDet,
+  Nav,
 } from "../components";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -27,6 +29,7 @@ import {
   faArrowLeft,
   faStar,
 } from "@fortawesome/free-solid-svg-icons";
+import Courses from "./Courses";
 
 const Shop = () => {
   const navigate = useNavigate();
@@ -48,17 +51,19 @@ const Shop = () => {
     <>
       <Column className="bg-light_green flex flex-col font-inter items-center justify-start mx-[auto] w-[100%]">
         <Column className="flex flex-col items-center justify-start w-[100%]">
-          <NavBarP></NavBarP>
+          {/* <NavBarP></NavBarP> */}
+          <Nav></Nav>
+
           <Column className="flex flex-col items-center justify-start sm:mt-[26px] md:mt-[34px] mt-[50px] w-[100%]">
-            <Row className="bg-very_light_green flex flex-row md:flex-wrap sm:flex-wrap items-start max-w-[1280px] ml-[auto] mr-[auto] sm:mx-[0] md:p-[13px] sm:p-[15px] p-[19px] sm:pl-[15px] sm:pr-[15px] rounded-radius20 w-[100%]">
+            <Row className="bg-light_blue flex flex-row md:flex-wrap sm:flex-wrap items-start max-w-[1280px] ml-[auto] mr-[auto] sm:mx-[0] md:p-[13px] sm:p-[15px] p-[19px] sm:pl-[15px] sm:pr-[15px] rounded-radius20 w-[100%]">
               <Text
-                className="font-medium ml-[10px] sm:ml-[5px] md:ml-[6px] text-black_900 tracking-ls048 md:tracking-ls1 sm:tracking-ls1 w-[auto]"
+                className="font-medium ml-[10px] sm:ml-[5px] md:ml-[6px] text-white_A700 tracking-ls048 md:tracking-ls1 sm:tracking-ls1 w-[auto]"
                 variant="body5"
               >
                 Home | Shop
               </Text>
               <Text
-                className="font-semibold leading-[50.00px] md:leading-[normal] sm:leading-[normal] ml-[1px] sm:mt-[34px] md:mt-[44px] mt-[65px] sm:mx-[0] text-gray_901 sm:w-[100%] w-[29%]"
+                className="font-semibold leading-[50.00px] md:leading-[normal] sm:leading-[normal] ml-[1px] sm:mt-[34px] md:mt-[44px] mt-[65px] sm:mx-[0] text-white_A700 sm:w-[100%] w-[29%]"
                 as="h2"
                 variant="h2"
               >
@@ -88,66 +93,24 @@ const Shop = () => {
 
                   <PopularCourses
                     imageDir={"images/img_image_90X75.png"}
-                    name={"This is the name of the book"}
+                    courseName={"This is the name of the book"}
+                    price={40.0}
                     rating={3}
                   />
 
-                  <Column className="bg-white_A700 flex flex-col justify-start md:mt-[10px] mt-[15px] sm:mt-[7px] md:p-[15px] sm:p-[15px] p-[22px] rounded-radius10 w-[100%]">
-                    <Row className="flex flex-row md:flex-wrap sm:flex-wrap items-center ml-[3px] sm:mx-[0] sm:px-[0] sm:w-[100%] w-[90%]">
-                      <Img
-                        src="images/img_image_90X75.png"
-                        className="max-w-[100%] rounded-radius5 w-[24%]"
-                        alt="Image"
-                      />
-                      <Column className="flex flex-col md:ml-[10px] ml-[15px] sm:mx-[0] sm:px-[0] sm:w-[100%] w-[72%]">
-                        <div>
-                          <Rating value={3} />
-                        </div>
-                        <Text
-                          className="font-semibold leading-[20.00px] md:leading-[normal] sm:leading-[normal] mt-[10px] sm:mt-[5px] md:mt-[6px] text-black_900 w-[100%]"
-                          variant="body4"
-                        >
-                          The Three Musketeers, by
-                          <br />
-                          Alexandre Dumas
-                        </Text>
-                        <Text
-                          className="font-semibold mt-[10px] sm:mt-[5px] md:mt-[6px] text-red_300 w-[auto]"
-                          variant="body4"
-                        >
-                          $39.00
-                        </Text>
-                      </Column>
-                    </Row>
-                  </Column>
-                  <Column className="bg-white_A700 flex flex-col justify-start md:mt-[10px] mt-[15px] sm:mt-[7px] md:p-[15px] sm:p-[15px] p-[22px] rounded-radius10 w-[100%]">
-                    <Row className="flex flex-row md:flex-wrap sm:flex-wrap items-center ml-[3px] sm:mx-[0] sm:px-[0] sm:w-[100%] w-[90%]">
-                      <Img
-                        src="images/img_image_1.png"
-                        className="max-w-[100%] rounded-radius5 w-[24%]"
-                        alt="Image One"
-                      />
-                      <Column className="flex flex-col md:ml-[10px] ml-[15px] sm:mx-[0] sm:px-[0] sm:w-[100%] w-[72%]">
-                        <div>
-                          <Rating value={3} />
-                        </div>
-                        <Text
-                          className="font-semibold leading-[20.00px] md:leading-[normal] sm:leading-[normal] mt-[10px] sm:mt-[5px] md:mt-[6px] text-black_900 w-[100%]"
-                          variant="body4"
-                        >
-                          The Three Musketeers, by
-                          <br />
-                          Alexandre Dumas
-                        </Text>
-                        <Text
-                          className="font-semibold mt-[10px] sm:mt-[5px] md:mt-[6px] text-red_300 w-[auto]"
-                          variant="body4"
-                        >
-                          $39.00
-                        </Text>
-                      </Column>
-                    </Row>
-                  </Column>
+                  <PopularCourses
+                    imageDir={"images/img_image_90X75.png"}
+                    courseName={"This is the name of the book"}
+                    price={40.0}
+                    rating={3}
+                  />
+
+                  <PopularCourses
+                    imageDir={"images/img_image_90X75.png"}
+                    courseName={"This is the name of the book"}
+                    price={40.0}
+                    rating={3}
+                  />
                 </Column>
                 <Column className="flex flex-col justify-start w-[100%]">
                   <Text
@@ -157,123 +120,27 @@ const Shop = () => {
                   >
                     New Arrivals
                   </Text>
-                  <Column className="bg-white_A700 flex flex-col justify-start mt-[14px] sm:mt-[7px] md:mt-[9px] md:p-[15px] sm:p-[15px] p-[22px] rounded-radius10 w-[100%]">
-                    <Row className="flex flex-row md:flex-wrap sm:flex-wrap items-center ml-[3px] sm:mx-[0] sm:px-[0] sm:w-[100%] w-[90%]">
-                      <Img
-                        src="images/img_image14.png"
-                        className="max-w-[100%] rounded-radius5 w-[24%]"
-                        alt="imageFourteen One"
-                      />
-                      <Column className="flex flex-col md:ml-[10px] ml-[15px] sm:mx-[0] sm:px-[0] sm:w-[100%] w-[72%]">
-                        <div>
-                          <Rating value={3} />
-                        </div>
-                        <Text
-                          className="font-semibold leading-[20.00px] md:leading-[normal] sm:leading-[normal] mt-[10px] sm:mt-[5px] md:mt-[6px] text-black_900 w-[100%]"
-                          variant="body4"
-                        >
-                          The Three Musketeers, by
-                          <br />
-                          Alexandre Dumas
-                        </Text>
-                        <Text
-                          className="font-semibold mt-[10px] sm:mt-[5px] md:mt-[6px] text-red_300 w-[auto]"
-                          variant="body4"
-                        >
-                          $39.00
-                        </Text>
-                      </Column>
-                    </Row>
-                  </Column>
-                  <Column className="bg-white_A700 flex flex-col justify-start md:mt-[10px] mt-[15px] sm:mt-[7px] md:p-[15px] sm:p-[15px] p-[22px] rounded-radius10 w-[100%]">
-                    <Row className="flex flex-row md:flex-wrap sm:flex-wrap items-center ml-[3px] sm:mx-[0] sm:px-[0] sm:w-[100%] w-[90%]">
-                      <Img
-                        src="images/img_image_90X75.png"
-                        className="max-w-[100%] rounded-radius5 w-[24%]"
-                        alt="Image One"
-                      />
-                      <Column className="flex flex-col md:ml-[10px] ml-[15px] sm:mx-[0] sm:px-[0] sm:w-[100%] w-[72%]">
-                        <div>
-                          <Rating value={3} />
-                        </div>
-                        <Text
-                          className="font-semibold leading-[20.00px] md:leading-[normal] sm:leading-[normal] mt-[10px] sm:mt-[5px] md:mt-[6px] text-black_900 w-[100%]"
-                          variant="body4"
-                        >
-                          The Three Musketeers, by
-                          <br />
-                          Alexandre Dumas
-                        </Text>
-                        <Text
-                          className="font-semibold mt-[10px] sm:mt-[5px] md:mt-[6px] text-red_300 w-[auto]"
-                          variant="body4"
-                        >
-                          $39.00
-                        </Text>
-                      </Column>
-                    </Row>
-                  </Column>
-                  <Column className="bg-white_A700 flex flex-col justify-start md:mt-[10px] mt-[15px] sm:mt-[7px] md:p-[15px] sm:p-[15px] p-[22px] rounded-radius10 w-[100%]">
-                    <Row className="flex flex-row md:flex-wrap sm:flex-wrap items-center ml-[3px] sm:mx-[0] sm:px-[0] sm:w-[100%] w-[90%]">
-                      <Img
-                        src="images/img_image_1.png"
-                        className="max-w-[100%] rounded-radius5 w-[24%]"
-                        alt="Image One One"
-                      />
-                      <Column className="flex flex-col md:ml-[10px] ml-[15px] sm:mx-[0] sm:px-[0] sm:w-[100%] w-[72%]">
-                        <div>
-                          <Rating value={3} />
-                        </div>
-                        <Text
-                          className="font-semibold leading-[20.00px] md:leading-[normal] sm:leading-[normal] mt-[10px] sm:mt-[5px] md:mt-[6px] text-black_900 w-[100%]"
-                          variant="body4"
-                        >
-                          The Three Musketeers, by
-                          <br />
-                          Alexandre Dumas
-                        </Text>
-                        <Text
-                          className="font-semibold mt-[10px] sm:mt-[5px] md:mt-[6px] text-red_300 w-[auto]"
-                          variant="body4"
-                        >
-                          $39.00
-                        </Text>
-                      </Column>
-                    </Row>
-                  </Column>
+                  <PopularCourses
+                    imageDir={"images/img_image_90X75.png"}
+                    courseName={"This is the name of the book"}
+                    price={40.0}
+                    rating={3}
+                  />
+                  <PopularCourses
+                    imageDir={"images/img_image_90X75.png"}
+                    courseName={"This is the name of the book"}
+                    price={40.0}
+                    rating={3}
+                  />
+                  <PopularCourses
+                    imageDir={"images/img_image_90X75.png"}
+                    courseName={"This is the name of the book"}
+                    price={40.0}
+                    rating={3}
+                  />
                 </Column>
               </List>
               <Column className="flex flex-col justify-start md:ml-[27px] ml-[40px] sm:mx-[0] sm:px-[0] sm:w-[100%] w-[66%]">
-                {/* <Row className="flex flex-row md:flex-wrap sm:flex-wrap items-center sm:mx-[0] sm:px-[0] rounded-radius10 sm:w-[100%] w-[74%]">
-                  <Button
-                    className="cursor-pointer font-medium min-w-[22%] text-[16px] text-center text-gray_901 w-[max-content]"
-                    size="lg"
-                    variant="FillWhiteA700"
-                  >
-                    All Books
-                  </Button>
-                  <Button
-                    className="cursor-pointer font-medium min-w-[25%] sm:ml-[10px] md:ml-[13px] ml-[20px] text-[16px] text-center text-gray_901 w-[max-content]"
-                    size="lg"
-                    variant="FillWhiteA700"
-                  >
-                    Kindergarten
-                  </Button>
-                  <Button
-                    className="cursor-pointer font-medium min-w-[25%] sm:ml-[10px] md:ml-[13px] ml-[20px] text-[16px] text-center text-gray_901 w-[max-content]"
-                    size="lg"
-                    variant="FillWhiteA700"
-                  >
-                    High School
-                  </Button>
-                  <Button
-                    className="cursor-pointer font-medium min-w-[20%] sm:ml-[10px] md:ml-[13px] ml-[20px] text-[16px] text-center text-gray_901 w-[max-content]"
-                    size="lg"
-                    variant="FillWhiteA700"
-                  >
-                    College
-                  </Button>
-                </Row> */}
                 <Row className="flex flex-row md:flex-wrap sm:flex-wrap items-center justify-between sm:mt-[15px] md:mt-[20px] mt-[30px] w-[100%]">
                   <Row className="bg-white_A700 flex flex-row md:flex-wrap sm:flex-wrap items-center justify-between sm:mx-[0] sm:p-[3px] md:p-[4px] p-[7px] rounded-radius10 sm:w-[100%] w-[67%]">
                     <Text
@@ -304,258 +171,65 @@ const Shop = () => {
                 </Row>
                 <Column className="flex flex-col items-center justify-start sm:mt-[15px] md:mt-[20px] mt-[30px] w-[100%]">
                   <Grid className="md:gap-[10px] gap-[15px] sm:gap-[7px] grid sm:grid-cols-1 md:grid-cols-2 grid-cols-3 min-h-[auto] w-[100%]">
-                    <Column className="flex flex-col items-center justify-start sm:px-[0] w-[100%]">
-                      <Column className="flex flex-col justify-start w-[100%]">
-                        <Stack className="bg-white_A700 h-[280px] md:p-[13px] sm:p-[15px] p-[20px] relative rounded-radius10 w-[100%]">
-                          <Img
-                            src="images/img_image14.png"
-                            className="absolute h-[240px] inset-[0] justify-center m-[auto] max-w-[100%] rounded-radius10 sm:w-[100%] w-[86%]"
-                            alt="Image Two"
-                          />
-                        </Stack>
-                        <Text
-                          className="font-semibold md:mt-[10px] mt-[15px] sm:mt-[7px] text-gray_901 w-[auto]"
-                          variant="body4"
-                        >
-                          The Three Musketeers
-                        </Text>
-                        <Row className="flex flex-row md:flex-wrap sm:flex-wrap items-center justify-between mt-[10px] sm:mt-[5px] md:mt-[6px] w-[100%]">
-                          <Text
-                            className="flex-grow font-semibold text-red_300"
-                            variant="body4"
-                          >
-                            $40.00
-                          </Text>
-                          <div>
-                            <Rating value={3} />
-                          </div>
-                        </Row>
-                      </Column>
-                    </Column>
-                    <Column className="flex flex-col items-center justify-start sm:px-[0] w-[100%]">
-                      <Column className="flex flex-col justify-start w-[100%]">
-                        <Stack className="bg-white_A700 h-[280px] md:p-[13px] sm:p-[15px] p-[20px] relative rounded-radius10 w-[100%]">
-                          <Img
-                            src="images/img_image_90X75.png"
-                            className="absolute h-[240px] inset-[0] justify-center m-[auto] max-w-[100%] rounded-radius10 sm:w-[100%] w-[86%]"
-                            alt="Image Three"
-                          />
-                        </Stack>
-                        <Text
-                          className="font-semibold md:mt-[10px] mt-[15px] sm:mt-[7px] text-gray_901 w-[auto]"
-                          variant="body4"
-                        >
-                          The Three Musketeers
-                        </Text>
-                        <Row className="flex flex-row md:flex-wrap sm:flex-wrap items-center justify-between mt-[10px] sm:mt-[5px] md:mt-[6px] w-[100%]">
-                          <Text
-                            className="flex-grow font-semibold text-red_300"
-                            variant="body4"
-                          >
-                            $40.00
-                          </Text>
-                          <div>
-                            <Rating value={3} />
-                          </div>
-                        </Row>
-                      </Column>
-                    </Column>
-                    <Column className="flex flex-col items-center justify-start sm:px-[0] w-[100%]">
-                      <Column className="flex flex-col justify-start w-[100%]">
-                        <Stack className="bg-white_A700 h-[280px] md:p-[13px] sm:p-[15px] p-[20px] relative rounded-radius10 w-[100%]">
-                          <Img
-                            src="images/img_image_240X230.png"
-                            className="absolute h-[240px] inset-[0] justify-center m-[auto] max-w-[100%] rounded-radius10 sm:w-[100%] w-[86%]"
-                            alt="Image Four"
-                          />
-                        </Stack>
-                        <Text
-                          className="font-semibold md:mt-[10px] mt-[15px] sm:mt-[7px] text-gray_901 w-[auto]"
-                          variant="body4"
-                        >
-                          The Three Musketeers
-                        </Text>
-                        <Row className="flex flex-row md:flex-wrap sm:flex-wrap items-center justify-between mt-[10px] sm:mt-[5px] md:mt-[6px] w-[100%]">
-                          <Text
-                            className="flex-grow font-semibold text-red_300"
-                            variant="body4"
-                          >
-                            $40.00
-                          </Text>
-                          <div>
-                            <Rating value={3} />
-                          </div>
-                        </Row>
-                      </Column>
-                    </Column>
-                    <Column className="flex flex-col items-center justify-start sm:px-[0] w-[100%]">
-                      <Column className="flex flex-col justify-start w-[100%]">
-                        <Stack className="bg-white_A700 h-[280px] md:p-[13px] sm:p-[15px] p-[20px] relative rounded-radius10 w-[100%]">
-                          <Img
-                            src="images/img_image_2.png"
-                            className="absolute h-[240px] inset-[0] justify-center m-[auto] max-w-[100%] rounded-radius10 sm:w-[100%] w-[86%]"
-                            alt="Image Five"
-                          />
-                        </Stack>
-                        <Text
-                          className="font-semibold md:mt-[10px] mt-[15px] sm:mt-[7px] text-gray_901 w-[auto]"
-                          variant="body4"
-                        >
-                          The Three Musketeers
-                        </Text>
-                        <Row className="flex flex-row md:flex-wrap sm:flex-wrap items-center justify-between mt-[10px] sm:mt-[5px] md:mt-[6px] w-[100%]">
-                          <Text
-                            className="flex-grow font-semibold text-red_300"
-                            variant="body4"
-                          >
-                            $40.00
-                          </Text>
-                          <div>
-                            <Rating value={5} />
-                          </div>
-                        </Row>
-                      </Column>
-                    </Column>
-                    <Column className="flex flex-col items-center justify-start sm:px-[0] w-[100%]">
-                      <Column className="flex flex-col justify-start w-[100%]">
-                        <Stack className="bg-white_A700 h-[280px] md:p-[13px] sm:p-[15px] p-[20px] relative rounded-radius10 w-[100%]">
-                          <Img
-                            src="images/img_image_1.png"
-                            className="absolute h-[240px] inset-[0] justify-center m-[auto] max-w-[100%] rounded-radius10 sm:w-[100%] w-[86%]"
-                            alt="Image Six"
-                          />
-                        </Stack>
-                        <Text
-                          className="font-semibold md:mt-[10px] mt-[15px] sm:mt-[7px] text-gray_901 w-[auto]"
-                          variant="body4"
-                        >
-                          The Three Musketeers
-                        </Text>
-                        <Row className="flex flex-row md:flex-wrap sm:flex-wrap items-center justify-between mt-[10px] sm:mt-[5px] md:mt-[6px] w-[100%]">
-                          <Text
-                            className="flex-grow font-semibold text-red_300"
-                            variant="body4"
-                          >
-                            $40.00
-                          </Text>
-                          <div>
-                            <Rating value={1} />
-                          </div>
-                        </Row>
-                      </Column>
-                    </Column>
-                    <Column className="flex flex-col items-center justify-start sm:px-[0] w-[100%]">
-                      <Column className="flex flex-col justify-start w-[100%]">
-                        <Stack className="bg-white_A700 h-[280px] md:p-[13px] sm:p-[15px] p-[20px] relative rounded-radius10 w-[100%]">
-                          <Img
-                            src="images/img_image_3.png"
-                            className="absolute h-[240px] inset-[0] justify-center m-[auto] max-w-[100%] rounded-radius10 sm:w-[100%] w-[86%]"
-                            alt="Image Seven"
-                          />
-                        </Stack>
-                        <Text
-                          className="font-semibold md:mt-[10px] mt-[15px] sm:mt-[7px] text-gray_901 w-[auto]"
-                          variant="body4"
-                        >
-                          The Three Musketeers
-                        </Text>
-                        <Row className="flex flex-row md:flex-wrap sm:flex-wrap items-center justify-between mt-[10px] sm:mt-[5px] md:mt-[6px] w-[100%]">
-                          <Text
-                            className="flex-grow font-semibold text-red_300"
-                            variant="body4"
-                          >
-                            $40.00
-                          </Text>
-                          <div>
-                            <Rating value={2} />
-                          </div>
-                        </Row>
-                      </Column>
-                    </Column>
-                    <Column className="flex flex-col items-center justify-start sm:px-[0] w-[100%]">
-                      <Column className="flex flex-col justify-start w-[100%]">
-                        <Stack className="bg-white_A700 h-[280px] md:p-[13px] sm:p-[15px] p-[20px] relative rounded-radius10 w-[100%]">
-                          <Img
-                            src="images/img_image_90X75.png"
-                            className="absolute h-[240px] inset-[0] justify-center m-[auto] max-w-[100%] rounded-radius10 sm:w-[100%] w-[86%]"
-                            alt="Image Eight"
-                          />
-                        </Stack>
-                        <Text
-                          className="font-semibold md:mt-[10px] mt-[15px] sm:mt-[7px] text-gray_901 w-[auto]"
-                          variant="body4"
-                        >
-                          The Three Musketeers
-                        </Text>
-                        <Row className="flex flex-row md:flex-wrap sm:flex-wrap items-center justify-between mt-[10px] sm:mt-[5px] md:mt-[6px] w-[100%]">
-                          <Text
-                            className="flex-grow font-semibold text-red_300"
-                            variant="body4"
-                          >
-                            $40.00
-                          </Text>
-                          <div>
-                            <Rating value={1} />
-                          </div>
-                        </Row>
-                      </Column>
-                    </Column>
-                    <Column className="flex flex-col items-center justify-start sm:px-[0] w-[100%]">
-                      <Column className="flex flex-col justify-start w-[100%]">
-                        <Stack className="bg-white_A700 h-[280px] md:p-[13px] sm:p-[15px] p-[20px] relative rounded-radius10 w-[100%]">
-                          <Img
-                            src="images/img_image14.png"
-                            className="absolute h-[240px] inset-[0] justify-center m-[auto] max-w-[100%] rounded-radius10 sm:w-[100%] w-[86%]"
-                            alt="Image Nine"
-                          />
-                        </Stack>
-                        <Text
-                          className="font-semibold md:mt-[10px] mt-[15px] sm:mt-[7px] text-gray_901 w-[auto]"
-                          variant="body4"
-                        >
-                          The Three Musketeers
-                        </Text>
-                        <Row className="flex flex-row md:flex-wrap sm:flex-wrap items-center justify-between mt-[10px] sm:mt-[5px] md:mt-[6px] w-[100%]">
-                          <Text
-                            className="flex-grow font-semibold text-red_300"
-                            variant="body4"
-                          >
-                            $40.00
-                          </Text>
-                          <div>
-                            <Rating value={5} />
-                          </div>
-                        </Row>
-                      </Column>
-                    </Column>
-                    <Column className="flex flex-col items-center justify-start sm:px-[0] w-[100%]">
-                      <Column className="flex flex-col justify-start w-[100%]">
-                        <Stack className="bg-white_A700 h-[280px] md:p-[13px] sm:p-[15px] p-[20px] relative rounded-radius10 w-[100%]">
-                          <Img
-                            src="images/img_image_1.png"
-                            className="absolute h-[240px] inset-[0] justify-center m-[auto] max-w-[100%] rounded-radius10 sm:w-[100%] w-[86%]"
-                            alt="Image Ten"
-                          />
-                        </Stack>
-                        <Text
-                          className="font-semibold md:mt-[10px] mt-[15px] sm:mt-[7px] text-gray_901 w-[auto]"
-                          variant="body4"
-                        >
-                          The Three Musketeers
-                        </Text>
-                        <Row className="flex flex-row md:flex-wrap sm:flex-wrap items-center justify-between mt-[10px] sm:mt-[5px] md:mt-[6px] w-[100%]">
-                          <Text
-                            className="flex-grow font-semibold text-red_300"
-                            variant="body4"
-                          >
-                            $40.00
-                          </Text>
-                          <div>
-                            <Rating value={2} />
-                          </div>
-                        </Row>
-                      </Column>
-                    </Column>
+                    <CourseDet
+                      imageDir={"images/img_image_90X75.png"}
+                      courseName={"This is the name of the book"}
+                      price={40.0}
+                      rating={3}
+                    />
+
+                    <CourseDet
+                      imageDir={"images/img_image_90X75.png"}
+                      courseName={"This is the name of the book"}
+                      price={40.0}
+                      rating={3}
+                    />
+
+                    <CourseDet
+                      imageDir={"images/img_image_90X75.png"}
+                      courseName={"This is the name of the book"}
+                      price={40.0}
+                      rating={3}
+                    />
+
+                    <CourseDet
+                      imageDir={"images/img_image_90X75.png"}
+                      courseName={"This is the name of the book"}
+                      price={40.0}
+                      rating={3}
+                    />
+
+                    <CourseDet
+                      imageDir={"images/img_image_90X75.png"}
+                      courseName={"This is the name of the book"}
+                      price={40.0}
+                      rating={3}
+                    />
+
+                    <CourseDet
+                      imageDir={"images/img_image_90X75.png"}
+                      courseName={"This is the name of the book"}
+                      price={40.0}
+                      rating={3}
+                    />
+                    <CourseDet
+                      imageDir={"images/img_image_90X75.png"}
+                      courseName={"This is the name of the book"}
+                      price={40.0}
+                      rating={3}
+                    />
+                    <CourseDet
+                      imageDir={"images/img_image_90X75.png"}
+                      courseName={"This is the name of the book"}
+                      price={40.0}
+                      rating={3}
+                    />
+                    <CourseDet
+                      imageDir={"images/img_image_90X75.png"}
+                      courseName={"This is the name of the book"}
+                      price={40.0}
+                      rating={3}
+                    />
                   </Grid>
                 </Column>
                 <Row className="flex flex-row md:flex-wrap sm:flex-wrap items-start justify-center md:ml-[191px] ml-[278px] sm:mt-[26px] md:mt-[34px] mt-[50px] sm:mx-[0] sm:px-[0] sm:w-[100%] w-[34%]">
