@@ -3,6 +3,11 @@ import "./styles/App.css";
 import { ThemeProvider } from "@mui/material/styles";
 import { theme } from "./styles/theme";
 import { Login, Signup, Home, Home1 } from "./pages";
+// routes
+// import Router from './routes';
+
+// layouts
+import DashboardLayout from './layouts/dashboard';
 
 function App() {
   return (
@@ -21,8 +26,10 @@ function App() {
             <Route path="/login" element={<Login theme={theme} />} />
             <Route path="/Signup" element={<Signup theme={theme} />} />
             <Route path="/home" element={<Home />} />
-            {/* <Route path="/home1" element={<Home1 />} /> */}
+            <Route path="/dashboard" element={<DashboardLayout />} />
+            <Route path="/home1" element={<Home1 />} />
           </Routes>
+          {/* <Router /> */}
         </BrowserRouter>
       </div>
     </ThemeProvider>
