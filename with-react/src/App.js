@@ -3,6 +3,7 @@ import "./styles/App.css";
 import { ThemeProvider } from "@mui/material/styles";
 import { theme } from "./styles/theme";
 import { Login, Signup, Home, Home1 } from "./pages";
+import AccountInfo from "pages/AccountInfo";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/home" element={<Home />} />
+            <Route path="/account-info" element={<AccountInfo />} />
             {/* <Route path="/home1" element={<Home1 />} /> */}
           </Routes>
         </BrowserRouter>

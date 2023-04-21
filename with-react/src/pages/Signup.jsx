@@ -3,6 +3,8 @@ import { TextLogo } from "../components/MVisuals";
 import { Facebook, Google } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import { Column, Row, UserDetailInput, Divider } from "components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFacebookF, faGoogle } from "@fortawesome/free-brands-svg-icons";
 
 const Signup = ({ onClose }) => {
   const [fullName, setFullName] = useState("");
@@ -38,23 +40,26 @@ const Signup = ({ onClose }) => {
 
   return (
     <React.Fragment>
-      <div class="w-full flex flex-wrap bg-green-50">
+      <div className="w-full h-max flex flex-wrap bg-green-50">
         {/* <!-- Login Section --> */}
-        <Column class="w-1/2 sm:w-full md:w-3/4  flex flex-col">
-          <Row class="flex justify-center md:justify-start pt-12 md:pl-12 md:-mb-24">
+        <Column className="w-1/2 h-screen sm:w-full md:w-3/4  flex flex-col">
+          <Row className="flex justify-center md:justify-start pt-12 md:pl-12 md:-mb-24">
             <Link
               to="/"
               component="a"
-              class="text-white font-bold text-xl  p-4"
+              className="text-white font-bold text-xl  p-4"
             >
               {TextLogo(2.2)}
             </Link>
           </Row>
 
-          <Row class="flex flex-col justify-center md:justify-start my-auto pt-8 md:pt-0 px-8 md:px-24 lg:px-32">
-            <p class="w-full text-center text-3xl">Create an account</p>
-            <form class="flex flex-col pt-3 md:pt-8" onsubmit={handleSubmit}>
-              <div class="flex flex-col pt-4 px-6">
+          <Row className="flex flex-col justify-center md:justify-start my-auto pt-8 md:pt-0 px-8 md:px-24 lg:px-32">
+            <p className="w-full text-center text-3xl">Create an account</p>
+            <form
+              className="flex flex-col pt-3 md:pt-8"
+              onsubmit={handleSubmit}
+            >
+              <div className="flex flex-col pt-4 px-6">
                 <UserDetailInput
                   label="Full Name"
                   type="text"
@@ -63,7 +68,7 @@ const Signup = ({ onClose }) => {
                   autoComplete="name"
                 />
               </div>
-              <div class="flex flex-col pt-4 px-6">
+              <div className="flex flex-col pt-4 px-6">
                 <UserDetailInput
                   id="email"
                   label="Email"
@@ -73,7 +78,7 @@ const Signup = ({ onClose }) => {
                   autoComplete="email"
                 />
               </div>
-              <div class="flex flex-col pt-4 px-6">
+              <div className="flex flex-col pt-4 px-6">
                 <UserDetailInput
                   id="username"
                   label="Username"
@@ -83,8 +88,8 @@ const Signup = ({ onClose }) => {
                   autoComplete="username"
                 />
               </div>
-              <div class="flex flex-row md:flex-col sm:flex-col xs:flex-col pt-4 px-6">
-                <div class="flex-1 px-1 ">
+              <div className="flex flex-row md:flex-col sm:flex-col xs:flex-col pt-4 px-6">
+                <div className="flex-1 px-1 ">
                   <UserDetailInput
                     id="pass-word"
                     label="Password"
@@ -94,7 +99,7 @@ const Signup = ({ onClose }) => {
                     autoComplete="new-password"
                   />
                 </div>
-                <div class="flex-1 px-1 md:pt-4 sm:pt-4 xs:pt-4 ">
+                <div className="flex-1 px-1 md:pt-4 sm:pt-4 xs:pt-4 ">
                   <UserDetailInput
                     id="confirm-password"
                     label="Confirm Password"
@@ -107,14 +112,14 @@ const Signup = ({ onClose }) => {
               </div>
               <button
                 type="submit"
-                class="bg-black text-white font-bold text-lg rounded hover:bg-gray-900 hover:border-b-4 hover:border-green-500 hover:pb-[3.5px] p-2 mt-8 mx-10"
+                className="bg-black text-white font-bold text-lg rounded hover:bg-gray-900 hover:border-b-4 hover:border-green-500 hover:pb-[3.5px] p-2 mt-8 mx-10"
               >
                 Sign Up
               </button>
             </form>
 
             <div className="text-center ">
-              <div class="text-center pt-6 pb-4">
+              <div className="text-center pt-6 pb-4">
                 <p>
                   Already have an account?{" "}
                   <Link
@@ -126,13 +131,27 @@ const Signup = ({ onClose }) => {
                 </p>
               </div>
               <Divider type="hor" className="w-3/5" />
-              <p className="text-sm">Or Join us with:</p>
-              <div className="flex justify-center pt-4">
-                <button className="bg-red-500 hover:bg-red-700 rounded-full p-2 mr-4">
-                  <Google className="text-white text-xl" />
+              <p className="text-sm">Or continue with:</p>
+              <div className="grid grid-rows-2 grid-cols-2 items-center pt-4 gap-2 justify-items-center">
+                <button
+                  className="w-full sm:w-3/5 flex col-span-1 sm:col-span-2 bg-red-500 hover:bg-red-700 rounded-full mx-2 p-1 items-center"
+                  onClick={() => {}}
+                >
+                  <FontAwesomeIcon
+                    icon={faGoogle}
+                    className="h-6 w-6 p-2 bg-white text-red-500 rounded-full mr-2"
+                  />
+                  <p className="w-7/12 text-white font-semibold">Google</p>
                 </button>
-                <button className="bg-blue-500 hover:bg-blue-700 rounded-full p-2">
-                  <Facebook className="text-white text-xl" />
+                <button
+                  className="w-full sm:w-3/5 flex col-span-1 sm:col-span-2 bg-blue-500 hover:bg-blue-700 rounded-full mx-2 p-1 items-center"
+                  onClick={() => {}}
+                >
+                  <FontAwesomeIcon
+                    icon={faFacebookF}
+                    className="h-6 w-6 p-2 bg-white text-blue-500 rounded-full mr-2"
+                  />
+                  <p className="w-7/12 text-white font-semibold">Facebook</p>
                 </button>
               </div>
             </div>
@@ -140,10 +159,10 @@ const Signup = ({ onClose }) => {
         </Column>
 
         {/* <!-- Image Section --> */}
-        <div class="w-1/2 h-screen sm:hidden md:w-1/4 lg:block relative">
-          <div class="absolute inset-0 bg-gradient-to-l from-transparent to-green-50"></div>
+        <div className="w-1/2 h-screen sm:hidden md:hidden lg:block relative">
+          <div className="absolute inset-0 bg-gradient-to-l from-transparent to-green-50"></div>
           <img
-            class="object-cover w-full h-screen"
+            className="object-cover w-full h-screen"
             src="https://source.unsplash.com/random/600x800"
             alt="login decoration"
           />

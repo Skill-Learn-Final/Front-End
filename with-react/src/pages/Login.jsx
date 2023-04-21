@@ -3,6 +3,8 @@ import { TextLogo } from "../components/MVisuals";
 import { Link } from "react-router-dom";
 import { Facebook, Google } from "@mui/icons-material";
 import { Column, Row, Divider, UserDetailInput, CircleGroup } from "components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFacebookF, faGoogle } from "@fortawesome/free-brands-svg-icons";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -25,8 +27,8 @@ const Login = () => {
     <React.Fragment>
       <div class="w-full flex flex-wrap bg-green-50">
         {/* <!-- Login Section --> */}
-        <Column class="w-1/2 sm:w-full md:w-3/4  flex flex-col">
-          <Row class="flex justify-center md:justify-start pt-12 md:pl-12 md:-mb-24">
+        <Column class="w-1/2 h-screen sm:w-full md:w-full  flex flex-col">
+          <Row class="flex justify-center md:justify-start pt-12 md:pl-12 ">
             <Link
               to="/"
               component="a"
@@ -68,7 +70,7 @@ const Login = () => {
               >
                 Log In
               </button>
-            </form>{" "}
+            </form>
             <div className="text-center ">
               <div class="text-center pt-12 pb-6">
                 <p>
@@ -83,12 +85,26 @@ const Login = () => {
               </div>
               <Divider />
               <p className="text-sm">Or continue with:</p>
-              <div className="flex justify-center pt-4">
-                <button className="bg-red-500 hover:bg-red-700 rounded-full p-2 mr-4">
-                  <Google className="text-white text-xl" />
+              <div className="grid grid-rows-2 grid-cols-2 items-center pt-4 gap-2 justify-items-center">
+                <button
+                  className="w-full sm:w-3/5 flex col-span-1 sm:col-span-2 bg-red-500 hover:bg-red-700 rounded-full mx-2 p-1 items-center"
+                  onClick={() => {}}
+                >
+                  <FontAwesomeIcon
+                    icon={faGoogle}
+                    className="h-6 w-6 p-2 bg-white text-red-500 rounded-full mr-2"
+                  />
+                  <p className="w-7/12 text-white font-semibold">Google</p>
                 </button>
-                <button className="bg-blue-500 hover:bg-blue-700 rounded-full p-2">
-                  <Facebook className="text-white text-xl" />
+                <button
+                  className="w-full sm:w-3/5 flex col-span-1 sm:col-span-2 bg-blue-500 hover:bg-blue-700 rounded-full mx-2 p-1 items-center"
+                  onClick={() => {}}
+                >
+                  <FontAwesomeIcon
+                    icon={faFacebookF}
+                    className="h-6 w-6 p-2 bg-white text-blue-500 rounded-full mr-2"
+                  />
+                  <p className="w-7/12 text-white font-semibold">Facebook</p>
                 </button>
               </div>
             </div>
@@ -96,7 +112,7 @@ const Login = () => {
         </Column>
 
         {/* <!-- Image Section --> */}
-        <div class="w-1/2 h-screen sm:hidden md:w-1/4 lg:block relative">
+        <div class="w-1/2 h-screen sm:hidden md:hidden lg:block relative">
           <div class="absolute inset-0 bg-gradient-to-l from-transparent to-green-50"></div>
           <img
             class="object-cover w-full h-screen"
