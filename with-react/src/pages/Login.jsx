@@ -8,8 +8,8 @@ import {
   CardHeader,
   FormControl,
 } from "@mui/material";
-import { SubmitButton, UserDetailInput } from "../components/Inputs";
-import { TextLogo, Slider, SignMedia } from "../components/Visuals";
+import { SubmitButton, UserDetailInput } from "../components";
+import { TextLogo, Slider, SignMedia } from "../components";
 
 const LoginForm = ({
   onSubmit,

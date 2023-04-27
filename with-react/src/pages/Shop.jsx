@@ -49,10 +49,12 @@ const Shop = () => {
 
   return (
     <>
+      <Nav></Nav>
+
       <Column className="bg-light_green flex flex-col font-inter items-center justify-start mx-[auto] w-[100%]">
         <Column className="flex flex-col items-center justify-start w-[100%]">
           {/* <NavBarP></NavBarP> */}
-          <Nav></Nav>
+          {/* <Nav></Nav> */}
 
           <Column className="flex flex-col items-center justify-start sm:mt-[26px] md:mt-[34px] mt-[50px] w-[100%]">
             <Row className="bg-light_blue flex flex-row md:flex-wrap sm:flex-wrap items-start max-w-[1280px] ml-[auto] mr-[auto] sm:mx-[0] md:p-[13px] sm:p-[15px] p-[19px] sm:pl-[15px] sm:pr-[15px] rounded-radius20 w-[100%]">
@@ -143,12 +145,15 @@ const Shop = () => {
               <Column className="flex flex-col justify-start md:ml-[27px] ml-[40px] sm:mx-[0] sm:px-[0] sm:w-[100%] w-[66%]">
                 <Row className="flex flex-row md:flex-wrap sm:flex-wrap items-center justify-between sm:mt-[15px] md:mt-[20px] mt-[30px] w-[100%]">
                   <Row className="bg-white_A700 flex flex-row md:flex-wrap sm:flex-wrap items-center justify-between sm:mx-[0] sm:p-[3px] md:p-[4px] p-[7px] rounded-radius10 sm:w-[100%] w-[67%]">
-                    <Text
-                      className="font-medium ml-[13px] sm:ml-[6px] md:ml-[8px] text-gray_700_99 w-[auto]"
-                      variant="body5"
-                    >
-                      Search Class, Course, Book Name
-                    </Text>
+                    <Input
+                      className="font-medium p-[0] text-[16px] placeholder:text-gray_700 text-gray_700 w-[90%]"
+                      wrapClassName="flex p-[0] sm:mx-[0] sm:w-[100%] w-[90%]"
+                      type="text"
+                      name="search"
+                      placeholder="Search"
+                      size="smNav"
+                      variant="OutlineGray300"
+                    ></Input>
                     <Button
                       className="cursor-pointer sm:h-[25px] md:h-[32px] h-[46px] text-center sm:w-[24px] md:w-[31px] w-[46px]"
                       variant="DarkBlueBlack"

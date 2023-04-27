@@ -14,17 +14,17 @@ import {
   Slider,
   Footer,
   Subscribe,
-  NavBarP
+  NavBarP,
 } from "../components";
 import { useNavigate } from "react-router-dom";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { 
- faArrowDown ,
- faMagnifyingGlass,
- faArrowRight,
- faArrowLeft,
- faStar
-} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faArrowDown,
+  faMagnifyingGlass,
+  faArrowRight,
+  faArrowLeft,
+  faStar,
+} from "@fortawesome/free-solid-svg-icons";
 
 const Courses = () => {
   const navigate = useNavigate();
@@ -571,7 +571,6 @@ const Courses = () => {
                 variant="FillWhiteA700"
               >
                 category 1
-
               </Button>
               <Button
                 className="cursor-pointer font-medium min-w-[12%] sm:ml-[10px] md:ml-[13px] ml-[20px] text-[16px] text-center text-gray_901 w-[max-content]"
@@ -615,7 +614,6 @@ const Courses = () => {
               >
                 category 7
               </Button>
-              
             </Row>
             <Column
               className="common-pointer flex flex-col justify-start max-w-[1280px] md:ml-[55px] ml-[auto] mr-[auto] sm:mt-[26px] md:mt-[34px] mt-[50px] sm:mx-[0] sm:pl-[15px] sm:pr-[15px] sm:px-[0] w-[100%]"
@@ -961,8 +959,8 @@ const Courses = () => {
                 </Grid>
               </Column>
             </Column>
-           
-           <Footer></Footer>
+
+            <Footer></Footer>
           </Column>
         </Column>
       </Column>

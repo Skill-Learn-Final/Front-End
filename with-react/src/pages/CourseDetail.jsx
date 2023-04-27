@@ -598,7 +598,7 @@ const CourseDetail = () => {
                           The Three Musketeers
                         </Text>
                         <div className="h-[24px] sm:h-[13px] md:h-[17px] flex items-center justify-center">
-                            <Rating value={3} />
+                          <Rating value={3} />
                         </div>
                         <Text
                           className="mt-[13px] sm:mt-[6px] md:mt-[8px] text-deep_orange_400 w-[auto]"
@@ -638,7 +638,7 @@ const CourseDetail = () => {
                           The Three Musketeers
                         </Text>
                         <div>
-                            <Rating value={3} />
+                          <Rating value={3} />
                         </div>
                         <Text
                           className="mt-[13px] sm:mt-[6px] md:mt-[8px] text-deep_orange_400 w-[auto]"
@@ -678,7 +678,7 @@ const CourseDetail = () => {
                           The Three Musketeers
                         </Text>
                         <div>
-                            <Rating value={3} />
+                          <Rating value={3} />
                         </div>
                         <Text
                           className="mt-[13px] sm:mt-[6px] md:mt-[8px] text-deep_orange_400 w-[auto]"

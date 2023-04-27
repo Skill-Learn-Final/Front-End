@@ -25,7 +25,7 @@ const Home1Page = () => {
   const navigate = useNavigate();
 
   function handleNavigate() {
-    navigate("/eduvicourses");
+    navigate("/course_detail");
   }
   function handleNavigate1() {
     navigate("/eduvicourses");
@@ -276,7 +276,7 @@ const Home1Page = () => {
                   size="sm"
                   variant="FillBlack900"
                 >
-                  College Level
+                  Beginner friendly
                 </Button>
                 <Column className="flex flex-col justify-start md:mt-[10px] mt-[15px] sm:mt-[7px] w-[100%]">
                   <Text
@@ -286,7 +286,7 @@ const Home1Page = () => {
                   >
                     Don’t waste time in
                     <br />
-                    COVID-19 pandemic.
+                    Doing nothing &
                     <br />
                     Develop your skills.
                   </Text>
