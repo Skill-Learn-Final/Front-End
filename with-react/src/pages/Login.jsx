@@ -1,56 +1,12 @@
 import React, { useState } from "react";
-import {
-  Card,
-  CardActions,
-  CardContent,
-  Grid,
-  Container,
-  CardHeader,
-  FormControl,
-  IconButton,
-} from "@mui/material";
-import { SubmitButton, UserDetailInput } from "../components/MInputs";
-import { TextLogo, SignMedia } from "../components/MVisuals";
+import { TextLogo } from "../components/MVisuals";
+import { Link } from "react-router-dom";
+import { Facebook, Google } from "@mui/icons-material";
+import { Column, Row, Divider, UserDetailInput, CircleGroup } from "components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faFacebookF, faGoogle } from "@fortawesome/free-brands-svg-icons";
 
-const LoginForm = ({
-  onSubmit,
-  username,
-  password,
-  onUsernameChange,
-  onPasswordChange,
-}) => {
-  return (
-    <form onSubmit={onSubmit}>
-      <FormControl sx={{ px: { xs: 0, sm: 5 }, py: 5 }}>
-        <CardContent>
-          <UserDetailInput
-            label="Username"
-            type="text"
-            value={username}
-            onChange={onUsernameChange}
-            autoComplete="username"
-          />
-          <UserDetailInput
-            label="Password"
-            type="password"
-            value={password}
-            onChange={onPasswordChange}
-            autoComplete="current-password"
-          />
-        </CardContent>
-        <CardActions sx={{ justifyContent: "flex-end" }}>
-          <SubmitButton size="medium" type="submit">
-            Log In
-          </SubmitButton>
-        </CardActions>
-      </FormControl>
-    </form>
-  );
-};
-
-const Login = ({ onClose }) => {
+const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -69,67 +25,102 @@ const Login = ({ onClose }) => {
 
   return (
     <React.Fragment>
-      <Container
-        sx={{
-          width: "100%",
-          height: "100vh",
-          display: "flex",
-          alignItems: "center",
-        }}
-      >
-        <Grid
-          container
-          direction={"column"}
-          justify={"center"}
-          alignItems={"center"}
-        >
-          <Grid item xs={12}>
-            <Card
-              variant="outlined"
-              sx={{
-                width: { xs: "99%", sm: 480, md: 720, lg: 960, xl: "99%" },
-                borderColor: { sm: "primary.main" },
-                borderWidth: { xs: 0, sm: 1.8 },
-                borderRadius: { sm: 8 },
-
-                backdropFilter: "blur(10px)",
-                backgroundColor: "rgba(255, 255, 255, 0.8)",
-              }}
+      <div class="w-full flex flex-wrap bg-green-50">
+        {/* <!-- Login Section --> */}
+        <Column class="w-1/2 h-screen sm:w-full md:w-full  flex flex-col">
+          <Row class="flex justify-center md:justify-start pt-12 md:pl-12 ">
+            <Link
+              to="/"
+              component="a"
+              class="text-white font-bold text-xl  p-4"
             >
-              <Grid container direction="row">
-                <Grid item xs={12} md={4} lg={5}>
-                  <SignMedia
-                    imageUrl="https://source.unsplash.com/random/800x600"
-                    alt="A portfolio image describing some aspect of the platform."
+              {TextLogo(2.2)}
+            </Link>
+          </Row>
+
+          <Row class="flex flex-col justify-center md:justify-start my-auto pt-8 md:pt-0 px-8 md:px-24 lg:px-32">
+            <p class="w-full text-center text-3xl">Welcome back.</p>
+            <form class="flex flex-col pt-3 md:pt-8" onsubmit={handleSubmit}>
+              <div class="flex flex-col pt-4 px-6">
+                <UserDetailInput
+                  label="Email"
+                  type="email"
+                  value={username}
+                  onChange={handleUsernameChange}
+                  id="email"
+                  placeholder="your@email.com"
+                />
+              </div>
+
+              <div class="flex flex-col pt-4 px-6">
+                <UserDetailInput
+                  id="password1"
+                  Label="Password"
+                  type="password"
+                  value={password}
+                  onChange={handlePasswordChange}
+                  placeholder="Password"
+                  autoComplete="password"
+                />
+              </div>
+
+              <button
+                type="submit"
+                class="bg-black text-white font-bold text-lg rounded hover:bg-gray-900 hover:border-b-4 hover:border-green-500 hover:pb-[3.5px] p-2 mt-8 mx-10"
+              >
+                Log In
+              </button>
+            </form>
+            <div className="text-center ">
+              <div class="text-center pt-12 pb-6">
+                <p>
+                  Don't have an account?{" "}
+                  <Link
+                    to="/signup"
+                    className="underline font-semibold hover:text-green-700"
+                  >
+                    Register here.
+                  </Link>
+                </p>
+              </div>
+              <Divider />
+              <p className="text-sm">Or continue with:</p>
+              <div className="grid grid-rows-2 grid-cols-2 items-center pt-4 gap-2 justify-items-center">
+                <button
+                  className="w-full sm:w-3/5 flex col-span-1 sm:col-span-2 bg-red-500 hover:bg-red-700 rounded-full mx-2 p-1 items-center"
+                  onClick={() => {}}
+                >
+                  <FontAwesomeIcon
+                    icon={faGoogle}
+                    className="h-6 w-6 p-2 bg-white text-red-500 rounded-full mr-2"
                   />
-                </Grid>
-                <Grid item xs={12} md={8} lg={7}>
-                  <CardHeader
-                    sx={{
-                      alignSelf: "center",
-                      textAlign: "center",
-                      pl: { xs: 40, lg: 60 },
-                    }}
-                    title={TextLogo(2)}
-                    action={
-                      <IconButton onClick={onClose}>
-                        <FontAwesomeIcon icon={faXmark} />
-                      </IconButton>
-                    }
+                  <p className="w-7/12 text-white font-semibold">Google</p>
+                </button>
+                <button
+                  className="w-full sm:w-3/5 flex col-span-1 sm:col-span-2 bg-blue-500 hover:bg-blue-700 rounded-full mx-2 p-1 items-center"
+                  onClick={() => {}}
+                >
+                  <FontAwesomeIcon
+                    icon={faFacebookF}
+                    className="h-6 w-6 p-2 bg-white text-blue-500 rounded-full mr-2"
                   />
-                  <LoginForm
-                    onSubmit={handleSubmit}
-                    username={username}
-                    password={password}
-                    onUsernameChange={handleUsernameChange}
-                    onPasswordChange={handlePasswordChange}
-                  />
-                </Grid>
-              </Grid>
-            </Card>
-          </Grid>
-        </Grid>
-      </Container>
+                  <p className="w-7/12 text-white font-semibold">Facebook</p>
+                </button>
+              </div>
+            </div>
+          </Row>
+        </Column>
+
+        {/* <!-- Image Section --> */}
+        <div class="w-1/2 h-screen sm:hidden md:hidden lg:block relative">
+          <div class="absolute inset-0 bg-gradient-to-l from-transparent to-green-50"></div>
+          <img
+            class="object-cover w-full h-screen"
+            src="https://source.unsplash.com/random/600x800"
+            alt="login decoration"
+          />
+        </div>
+      </div>
     </React.Fragment>
   );
 };

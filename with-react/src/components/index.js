@@ -16,7 +16,10 @@ import { PagerIndicator } from "./PagerIndicator";
 import { SelectBox } from "./SelectBox";
 import { NavBarP } from "./NavBarP";
 import { PlusSigns } from "./PlusSigns";
-import {Footer} from "./Footer"
+import { Footer } from "./Footer";
+import { UserDetailInput } from "./UserDetailInput";
+import { CircleGroup } from "./CircleGroup";
+import { Divider } from "./Divider";
 export {
   Column,
   Datepicker,
@@ -37,4 +40,7 @@ export {
   NavBarP,
   PlusSigns,
   Footer,
+  UserDetailInput,
+  CircleGroup,
+  Divider,
 };

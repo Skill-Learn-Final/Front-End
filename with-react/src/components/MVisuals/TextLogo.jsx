@@ -1,7 +1,7 @@
 import React from "react";
 import { Typography } from "@mui/material";
 
-const TextLogo = (fontSize) => {
+const TextLogo = (size) => {
   return (
     <Typography
       component="span"
@@ -16,7 +16,7 @@ const TextLogo = (fontSize) => {
         style={{
           fontFamily: "'Calibri', sans-serif",
           fontWeight: 700,
-          fontSize: `${fontSize}em`,
+          fontSize: `${size}em`,
           color: "#006017",
         }}
       >
