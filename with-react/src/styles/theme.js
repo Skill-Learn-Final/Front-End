@@ -55,21 +55,24 @@ export const theme = createTheme({
 
   spacing: (factor) => `${0.25 * factor}rem`,
   typography: {
-    fontFamily: ["Helvetica Neue", "Arial", "sans-serif"].join(","),
+    fontFamily: ["Roboto-Black", "Anuphan", "sans-serif"].join(","),
     h1: {
       fontSize: "4rem",
+      fontFamily: "Roboto-Black",
       fontWeight: 500,
       lineHeight: 1.2,
       letterSpacing: "-0.01562em",
     },
     h2: {
       fontSize: "3rem",
+      fontFamily: "Roboto-Black",
       fontWeight: 500,
       lineHeight: 1.2,
       letterSpacing: "-0.00833em",
     },
     h3: {
       fontSize: "2.5rem",
+      fontFamily: "Roboto-Black",
       fontWeight: 500,
       lineHeight: 1.2,
       letterSpacing: "0em",
