@@ -1,10 +1,67 @@
 import React, { useState } from "react";
-import { TextLogo } from "../components/MVisuals";
 import { Link } from "react-router-dom";
-import { Facebook, Google } from "@mui/icons-material";
-import { Column, Row, Divider, UserDetailInput, CircleGroup } from "components";
+import {
+  Card,
+  CardActions,
+  CardContent,
+  Grid,
+  Container,
+  CardHeader,
+  FormControl,
+} from "@mui/material";
+import {
+  Column,
+  Row,
+  Divider,
+  TextLogo,
+  Slider,
+  SignMedia,
+  SubmitButton,
+  UserDetailInput,
+} from "../components";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebookF, faGoogle } from "@fortawesome/free-brands-svg-icons";
+
+const LoginForm = ({
+  onSubmit,
+  username,
+  password,
+  onUsernameChange,
+  onPasswordChange,
+  showPassword,
+  onShowPasswordClick,
+}) => {
+  return (
+    <form onSubmit={onSubmit}>
+      <FormControl sx={{ px: { xs: 0, sm: 5 }, py: 5 }}>
+        <CardContent>
+          <UserDetailInput
+            label="Username"
+            type="text"
+            value={username}
+            onChange={onUsernameChange}
+            autocomplete="username"
+          />
+          <UserDetailInput
+            label="Password"
+            type="password"
+            value={password}
+            onChange={onPasswordChange}
+            showPassword={showPassword}
+            handleClickShowPassword={onShowPasswordClick}
+            autocomplete="current-password"
+          />
+        </CardContent>
+        <CardActions sx={{ justifyContent: "flex-end" }}>
+          <SubmitButton size="medium" type="submit">
+            Log In
+          </SubmitButton>
+        </CardActions>
+      </FormControl>
+    </form>
+  );
+};
 
 const Login = () => {
   const [username, setUsername] = useState("");

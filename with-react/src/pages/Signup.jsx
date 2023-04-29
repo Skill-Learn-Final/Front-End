@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { TextLogo } from "../components/MVisuals";
 import { Facebook, Google } from "@mui/icons-material";
 import { Link } from "react-router-dom";
-import { Column, Row, UserDetailInput, Divider } from "components";
+import { TextLogo, Divider, Column, Row, UserDetailInput } from "components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebookF, faGoogle } from "@fortawesome/free-brands-svg-icons";
 
