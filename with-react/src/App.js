@@ -13,6 +13,7 @@ import {
   Signup,
 } from "./pages";
 import AccountInfo from "pages/AccountInfo";
+import ScrollToTop from "./scrollToTop";
 
 import { register } from "swiper/element/bundle";
 register();
@@ -28,6 +29,7 @@ function App() {
         className="App"
       >
         <BrowserRouter>
+          <ScrollToTop />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
