@@ -9,7 +9,7 @@ const AccountInfo = (userid) => {
     setActiveTab(tab);
   };
   return (
-    <Column className="bg-light_green flex flex-col font-inter items-center justify-start mx-[auto] w-[100%]">
+    <Column className="bg-faint_green flex flex-col font-inter items-center justify-start mx-[auto] w-[100%]">
       <NavBarP />
       <div className="w-2/3 h-fit sm:w-full flex flex-wrap justify-evenly items-center p-10">
         <div className="w-full h-screen ">

@@ -20,6 +20,7 @@ import { Footer } from "./Footer";
 import { UserDetailInput } from "./UserDetailInput";
 import { CircleGroup } from "./CircleGroup";
 import { Divider } from "./Divider";
+import GoogleLogo from "./common/GoogleLogo";
 export {
   Column,
   Datepicker,
@@ -43,4 +44,5 @@ export {
   UserDetailInput,
   CircleGroup,
   Divider,
+  GoogleLogo,
 };
