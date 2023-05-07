@@ -1,6 +1,6 @@
 import React, { Component, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleUser, faImage } from "@fortawesome/free-solid-svg-icons";
+import { faCircleUser } from "@fortawesome/free-solid-svg-icons";
 import { Column, NavBarP, UserDetailInput } from "components";
 
 const AccountInfo = (userid) => {

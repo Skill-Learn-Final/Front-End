@@ -12,10 +12,11 @@ module.exports = {
         md: { min: "768px", max: "1023px" },
       },
       colors: {
-        black: "#080D07",
         medium_green: "#7F8C7D",
         dark_green: "#43593F",
         faint_green: "#f2f6f2",
+        very_light_green: "#D2FB7B",
+        light_blue: "#6780C9",
         light_green: "#E1F2DF",
         light_green_nav: "#EFF9EE",
         green_300: "#82b378",
