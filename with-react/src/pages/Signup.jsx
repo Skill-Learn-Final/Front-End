@@ -37,8 +37,8 @@ const Signup = ({ onClose }) => {
 
   return (
     <React.Fragment>
-      <div className="shadow-2xl rounded-2xl m-16  border-2 border-gray-300">
-        <div className="h-screen rounded-2xl bg-faint_green">
+      <div className="h-screen">
+        <div className="shadow-2xl rounded-2xl m-16   border-2 border-gray-300">
           <div className="w-full rounded-2xl h-fit flex flex-wrap bg-faint_green">
             {/* <!-- Login Section --> */}
             <Column className="w-1/2 sm:w-full md:w-full  flex flex-col">
@@ -139,7 +139,7 @@ const Signup = ({ onClose }) => {
                 </div>
               </Row>
             </Column>
-            {/* <!-- Image Section --> */}{" "}
+            {/* <!-- Image Section --> */}
             <div
               className="w-1/2 h-screen sm:hidden md:hidden lg:block relative"
               style={{

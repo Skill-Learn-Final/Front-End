@@ -33,7 +33,7 @@ const NavBarP = () => {
     navigate("/login");
   }
   function signup() {
-    navigate("/register");
+    navigate("/signup");
   }
   return (
     /* <Sticky bg-white_A700 enabled={true} className="w-[100%]"> */
