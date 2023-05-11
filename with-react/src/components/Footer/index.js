@@ -175,7 +175,7 @@ return(
                 className="cursor-pointer font-normal not-italic text-[16px] text-gray_700"
                 rel="noreferrer"
               >
-                Blog
+                Posts
               </a>
             </li>
             <li className="w-[auto] mt-[17px] sm:mt-[9px] md:mt-[11px]">

@@ -21,13 +21,13 @@ export default function BlogPage() {
   return (
     <>
       <Helmet>
-        <title> Dashboard: Blog | Skill Learn </title>
+        <title> Dashboard: Posts | Skill Learn </title>
       </Helmet>
 
       <Container>
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
           <Typography variant="h4" gutterBottom>
-            Blog
+            Posts
           </Typography>
           <Button variant="contained" startIcon={<Iconify icon="eva:plus-fill" />}>
             New Post
