@@ -16,14 +16,19 @@ const navConfig = [
     path: '/dashboard/user',
     icon: icon('ic_user'),
   },
-  {
-    title: 'product',
-    path: '/dashboard/products',
-    icon: icon('ic_cart'),
-  },
+  // {
+  //   title: 'product',
+  //   path: '/dashboard/products',
+  //   icon: icon('ic_cart'),
+  // },
   {
     title: 'posts',
     path: '/dashboard/posts',
+    icon: icon('ic_blog'),
+  },
+  {
+    title: 'Post Course',
+    path: '/dashboard/postCourse',
     icon: icon('ic_blog'),
   },
   // {

@@ -11,6 +11,7 @@ import Page404 from './pages/Page404';
 import ProductsPage from './pages/ProductsPage';
 import DashboardAppPage from './pages/DashboardAppPage';
 import { theme } from "./styles/theme";
+import PostCoursePage from 'pages/PostCourse';
 
 // ----------------------------------------------------------------------
 
@@ -25,6 +26,7 @@ export default function Router() {
         { path: 'user', element: <UserPage /> },
         { path: 'products', element: <ProductsPage /> },
         { path: 'posts', element: <BlogPage /> },
+        { path: 'postCourse', element: <PostCoursePage /> },
       ],
     },
     {
