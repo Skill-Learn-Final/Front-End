@@ -22,7 +22,7 @@ export const UserDetailInput = ({
     setShowPassword(!showPassword);
   };
 
-  const inputClasses = `w-full border-2 border-slate-400 px-3 py-2 rounded-lg shadow-sm focus:shadow-md focus:shadow-dark_green border-[1px] focus:border-slate-600 ${
+  const inputClasses = `w-full enabled:border-2 enabled:border-slate-400 px-3 py-2 rounded-lg shadow-sm focus:shadow-md focus:shadow-dark_green enabled:border-[1px] focus:border-slate-600 ${
     size === "sm" ? "text-sm" : "text-base"
   }`;
   return (
