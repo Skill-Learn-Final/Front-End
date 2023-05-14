@@ -12,6 +12,7 @@ import {
   List,
   Grid,
   Input,
+  Nav,
   NavBarP,
   PlusSigns,
   Footer,
@@ -27,24 +28,7 @@ const Home1Page = () => {
   function handleNavigate() {
     navigate("/course_detail");
   }
-  function handleNavigate1() {
-    navigate("/eduvicourses");
-  }
-  function handleNavigate2() {
-    navigate("/allmentors");
-  }
-  function handleNavigate3() {
-    navigate("/eduvicourses");
-  }
-  function handleNavigate4() {
-    navigate("/eduvishop");
-  }
-  function handleNavigate5() {
-    navigate("/login");
-  }
-  function handleNavigate11() {
-    navigate("/eduvijoinasteacher");
-  }
+
   function shop() {
     navigate("/shop");
   }
@@ -52,9 +36,8 @@ const Home1Page = () => {
   return (
     <>
       {/* <Column className="bg-light_green flex flex-col font-inter items-center justify-start mx-[auto] w-[100%]"> */}
-      <NavBarP></NavBarP>
 
-      <Column className="bg-light_green flex flex-col items-center justify-start sm:mt-[0px] md:mt-[0px] mt-[-1rem] w-[100%]">
+      <Column className="bg-light_green flex flex-col items-center justify-start sm:mt-[0px] md:mt-[0px] w-[100%]">
         <Column className="flex flex-row md:flex-wrap sm:flex-wrap items-center max-w-[auto] ml-[auto] mr-[auto] sm:mx-[0] sm:pl-[15px] sm:pr-[15px] sm:px-[0] px-[2rem] w-[100%] justify-around landingFirstSection">
           <Column className="flex flex-col sm:mx-[0] sm:px-[0] sm:w-[100%] w-[47%]">
             <Column className="flex flex-col justify-start md:mt-[10px] mt-[15px] sm:mt-[7px] w-[100%]">
@@ -219,24 +202,24 @@ const Home1Page = () => {
           <Column className="flex flex-col items-center justify-start sm:mt-[23px] md:mt-[30px] mt-[45px] w-[100%]">
             <Grid className="sm:gap-[21px] md:gap-[27px] gap-[40px] grid sm:grid-cols-1 md:grid-cols-2 grid-cols-4 min-h-[auto] w-[100%]">
               <CourseDetHome
-                imageDir="images/img_image_90X75.png"
+                imageDir={require("../assets/images/stock.jpg")}
                 courseName="Course Name"
                 courseDescription="Standard 2 builds on the foundations of Standard 1 and includes requirements..."
               />
 
               <CourseDetHome
-                imageDir="images/img_image_90X75.png"
+                imageDir={require("../assets/images/stock.jpg")}
                 courseName="Course Name"
                 courseDescription="Standard 2 builds on the foundations of Standard 1 and includes requirements..."
               />
 
               <CourseDetHome
-                imageDir="images/img_image_90X75.png"
+                imageDir={require("../assets/images/stock.jpg")}
                 courseName="Course Name"
                 courseDescription="Standard 2 builds on the foundations of Standard 1 and includes requirements..."
               />
               <CourseDetHome
-                imageDir="images/img_image_90X75.png"
+                imageDir={require("../assets/images/stock.jpg")}
                 courseName="Course Name"
                 courseDescription="Standard 2 builds on the foundations of Standard 1 and includes requirements..."
               />
@@ -264,7 +247,9 @@ const Home1Page = () => {
           </Column>
           <Button
             className="common-pointer cursor-pointer font-medium min-w-[16%] sm:mt-[31px] md:mt-[41px] mt-[60px] text-[16px] text-center text-white_A700 w-[max-content]"
-            onClick={handleNavigate}
+            onClick={() => {
+              navigate("/shop");
+            }}
             size="lg"
             variant="DarkBlueBlack"
           >
@@ -350,7 +335,9 @@ const Home1Page = () => {
             </Column>
             <Button
               className="common-pointer cursor-pointer font-medium min-w-[41%] sm:mt-[21px] md:mt-[27px] mt-[40px] text-[16px] text-center text-white_A700 w-[max-content]"
-              onClick={handleNavigate11}
+              onClick={() => {
+                navigate("/instructor");
+              }}
               size="lg"
               variant="DarkBlueBlack"
             >

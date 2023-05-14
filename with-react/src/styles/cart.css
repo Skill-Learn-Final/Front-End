@@ -1,0 +1,13 @@
+.cart-container {
+  background-color: white;
+  box-shadow: 0 0 12px 2px rgb(209, 208, 208);
+  padding: 10rem 25rem;
+  border-radius: 5px;
+}
+.cart-container img {
+  position: relative;
+  left: 4rem;
+  width: 15rem;
+  padding: 1rem;
+  margin: 1rem;
+}
