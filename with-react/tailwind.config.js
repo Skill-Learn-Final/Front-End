@@ -6,12 +6,15 @@ module.exports = {
   ],
   darkMode: "class",
   theme: {
-    screens: {
-      sm: { min: "200px", max: "767px" },
-      md: { min: "768px", max: "1023px" },
-    },
     extend: {
+      screens: {
+        sm: { min: "200px", max: "767px" },
+        md: { min: "768px", max: "1023px" },
+      },
       colors: {
+        medium_green: "#7F8C7D",
+        dark_green: "#43593F",
+        faint_green: "#f2f6f2",
         very_light_green: "#D2FB7B",
         light_blue: "#6780C9",
         light_green: "#E1F2DF",

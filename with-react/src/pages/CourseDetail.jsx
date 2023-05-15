@@ -15,6 +15,7 @@ import {
   Rating,
 } from "components";
 import { useNavigate } from "react-router-dom";
+
 import Accordion from "components/Accordion";
 
 const CourseDetail = () => {
@@ -82,6 +83,7 @@ const CourseDetail = () => {
                 <Text className="text-black_900 w-[auto]" as="h5" variant="h5">
                   Course Playlists
                 </Text>
+
                 <Column
                   style={{ backgroundColor: "black", minHeight: "500px" }}
                   className="flex flex-col items-center justify-start md:mt-[10px] mt-[15px] sm:mt-[7px] w-[100%]"
@@ -269,6 +271,7 @@ const CourseDetail = () => {
                         </Text>
                       </Column>
                     </Row>
+
                   </List> */}
                 </Column>
               </Column>

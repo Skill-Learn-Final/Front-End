@@ -23,6 +23,7 @@ const CourseDetHome = ({ imageDir, courseName, courseDescription }) => {
     navigate("/course_detail");
   }
   return (
+
     <Column className="bg-white_A700  hover:flex flex hover:flex-col flex-col justify-start md:p-[10px] p-[1.5rem] sm:p-[7px] rounded-radius15 hover:shadow-bs hover:w-[100%] w-[100%] h-[65vh]">
       <Img
         src={imageDir}
