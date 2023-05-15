@@ -2,10 +2,13 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Column, Row, Divider, UserDetailInput, TextLogo } from "components";
 import SocialLogin from "components/common/SocialLogin";
+import RoleSelectionStepper from "components/RoleSelectionStepper";
+import animationGif from "../assets/images/online-courses.png";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [selectedRole, setSelectedRole] = useState("");
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
@@ -15,10 +18,81 @@ const Login = () => {
     setPassword(event.target.value);
   };
 
+  const handleRoleSelect = (role) => {
+    setSelectedRole(role);
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
+    const formData = {
+      username: username,
+      password: password,
+      role: selectedRole,
+    };
+    const jsonData = JSON.stringify(formData);
+    console.log(jsonData);
     // handle form submission here
   };
+
+  const loginSteps = [
+    {
+      title: "Select your role",
+      form: <></>,
+    },
+    {
+      title: "Login Form",
+      form: (
+        <>
+          <form className="flex flex-col pt-3 md:pt-8" onSubmit={handleSubmit}>
+            <div className="flex flex-col pt-4 px-6">
+              <UserDetailInput
+                label="Email"
+                type="email"
+                value={username}
+                onChange={handleUsernameChange}
+                id="email"
+                placeholder="your@email.com"
+                autoFocus
+              />
+            </div>
+            <div className="flex flex-col pt-4 px-6">
+              <UserDetailInput
+                id="pass-word"
+                label="Password"
+                type="password"
+                value={password}
+                onChange={handlePasswordChange}
+                placeholder="Password"
+                autoComplete="password"
+              />
+            </div>
+            <button
+              type="submit"
+              className="bg-dark_green text-white font-bold text-lg rounded-lg hover:bg-green-900/80 focus:bg-dark_green p-2 mt-8 mx-6"
+            >
+              Log In
+            </button>
+          </form>
+          <div className="text-center ">
+            <div className="text-center pt-12 pb-6">
+              <p className>
+                Don't have an account?{" "}
+                <Link
+                  to="/signup"
+                  className="underline font-semibold hover:text-green-700"
+                >
+                  Register here.
+                </Link>
+              </p>
+            </div>
+            <Divider />
+            <p className="text-sm">Or continue with:</p>
+            <SocialLogin />
+          </div>
+        </>
+      ),
+    },
+  ];
 
   return (
     <React.Fragment>
@@ -36,72 +110,27 @@ const Login = () => {
                   {TextLogo(2.2)}
                 </Link>
               </Row>
-              <Row className="flex flex-col justify-center md:justify-start my-auto pt-8 md:pt-0 px-8 md:px-24 lg:px-32">
+              <Row>
                 <p className="w-full text-center font-semibold text-dark_green text-3xl">
                   Welcome back.
                 </p>
-                <form
-                  className="flex flex-col pt-3 md:pt-8"
-                  onsubmit={handleSubmit}
-                >
-                  <div className="flex flex-col pt-4 px-6">
-                    <UserDetailInput
-                      label="Email"
-                      type="email"
-                      value={username}
-                      onChange={handleUsernameChange}
-                      id="email"
-                      placeholder="your@email.com"
-                      autoFocus
-                    />
-                  </div>
-                  <div className="flex flex-col pt-4 px-6">
-                    <UserDetailInput
-                      id="pass-word"
-                      label="Password"
-                      type="password"
-                      value={password}
-                      onChange={handlePasswordChange}
-                      placeholder="Password"
-                      autoComplete="password"
-                    />
-                  </div>
-                  <button
-                    type="submit"
-                    className="bg-dark_green text-white font-bold text-lg rounded-lg hover:bg-green-900/80 focus:bg-dark_green p-2 mt-8 mx-6"
-                  >
-                    Log In
-                  </button>
-                </form>
-                <div className="text-center ">
-                  <div className="text-center pt-12 pb-6">
-                    <p className>
-                      Don't have an account?{" "}
-                      <Link
-                        to="/signup"
-                        className="underline font-semibold hover:text-green-700"
-                      >
-                        Register here.
-                      </Link>
-                    </p>
-                  </div>
-                  <Divider />
-                  <p className="text-sm">Or continue with:</p>
-                  <SocialLogin />
-                </div>
+                <RoleSelectionStepper
+                  steps={loginSteps}
+                  onRoleSelect={handleRoleSelect}
+                />
               </Row>
             </Column>
             {/* <!-- Image Section --> */}
             <div
               className="w-1/2 h-screen sm:hidden md:hidden lg:block relative"
               style={{
-                backgroundImage: `url(${"https://source.unsplash.com/random/600x800"})`,
+                backgroundImage: `url(${animationGif})`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 borderRadius: "0 1rem 1rem 0",
               }}
             >
-              <div className="absolute inset-0  bg-gradient-to-l from-transparent to-faint_green"></div>
+              {/* <div className="absolute inset-0  bg-gradient-to-t from-transparent to-dark_green"></div> */}
             </div>
           </div>
         </div>
