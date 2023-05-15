@@ -49,7 +49,8 @@ const Shop = () => {
 
   return (
     <>
-      <Nav></Nav>
+
+      {/* <Nav></Nav> */}
 
       <Column className="bg-light_green flex flex-col font-inter items-center justify-start mx-[auto] w-[100%]">
         <Column className="flex flex-col items-center justify-start w-[100%]">

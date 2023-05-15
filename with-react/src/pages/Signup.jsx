@@ -12,6 +12,7 @@ import SocialLogin from "components/common/SocialLogin";
 import RoleSelectionStepper from "components/RoleSelectionStepper";
 import animationGif from "../assets/images/online-courses.png";
 
+
 const Signup = ({ onClose }) => {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");

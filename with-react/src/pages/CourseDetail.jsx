@@ -16,6 +16,8 @@ import {
 } from "components";
 import { useNavigate } from "react-router-dom";
 
+import Accordion from "components/Accordion";
+
 const CourseDetail = () => {
   const navigate = useNavigate();
 
@@ -81,8 +83,13 @@ const CourseDetail = () => {
                 <Text className="text-black_900 w-[auto]" as="h5" variant="h5">
                   Course Playlists
                 </Text>
-                <Column className="flex flex-col items-center justify-start md:mt-[10px] mt-[15px] sm:mt-[7px] w-[100%]">
-                  <List
+
+                <Column
+                  style={{ backgroundColor: "black", minHeight: "500px" }}
+                  className="flex flex-col items-center justify-start md:mt-[10px] mt-[15px] sm:mt-[7px] w-[100%]"
+                >
+                  <Accordion></Accordion>
+                  {/* <List
                     className="md:gap-[11px] gap-[16px] sm:gap-[8px] grid min-h-[auto] w-[100%]"
                     orientation="vertical"
                   >
@@ -264,7 +271,8 @@ const CourseDetail = () => {
                         </Text>
                       </Column>
                     </Row>
-                  </List>
+
+                  </List> */}
                 </Column>
               </Column>
             </Row>

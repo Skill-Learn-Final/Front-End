@@ -78,6 +78,7 @@ export const UserDetailInput = ({
         )}
       </div>
     </div>
+
   );
 };
 

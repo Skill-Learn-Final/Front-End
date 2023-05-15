@@ -1,6 +1,6 @@
 import React from "react";
 
-export const Divider = ({ type = "hor", className }) => {
+const Divider = ({ type = "hor", className }) => {
   if (type === "ver") {
     return <span className="h-full border-l border-gray-300"></span>;
   } else {
