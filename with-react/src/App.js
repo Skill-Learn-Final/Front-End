@@ -28,29 +28,27 @@ function App() {
   // let openState;
 
   return (
-    <ThemeProvider theme={theme}>
-      <BrowserRouter>
-        <ScrollToTop />
-        <NavBarP />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/account_info" element={<AccountInfo />} />
-          <Route path="/shop" element={<Shop />} />
-          <Route path="/courses" element={<Courses />} />
-          <Route path="/course_detail" element={<CourseDetail />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/instructor" element={<Instructor />} />
-          <Route path="/library" element={<Library />} />
-          <Route path="/wishlist" element={<Wishlist />} />
-          <Route path="/buycurrency" element={<BuyCurrency />} />
-          <Route path="/live_classes" element={<LiveClasses />} />
-          <Route path="/switch_accounts" element={<SwitchAccounts />} />
-        </Routes>
-      </BrowserRouter>
-    </ThemeProvider>
+    <BrowserRouter>
+      <ScrollToTop />
+      <NavBarP />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/account_info" element={<AccountInfo />} />
+        <Route path="/shop" element={<Shop />} />
+        <Route path="/courses" element={<Courses />} />
+        <Route path="/course_detail" element={<CourseDetail />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/instructor" element={<Instructor />} />
+        <Route path="/library" element={<Library />} />
+        <Route path="/wishlist" element={<Wishlist />} />
+        <Route path="/buycurrency" element={<BuyCurrency />} />
+        <Route path="/live_classes" element={<LiveClasses />} />
+        <Route path="/switch_accounts" element={<SwitchAccounts />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 export default App;
