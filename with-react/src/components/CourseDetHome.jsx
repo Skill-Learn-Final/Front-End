@@ -55,6 +55,7 @@ const CourseDetHome = ({ imageDir, courseName, courseDescription }) => {
           Course Detail
         </Button>
       </Column>
+
     </Column>
   );
 };

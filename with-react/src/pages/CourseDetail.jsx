@@ -15,6 +15,7 @@ import {
   Rating,
 } from "components";
 import { useNavigate } from "react-router-dom";
+
 import Accordion from "components/Accordion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -85,6 +86,7 @@ const CourseDetail = () => {
                 <Text className="text-black_900 w-[auto]" as="h5" variant="h5">
                   Chapters
                 </Text>
+
                 <Column
                   style={{ backgroundColor: "#3330", minHeight: "500px" }}
                   className="flex flex-col items-center justify-start md:mt-[10px] mt-[15px] sm:mt-[7px] p-[1rem] w-[100%]"

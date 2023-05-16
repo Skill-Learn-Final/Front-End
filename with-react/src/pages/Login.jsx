@@ -1,27 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import {
-  Card,
-  CardActions,
-  CardContent,
-  Grid,
-  Container,
-  CardHeader,
-  FormControl,
-} from "@mui/material";
-import {
-  Column,
-  Row,
-  Divider,
-  TextLogo,
-  Slider,
-  SignMedia,
-  SubmitButton,
-  UserDetailInput,
-} from "../components";
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFacebookF, faGoogle } from "@fortawesome/free-brands-svg-icons";
+import { Column, Row, Divider, UserDetailInput, TextLogo } from "components";
+import SocialLogin from "components/common/SocialLogin";
+import RoleSelectionStepper from "components/RoleSelectionStepper";
+import animationGif from "../assets/images/online-courses.png";
 
 const LoginForm = ({
   onSubmit,
@@ -66,6 +48,7 @@ const LoginForm = ({
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [selectedRole, setSelectedRole] = useState("");
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
@@ -75,107 +58,121 @@ const Login = () => {
     setPassword(event.target.value);
   };
 
+  const handleRoleSelect = (role) => {
+    setSelectedRole(role);
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
+    const formData = {
+      username: username,
+      password: password,
+      role: selectedRole,
+    };
+    const jsonData = JSON.stringify(formData);
+    console.log(jsonData);
     // handle form submission here
   };
 
+  const loginSteps = [
+    {
+      title: "Select your role",
+      form: <></>,
+    },
+    {
+      title: "Login Form",
+      form: (
+        <>
+          <form className="flex flex-col pt-3 md:pt-8" onSubmit={handleSubmit}>
+            <div className="flex flex-col pt-4 px-6">
+              <UserDetailInput
+                label="Email"
+                type="email"
+                value={username}
+                onChange={handleUsernameChange}
+                id="email"
+                placeholder="your@email.com"
+                autoFocus
+              />
+            </div>
+            <div className="flex flex-col pt-4 px-6">
+              <UserDetailInput
+                id="pass-word"
+                label="Password"
+                type="password"
+                value={password}
+                onChange={handlePasswordChange}
+                placeholder="Password"
+                autoComplete="password"
+              />
+            </div>
+            <button
+              type="submit"
+              className="bg-dark_green text-white font-bold text-lg rounded-lg hover:bg-green-900/80 focus:bg-dark_green p-2 mt-8 mx-6"
+            >
+              Log In
+            </button>
+          </form>
+          <div className="text-center ">
+            <div className="text-center pt-12 pb-6">
+              <p className>
+                Don't have an account?{" "}
+                <Link
+                  to="/signup"
+                  className="underline font-semibold hover:text-green-700"
+                >
+                  Register here.
+                </Link>
+              </p>
+            </div>
+            <Divider />
+            <p className="text-sm">Or continue with:</p>
+            <SocialLogin />
+          </div>
+        </>
+      ),
+    },
+  ];
+
   return (
     <React.Fragment>
-      <div class="w-full flex flex-wrap bg-green-50">
-        {/* <!-- Login Section --> */}
-        <Column class="w-1/2 h-screen sm:w-full md:w-full  flex flex-col">
-          <Row class="flex justify-center md:justify-start pt-12 md:pl-12 ">
-            <Link
-              to="/"
-              component="a"
-              class="text-white font-bold text-xl  p-4"
-            >
-              {TextLogo(2.2)}
-            </Link>
-          </Row>
-
-          <Row class="flex flex-col justify-center md:justify-start my-auto pt-8 md:pt-0 px-8 md:px-24 lg:px-32">
-            <p class="w-full text-center text-3xl">Welcome back.</p>
-            <form class="flex flex-col pt-3 md:pt-8" onsubmit={handleSubmit}>
-              <div class="flex flex-col pt-4 px-6">
-                <UserDetailInput
-                  label="Email"
-                  type="email"
-                  value={username}
-                  onChange={handleUsernameChange}
-                  id="email"
-                  placeholder="your@email.com"
-                />
-              </div>
-
-              <div class="flex flex-col pt-4 px-6">
-                <UserDetailInput
-                  id="password1"
-                  Label="Password"
-                  type="password"
-                  value={password}
-                  onChange={handlePasswordChange}
-                  placeholder="Password"
-                  autoComplete="password"
-                />
-              </div>
-
-              <button
-                type="submit"
-                class="bg-black text-white font-bold text-lg rounded hover:bg-gray-900 hover:border-b-4 hover:border-green-500 hover:pb-[3.5px] p-2 mt-8 mx-10"
-              >
-                Log In
-              </button>
-            </form>
-            <div className="text-center ">
-              <div class="text-center pt-12 pb-6">
-                <p>
-                  Don't have an account?{" "}
-                  <Link
-                    to="/signup"
-                    className="underline font-semibold hover:text-green-700"
-                  >
-                    Register here.
-                  </Link>
+      <div className="shadow-2xl rounded-2xl m-16  border-2 border-gray-300">
+        <div className="h-screen rounded-2xl bg-faint_green">
+          <div className="w-full rounded-2xl h-fit flex flex-wrap bg-faint_green">
+            {/* <!-- Login Section --> */}
+            <Column className="w-1/2  sm:w-full md:w-full  flex flex-col">
+              <Row className="flex justify-center md:justify-start pt-12 md:pl-12 ">
+                <Link
+                  to="/"
+                  component="a"
+                  className="text-white font-bold text-xl  p-4"
+                >
+                  {TextLogo(2.2)}
+                </Link>
+              </Row>
+              <Row>
+                <p className="w-full text-center font-semibold text-dark_green text-3xl">
+                  Welcome back.
                 </p>
-              </div>
-              <Divider />
-              <p className="text-sm">Or continue with:</p>
-              <div className="grid grid-rows-2 grid-cols-2 items-center pt-4 gap-2 justify-items-center">
-                <button
-                  className="w-full sm:w-3/5 flex col-span-1 sm:col-span-2 bg-red-500 hover:bg-red-700 rounded-full mx-2 p-1 items-center"
-                  onClick={() => {}}
-                >
-                  <FontAwesomeIcon
-                    icon={faGoogle}
-                    className="h-6 w-6 p-2 bg-white text-red-500 rounded-full mr-2"
-                  />
-                  <p className="w-7/12 text-white font-semibold">Google</p>
-                </button>
-                <button
-                  className="w-full sm:w-3/5 flex col-span-1 sm:col-span-2 bg-blue-500 hover:bg-blue-700 rounded-full mx-2 p-1 items-center"
-                  onClick={() => {}}
-                >
-                  <FontAwesomeIcon
-                    icon={faFacebookF}
-                    className="h-6 w-6 p-2 bg-white text-blue-500 rounded-full mr-2"
-                  />
-                  <p className="w-7/12 text-white font-semibold">Facebook</p>
-                </button>
-              </div>
+                <RoleSelectionStepper
+                  steps={loginSteps}
+                  onRoleSelect={handleRoleSelect}
+                />
+              </Row>
+            </Column>
+            {/* <!-- Image Section --> */}
+            <div
+              className="w-1/2 h-screen sm:hidden md:hidden lg:block relative"
+              style={{
+                backgroundImage: `url(${animationGif})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                borderRadius: "0 1rem 1rem 0",
+              }}
+            >
+              {/* <div className="absolute inset-0  bg-gradient-to-t from-transparent to-dark_green"></div> */}
             </div>
-          </Row>
-        </Column>
-
-        {/* <!-- Image Section --> */}
-        <div class="w-1/2 h-screen sm:hidden md:hidden lg:block relative">
-          <div class="absolute inset-0 bg-gradient-to-l from-transparent to-green-50"></div>
-          <img
-            class="object-cover w-full h-screen"
-            src="https://source.unsplash.com/random/600x800"
-            alt="login decoration"
-          />
+          </div>
         </div>
       </div>
     </React.Fragment>

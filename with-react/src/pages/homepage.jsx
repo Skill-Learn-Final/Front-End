@@ -35,6 +35,7 @@ const Home1Page = () => {
 
   return (
     <>
+
       {/* <Column className="bg-light_green flex flex-col font-inter items-center justify-start mx-[auto] w-[100%]"> */}
 
       <Column className="bg-light_green flex flex-col items-center justify-start sm:mt-[0px] md:mt-[0px] w-[100%]">
@@ -62,6 +63,7 @@ const Home1Page = () => {
                   platform offers a supportive and collaborative environment
                   where users can connect, learn from others.
                 </Text> */}
+
               <Column className="">
                 <Button
                   className="cursor-pointer pl-10 pr-10 mt-10 font-medium min-w-[40%] text-[20px] text-center text-White w-[max-content]"
@@ -112,6 +114,7 @@ const Home1Page = () => {
                 View Courses
               </Button> */}
             </Column>
+
             <PlusSigns></PlusSigns>
           </Stack>
           <Column className="flex flex-col font-inter inset-x-[0] items-center justify-start sm:mx-[0] mx-[auto] mt-[15rem] sm:px-[0] sm:w-[100%] w-[57%]">
@@ -199,6 +202,7 @@ const Home1Page = () => {
               in their fields. Here are some of our most popular courses:
             </Text>
           </Column>
+
           <Column className="flex flex-col items-center justify-start sm:mt-[23px] md:mt-[30px] mt-[45px] w-[100%]">
             <Grid className="sm:gap-[21px] md:gap-[27px] gap-[40px] grid sm:grid-cols-1 md:grid-cols-2 grid-cols-4 min-h-[auto] w-[100%]">
               <CourseDetHome
@@ -303,6 +307,7 @@ const Home1Page = () => {
               alt="group7647"
             />
           </Row>
+
         </Column>
         <Row className="flex flex-row md:flex-wrap sm:flex-wrap font-inter items-center max-w-[auto] ml-[auto] mr-[auto] md:mt-[103px] mt-[100px] mb-[0px] sm:mt-[79px] sm:mx-[0] sm:pl-[15px] sm:pr-[15px] sm:px-[0] px-[4rem] py-[5rem] w-[100%] landingJoinAsTeacher">
           <Img

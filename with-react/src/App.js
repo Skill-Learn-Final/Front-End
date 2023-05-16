@@ -1,7 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./styles/App.css";
-import { ThemeProvider } from "@mui/material/styles";
-import { theme } from "./styles/theme";
 import {
   Login,
   Register,

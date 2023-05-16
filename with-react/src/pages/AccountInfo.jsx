@@ -1,15 +1,97 @@
 import React, { Component, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleUser, faImage } from "@fortawesome/free-solid-svg-icons";
+import { faCircleUser, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { Column, NavBarP, UserDetailInput } from "components";
+import IconButton from "components/IconButton";
 import Accordion from "components/Accordion";
 
 const AccountInfo = (userid) => {
   const [activeTab, setActiveTab] = useState("Profile");
+  const [username, setUsername] = useState("");
+
+  const [about, setAbout] = useState("");
+  const [isAboutEditable, setIsAboutEditable] = useState(false);
+
+  const [photo, setPhoto] = useState("");
+
+  const [firstName, setFirstName] = useState("");
+  const [isFirstNameEditable, setIsFirstNameEditable] = useState(false);
+
+  const [lastName, setLastName] = useState("");
+  const [isLastNameEditable, setIsLastNameEditable] = useState(false);
+
+  const [email, setEmail] = useState("");
+  const [isEmailEditable, setIsEmailEditable] = useState(false);
+
+  const [newPassword, setNewPassword] = useState("");
+  const [isNewPasswordEditable, setIsNewPasswordEditable] = useState(false);
+
+  const [emailNotifications, setEmailNotifications] = useState(false);
+  const [inAppNotifications, setInAppNotifications] = useState(false);
+
+  // const handleUsernameChange = (event) => {
+  //   setUsername(event.target.value);
+  // };
+
+  const handleAboutChange = (event) => {
+    setAbout(event.target.value);
+  };
+
+  const handlePhotoChange = (event) => {
+    setPhoto(event.target.value);
+  };
+
+  const handleFirstNameChange = (event) => {
+    setFirstName(event.target.value);
+  };
+
+  const handleLastNameChange = (event) => {
+    setLastName(event.target.value);
+  };
+
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
+  };
+
+  const handleEmailNotificationsChange = () => {
+    setEmailNotifications((prevValue) => !prevValue);
+  };
+
+  const handleInAppNotificationsChange = () => {
+    setInAppNotifications((prevValue) => !prevValue);
+  };
+
+  const handleNewPasswordChange = (event) => {
+    setNewPassword(event.target.value);
+  };
+
+  // edit field handlers for pswrd, @, fname, lname, about
+  const handleNewPasswordEdit = () => {
+    setIsNewPasswordEditable((prevValue) => !prevValue);
+  };
+  const handleEmailEdit = () => {
+    setIsEmailEditable((prevValue) => !prevValue);
+  };
+
+  const handleFirstNameEdit = () => {
+    setIsFirstNameEditable((prevValue) => !prevValue);
+  };
+
+  const handleLastNameEdit = () => {
+    setIsLastNameEditable((prevValue) => !prevValue);
+  };
+
+  const handleAboutEdit = () => {
+    setIsAboutEditable((prevValue) => !prevValue);
+  };
+
   const handleTabClick = (tab) => {
     setActiveTab(tab);
   };
+  const topBtnClass = `w-1/3 rounded-md text-sm font-semibold px-3 py-2 active:bg-slate-300 hover:bg-slate-300 hover:text-gray-800 focus:text-gray-800 focus:bg-slate-300  focus:shadow-inner active:shadow-slate-100 active:shadow-sm focus:shadow-slate`;
+  const UserDetailInputClass = `flex-1 w-full rounded-md enabled:border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 disabled:bg-transparent  disabled:border-none`;
   return (
+
     <>
       <Column className="bg-light_green flex flex-col font-inter items-center justify-start mx-[auto] w-[100%]">
         <div className="w-2/3 h-fit sm:w-full flex flex-wrap justify-evenly items-center p-10">
@@ -364,6 +446,7 @@ const AccountInfo = (userid) => {
         </div>
       </Column>
     </>
+
   );
 };
 
