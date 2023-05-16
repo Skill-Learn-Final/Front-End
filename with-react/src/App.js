@@ -28,7 +28,6 @@ function App() {
   // let openState;
 
   return (
-    // <ThemeProvider theme={theme}>
     <BrowserRouter>
       <ScrollToTop />
       <NavBarP />
@@ -50,7 +49,6 @@ function App() {
         <Route path="/switch_accounts" element={<SwitchAccounts />} />
       </Routes>
     </BrowserRouter>
-    // </ThemeProvider>
   );
 }
 export default App;
