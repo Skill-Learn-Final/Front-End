@@ -181,6 +181,7 @@ ul li a {
   flex-direction: column;
   list-style-type: none;
 }
+
 /* ===================== The following is css for the landing page, will be put in separate file later =================== */
 .landingText {
   font-family: "Roboto";
@@ -220,4 +221,159 @@ footer {
   background-color: #d97356;
   color: white;
   box-shadow: 4px 4px 8px 3px rgb(255, 212, 171);
+
+  /* ============================== The following is css for the navbar, will be put in separate file ============*/
+}
+
+.userIcon {
+  display: flex;
+  justify-content: space-evenly;
+  max-width: 2rem;
+}
+.userIcon li {
+  margin-left: 0.25rem;
+}
+.userIcon img {
+  aspect-ratio: 1;
+  border-radius: 50%;
+}
+
+.navLinks {
+  color: black;
+  padding-bottom: 0.25rem;
+}
+
+.navLinks .link {
+  font-size: 1.1rem;
+}
+.menu-trigger img {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+  background-color: #fff;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100px;
+  right: 20px;
+  background-color: white;
+  border-radius: 5px;
+  padding: 10px 20px;
+  width: 200px;
+  box-shadow: 0px 0px 8px 2px rgb(178, 178, 178);
+}
+
+.dropdown-menu::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  height: 20px;
+  width: 20px;
+  background: white;
+  transform: rotate(45deg);
+}
+.dropdown-right::before {
+  right: 20px;
+}
+.dropdown-center::before {
+  right: 60px;
+}
+
+.dropdown-menu.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-20px);
+  transition: 0.5s ease;
+}
+
+.dropdown-menu.inactive {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-40px);
+  transition: 0.5s ease;
+}
+
+.dropdown-menu ul li {
+  padding: 10px 0;
+  /* border-top: 1px solid rgba(0, 0, 0, 0.05); */
+}
+
+.dropdown-menu ul li:hover .dropdownTexts {
+  color: rgb(212, 33, 9);
+  cursor: pointer;
+}
+
+.dropdown-menu ul li:hover .dropdownIcon {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.dropdownItem {
+  display: flex;
+  margin: 10px auto;
+}
+
+.dropdownIcon {
+  max-width: 20px;
+  margin-right: 10px;
+  opacity: 0.5;
+  transition: 0.5s;
+}
+
+.dropdownTexts {
+  max-width: 100px;
+  margin-left: 10px;
+  font-size: 0.75rem;
+  transition: 0.5s;
+}
+.dropdownTitle {
+  color: rgb(139, 158, 144);
+  font-size: 0.75rem;
+  font-weight: bolder;
+}
+
+/* ============================== The following is css for COURSE DETAILS, will be put in separate file ============*/
+
+.courseDetailsDescription {
+  background-color: rgb(220, 220, 220);
+  padding: 1rem;
+  border-radius: 1rem;
+  margin-bottom: 2rem;
+}
+
+.courseDetailsCards {
+  /* background-color: #c2e9fb; */
+  margin-bottom: 4rem;
+}
+.courseDetailsCard {
+  background-color: white;
+  width: 10rem;
+  border-radius: 0.5rem;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  /* box-shadow: 0 0 7px 2px rgb(150, 150, 150); */
+}
+
+.courseDetailsCard > * {
+  margin: 0.5rem 0;
+}
+
+.courseDetailsWhatYoullLearn {
+  background-color: rgb(220, 220, 220);
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+.emptyPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 88.5vh;
+  /* background-color: #ccc; */
 }

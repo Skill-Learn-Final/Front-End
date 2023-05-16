@@ -28,6 +28,7 @@ import SubmitButton from "./SubmitButton";
 import UserDetailInput from "./UserDetailInput";
 import Table from "./Table";
 import Rating from "./Rating";
+import DropdownItem from "./DropdownItem";
 export {
   Column,
   Datepicker,
@@ -59,4 +60,5 @@ export {
   UserDetailInput,
   Table,
   Rating,
+  DropdownItem,
 };
