@@ -4,7 +4,7 @@ import React from "react";
 const BuyCurrency = () => {
   return (
     <>
-      <div className="emptyPage">BuyCurrency</div>
+      <div className="bg-light_green emptyPage">BuyCurrency</div>
     </>
   );
 };
