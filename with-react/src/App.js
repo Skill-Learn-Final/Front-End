@@ -2,7 +2,6 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./styles/App.css";
 import {
   Login,
-  Register,
   Home,
   Shop,
   Courses,

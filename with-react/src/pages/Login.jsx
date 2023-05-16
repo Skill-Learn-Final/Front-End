@@ -5,46 +5,6 @@ import SocialLogin from "components/common/SocialLogin";
 import RoleSelectionStepper from "components/RoleSelectionStepper";
 import animationGif from "../assets/images/online-courses.png";
 
-const LoginForm = ({
-  onSubmit,
-  username,
-  password,
-  onUsernameChange,
-  onPasswordChange,
-  showPassword,
-  onShowPasswordClick,
-}) => {
-  return (
-    <form onSubmit={onSubmit}>
-      <FormControl sx={{ px: { xs: 0, sm: 5 }, py: 5 }}>
-        <CardContent>
-          <UserDetailInput
-            label="Username"
-            type="text"
-            value={username}
-            onChange={onUsernameChange}
-            autocomplete="username"
-          />
-          <UserDetailInput
-            label="Password"
-            type="password"
-            value={password}
-            onChange={onPasswordChange}
-            showPassword={showPassword}
-            handleClickShowPassword={onShowPasswordClick}
-            autocomplete="current-password"
-          />
-        </CardContent>
-        <CardActions sx={{ justifyContent: "flex-end" }}>
-          <SubmitButton size="medium" type="submit">
-            Log In
-          </SubmitButton>
-        </CardActions>
-      </FormControl>
-    </form>
-  );
-};
-
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
