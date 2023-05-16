@@ -6,6 +6,7 @@ import {
   faArrowTurnDown,
   faCartShopping,
   faMagnifyingGlass,
+  faEnvelope,
 } from "@fortawesome/free-solid-svg-icons";
 
 import {
@@ -23,12 +24,17 @@ import {
 } from "./";
 import { useNavigate } from "react-router-dom";
 import Sticky from "react-stickynode";
+import {
+  faFacebook,
+  faInstagram,
+  faTwitter,
+} from "@fortawesome/free-brands-svg-icons";
 
 const Footer = () => {
   return (
 
     <footer className="font-inter w-[100%]">
-      <Row className="flex flex-row md:flex-wrap sm:flex-wrap items-start justify-between max-w-[1280px] sm:mb-[42px] md:mb-[55px] mb-[80px] ml-[auto] mr-[auto] mt-[100px] sm:mt-[53px] md:mt-[68px] sm:mx-[0] mx-[auto] sm:pl-[15px] sm:pr-[15px] sm:px-[0] w-[100%]">
+      <Row className="flex flex-row md:flex-wrap sm:flex-wrap items-start justify-around max-w-[auto] sm:mb-[42px] md:mb-[55px] mb-[80px] ml-[auto] mr-[auto] mt-[100px] sm:mt-[53px] md:mt-[68px] sm:mx-[0] mx-[auto] sm:pl-[15px] sm:pr-[15px] sm:px-[0] w-[100%]">
         <Column className="flex flex-col justify-start sm:mx-[0] sm:px-[0] sm:w-[100%] w-[16%] common-column-list">
           <ul className="flex flex-col">
             <li className="w-[92%] sm:w-[100%] sm:mx-[0] sm:px-[0] flex-row flex">
@@ -49,29 +55,11 @@ const Footer = () => {
             </li>
             <li className="w-[76%] mt-[19px] sm:mt-[10px] sm:w-[100%] md:mt-[13px] max-w-[100%]">
               <Row className="flex flex-row md:flex-wrap sm:flex-wrap items-start justify-between ">
-                <FontAwesomeIcon icon={faCartShopping} />
-                <FontAwesomeIcon icon={faCartShopping} />
-                <FontAwesomeIcon icon={faCartShopping} />
-                <FontAwesomeIcon icon={faCartShopping} />
+                <FontAwesomeIcon icon={faFacebook} />
+                <FontAwesomeIcon icon={faTwitter} />
+                <FontAwesomeIcon icon={faInstagram} />
+                <FontAwesomeIcon icon={faEnvelope} />
               </Row>
-            </li>
-            <li className="w-[100%] mt-[40px] sm:mt-[21px] md:mt-[27px] flex-col flex">
-              <Column className="cursor-pointer flex flex-col justify-start">
-                <Text
-                  className="font-normal not-italic text-gray_700 w-[auto]"
-                  variant="body5"
-                >
-                  ©2021 Skill-Learn.co
-                </Text>
-                <Text
-                  className="font-normal leading-[26.00px] md:leading-[normal] sm:leading-[normal] md:mt-[10px] mt-[15px] sm:mt-[7px] not-italic text-gray_700 w-[100%]"
-                  variant="body5"
-                >
-                  Skill Learn is a registered
-                  <br />
-                  trademark of Skill Learn.co
-                </Text>
-              </Column>
             </li>
           </ul>
         </Column>
@@ -83,7 +71,7 @@ const Footer = () => {
             <ul className="flex flex-col">
               <li className="w-[auto]">
                 <Text
-                  className="cursor-pointer font-normal not-italic text-gray_700"
+                  className="cursor-pointer font-normal not-italic text-white"
                   variant="body5"
                 >
                   Classroom courses
@@ -92,7 +80,7 @@ const Footer = () => {
               <li className="w-[auto] mt-[17px] sm:mt-[9px] md:mt-[11px]">
                 <a
                   href={"javascript:"}
-                  className="cursor-pointer font-normal not-italic text-[16px] text-gray_700"
+                  className="cursor-pointer font-normal not-italic text-[16px] text-white"
                   rel="noreferrer"
                 >
                   Virtual classroom courses
@@ -101,7 +89,7 @@ const Footer = () => {
               <li className="w-[auto] mt-[17px] sm:mt-[9px] md:mt-[11px]">
                 <a
                   href={"javascript:"}
-                  className="cursor-pointer font-normal not-italic text-[16px] text-gray_700"
+                  className="cursor-pointer font-normal not-italic text-[16px] text-white"
                   rel="noreferrer"
                 >
                   E-learning courses
@@ -110,7 +98,7 @@ const Footer = () => {
               <li className="w-[auto] mt-[17px] sm:mt-[9px] md:mt-[11px]">
                 <a
                   href={"javascript:"}
-                  className="cursor-pointer font-normal not-italic text-[16px] text-gray_700"
+                  className="cursor-pointer font-normal not-italic text-[16px] text-white"
                   rel="noreferrer"
                 >
                   Video Courses
@@ -119,7 +107,7 @@ const Footer = () => {
               <li className="w-[auto] mt-[17px] sm:mt-[9px] md:mt-[11px]">
                 <a
                   href={"javascript:"}
-                  className="cursor-pointer font-normal not-italic text-[16px] text-gray_700"
+                  className="cursor-pointer font-normal not-italic text-[16px] text-white"
                   rel="noreferrer"
                 >
                   Offline Courses
@@ -136,7 +124,7 @@ const Footer = () => {
             <ul className="flex flex-col">
               <li className="w-[auto]">
                 <Text
-                  className="cursor-pointer font-normal not-italic text-gray_700"
+                  className="cursor-pointer font-normal not-italic text-white"
                   variant="body5"
                 >
                   Learners
@@ -145,7 +133,7 @@ const Footer = () => {
               <li className="w-[auto] mt-[17px] sm:mt-[9px] md:mt-[11px]">
                 <a
                   href={"javascript:"}
-                  className="cursor-pointer font-normal not-italic text-[16px] text-gray_700"
+                  className="cursor-pointer font-normal not-italic text-[16px] text-white"
                   rel="noreferrer"
                 >
                   Partners
@@ -154,7 +142,7 @@ const Footer = () => {
               <li className="w-[auto] mt-[17px] sm:mt-[9px] md:mt-[11px]">
                 <a
                   href={"javascript:"}
-                  className="cursor-pointer font-normal not-italic text-[16px] text-gray_700"
+                  className="cursor-pointer font-normal not-italic text-[16px] text-white"
                   rel="noreferrer"
                 >
                   Developers
@@ -163,7 +151,7 @@ const Footer = () => {
               <li className="w-[auto] mt-[17px] sm:mt-[9px] md:mt-[11px]">
                 <a
                   href={"javascript:"}
-                  className="cursor-pointer font-normal not-italic text-[16px] text-gray_700"
+                  className="cursor-pointer font-normal not-italic text-[16px] text-white"
                   rel="noreferrer"
                 >
                   Transactions
@@ -172,7 +160,7 @@ const Footer = () => {
               <li className="w-[auto] mt-[17px] sm:mt-[9px] md:mt-[11px]">
                 <a
                   href={"javascript:"}
-                  className="cursor-pointer font-normal not-italic text-[16px] text-gray_700"
+                  className="cursor-pointer font-normal not-italic text-[16px] text-white"
                   rel="noreferrer"
                 >
                   Blog
@@ -189,7 +177,7 @@ const Footer = () => {
             <ul className="flex flex-col">
               <li className="w-[auto]">
                 <Text
-                  className="cursor-pointer font-normal not-italic text-gray_700"
+                  className="cursor-pointer font-normal not-italic text-white"
                   variant="body5"
                 >
                   Home
@@ -198,7 +186,7 @@ const Footer = () => {
               <li className="w-[auto] mt-[17px] sm:mt-[9px] md:mt-[11px]">
                 <a
                   href={"javascript:"}
-                  className="cursor-pointer font-normal not-italic text-[16px] text-gray_700"
+                  className="cursor-pointer font-normal not-italic text-[16px] text-white"
                   rel="noreferrer"
                 >
                   Professional Education
@@ -207,7 +195,7 @@ const Footer = () => {
               <li className="w-[auto] mt-[17px] sm:mt-[9px] md:mt-[11px]">
                 <a
                   href={"javascript:"}
-                  className="cursor-pointer font-normal not-italic text-[16px] text-gray_700"
+                  className="cursor-pointer font-normal not-italic text-[16px] text-white"
                   rel="noreferrer"
                 >
                   Courses
@@ -216,7 +204,7 @@ const Footer = () => {
               <li className="w-[auto] mt-[17px] sm:mt-[9px] md:mt-[11px]">
                 <a
                   href={"javascript:"}
-                  className="cursor-pointer font-normal not-italic text-[16px] text-gray_700"
+                  className="cursor-pointer font-normal not-italic text-[16px] text-white"
                   rel="noreferrer"
                 >
                   Admissions
@@ -226,7 +214,7 @@ const Footer = () => {
               <li className="w-[auto] mt-[17px] sm:mt-[9px] md:mt-[11px]">
                 <a
                   href={"javascript:"}
-                  className="cursor-pointer font-normal not-italic text-[16px] text-gray_700"
+                  className="cursor-pointer font-normal not-italic text-[16px] text-white"
                   rel="noreferrer"
                 >
                   Programs
@@ -236,6 +224,17 @@ const Footer = () => {
           </Column>
         </Column>
       </Row>
+      <div>
+        <div className="mt-[-10px] bg-white h-[1px]"></div>
+      </div>
+      <div className="flex flex-row w-[100%] text-center justify-center sm:mt-[21px] md:mt-[27px] p-[10px]">
+        <Text
+          className="font-normal not-italic text-white w-[auto]"
+          variant="body5"
+        >
+          {`Copyright © ${new Date().getFullYear().toString()} Skill-Learn.co`}
+        </Text>
+      </div>
     </footer>
   );
 };

@@ -4,9 +4,9 @@ import Select from "react-select";
 import PropTypes from "prop-types";
 
 const selectOptions = [
-  { value: "option1", label: "Option1" },
-  { value: "option2", label: "Option2" },
-  { value: "option3", label: "Option3" },
+  { value: "option1", label: "Latest" },
+  { value: "option2", label: "Cheap to Expensive" },
+  { value: "option3", label: "Expensive to Cheap" },
 ];
 
 const variants = { FillWhiteA700: "bg-white_A700" };
