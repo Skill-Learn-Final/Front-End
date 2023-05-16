@@ -33,6 +33,7 @@ import { useEffect, useRef, useState } from "react";
 const NavBarP = () => {
   const navigate = useNavigate();
   const menuRef = useRef();
+  const notificationRef = useRef();
 
   function home() {
     navigate("/home");
@@ -51,8 +52,9 @@ const NavBarP = () => {
     let handler = (e) => {
       if (!menuRef.current.contains(e.target)) {
         setOpen(false);
+      }
+      if (!notificationRef.current.contains(e.target)) {
         setNotificationPanel(false);
-        console.log(menuRef.current);
       }
     };
 
@@ -129,7 +131,7 @@ const NavBarP = () => {
     //   </Button>
     // </Row>
 
-    <div className="flex flex-row md:flex-wrap sm:flex-wrap items-center justify-between max-w-[auto] ml-[auto] mr-[auto] md:p-[5px] p-[1rem] sm:pl-[15px] sm:pr-[15px] sm:px-[15px] sm:py-[11px] w-[100%]">
+    <div className="bg-white flex flex-row md:flex-wrap sm:flex-wrap items-center justify-between max-w-[auto] ml-[auto] mr-[auto] md:p-[5px] p-[1rem] sm:pl-[15px] sm:pr-[15px] sm:px-[15px] sm:py-[11px] w-[100%]">
       <div className="brandLogo flex mx-[2rem]">
         <Img
           src="images/logo.png"
@@ -142,7 +144,7 @@ const NavBarP = () => {
           variant="h5"
           onClick={home}
         >
-          Skill-Learn
+          Skill Learn
         </Text>
       </div>
       <div className="w-[20rem]">
@@ -176,7 +178,7 @@ const NavBarP = () => {
           type="text"
           name="search"
           placeholder="Search Courses"
-          size="smNav"
+          size="sm"
           variant="OutlineGray300"
         ></Input>
         <Button
@@ -190,7 +192,6 @@ const NavBarP = () => {
       </div>
       <div className="flex flex-row p-[0.5rem] justify-between w-[10rem]">
         <a
-          href={"javascript:"}
           className="common-pointer cursor-pointer font-medium text-[20px] text-gray_901 mx-[0.5rem]"
           onClick={() => {
             navigate("/cart");
@@ -199,18 +200,16 @@ const NavBarP = () => {
         >
           <FontAwesomeIcon icon={faCartShopping} />
         </a>
-        <a
-          href={"javascript:"}
+        <div
           className="common-pointer cursor-pointer font-medium text-[20px] text-gray_901 mx-[0.5rem]"
           onClick={() => {
             setOpen(false);
             setNotificationPanel(!notificationPanel);
           }}
-          ref={menuRef}
-          rel="noreferrer"
+          ref={notificationRef}
         >
           <FontAwesomeIcon icon={bell} />
-        </a>
+        </div>
         <div
           className={`dropdown-menu dropdown-center .dropdown-notification ${
             notificationPanel ? "active" : "inactive"

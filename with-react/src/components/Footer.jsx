@@ -32,7 +32,6 @@ import {
 
 const Footer = () => {
   return (
-
     <footer className="font-inter w-[100%]">
       <Row className="flex flex-row md:flex-wrap sm:flex-wrap items-start justify-around max-w-[auto] sm:mb-[42px] md:mb-[55px] mb-[80px] ml-[auto] mr-[auto] mt-[100px] sm:mt-[53px] md:mt-[68px] sm:mx-[0] mx-[auto] sm:pl-[15px] sm:pr-[15px] sm:px-[0] w-[100%]">
         <Column className="flex flex-col justify-start sm:mx-[0] sm:px-[0] sm:w-[100%] w-[16%] common-column-list">
@@ -79,7 +78,7 @@ const Footer = () => {
               </li>
               <li className="w-[auto] mt-[17px] sm:mt-[9px] md:mt-[11px]">
                 <a
-                  href={"javascript:"}
+                  href={""}
                   className="cursor-pointer font-normal not-italic text-[16px] text-white"
                   rel="noreferrer"
                 >
@@ -88,7 +87,7 @@ const Footer = () => {
               </li>
               <li className="w-[auto] mt-[17px] sm:mt-[9px] md:mt-[11px]">
                 <a
-                  href={"javascript:"}
+                  href={""}
                   className="cursor-pointer font-normal not-italic text-[16px] text-white"
                   rel="noreferrer"
                 >
@@ -97,7 +96,7 @@ const Footer = () => {
               </li>
               <li className="w-[auto] mt-[17px] sm:mt-[9px] md:mt-[11px]">
                 <a
-                  href={"javascript:"}
+                  href={""}
                   className="cursor-pointer font-normal not-italic text-[16px] text-white"
                   rel="noreferrer"
                 >
@@ -106,7 +105,7 @@ const Footer = () => {
               </li>
               <li className="w-[auto] mt-[17px] sm:mt-[9px] md:mt-[11px]">
                 <a
-                  href={"javascript:"}
+                  href={""}
                   className="cursor-pointer font-normal not-italic text-[16px] text-white"
                   rel="noreferrer"
                 >
@@ -132,7 +131,7 @@ const Footer = () => {
               </li>
               <li className="w-[auto] mt-[17px] sm:mt-[9px] md:mt-[11px]">
                 <a
-                  href={"javascript:"}
+                  href={""}
                   className="cursor-pointer font-normal not-italic text-[16px] text-white"
                   rel="noreferrer"
                 >
@@ -141,7 +140,7 @@ const Footer = () => {
               </li>
               <li className="w-[auto] mt-[17px] sm:mt-[9px] md:mt-[11px]">
                 <a
-                  href={"javascript:"}
+                  href={""}
                   className="cursor-pointer font-normal not-italic text-[16px] text-white"
                   rel="noreferrer"
                 >
@@ -150,7 +149,7 @@ const Footer = () => {
               </li>
               <li className="w-[auto] mt-[17px] sm:mt-[9px] md:mt-[11px]">
                 <a
-                  href={"javascript:"}
+                  href={""}
                   className="cursor-pointer font-normal not-italic text-[16px] text-white"
                   rel="noreferrer"
                 >
@@ -159,7 +158,7 @@ const Footer = () => {
               </li>
               <li className="w-[auto] mt-[17px] sm:mt-[9px] md:mt-[11px]">
                 <a
-                  href={"javascript:"}
+                  href={""}
                   className="cursor-pointer font-normal not-italic text-[16px] text-white"
                   rel="noreferrer"
                 >
@@ -185,7 +184,7 @@ const Footer = () => {
               </li>
               <li className="w-[auto] mt-[17px] sm:mt-[9px] md:mt-[11px]">
                 <a
-                  href={"javascript:"}
+                  href={""}
                   className="cursor-pointer font-normal not-italic text-[16px] text-white"
                   rel="noreferrer"
                 >
@@ -194,7 +193,7 @@ const Footer = () => {
               </li>
               <li className="w-[auto] mt-[17px] sm:mt-[9px] md:mt-[11px]">
                 <a
-                  href={"javascript:"}
+                  href={""}
                   className="cursor-pointer font-normal not-italic text-[16px] text-white"
                   rel="noreferrer"
                 >
@@ -203,7 +202,7 @@ const Footer = () => {
               </li>
               <li className="w-[auto] mt-[17px] sm:mt-[9px] md:mt-[11px]">
                 <a
-                  href={"javascript:"}
+                  href={""}
                   className="cursor-pointer font-normal not-italic text-[16px] text-white"
                   rel="noreferrer"
                 >
@@ -213,7 +212,7 @@ const Footer = () => {
 
               <li className="w-[auto] mt-[17px] sm:mt-[9px] md:mt-[11px]">
                 <a
-                  href={"javascript:"}
+                  href={""}
                   className="cursor-pointer font-normal not-italic text-[16px] text-white"
                   rel="noreferrer"
                 >

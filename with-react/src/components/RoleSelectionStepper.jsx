@@ -42,7 +42,7 @@ const RoleSelectionStepper = ({ steps, onRoleSelect }) => {
                   <p>{index + 1}</p>
                 </div>
                 <p
-                  className={`${
+                  className={` ${
                     index === activeStep
                       ? "text-medium_green"
                       : "text-gray-500/80"
@@ -94,21 +94,17 @@ const RoleSelectionStepper = ({ steps, onRoleSelect }) => {
     <div>
       <div>
         {!(activeStep === 0) && (
-          <button
-            className="bg-dark_green hover:bg-green-900/80 text-white font-bold py-2 px-4 rounded-full"
-            onClick={handleBack}
-            disabled={activeStep === 0}
-          >
-            <FontAwesomeIcon icon={faChevronLeft} />
-          </button>
+          <a className="cursor-pointer login_Back_Btn" onClick={handleBack}>
+            Back
+          </a>
         )}
         {!(activeStep === steps.length - 1) && (
           <button
-            className="bg-dark_green hover:bg-green-900/80 text-white font-bold py-2 px-4 rounded-full"
+            className="bg-dark_green hover:bg-green-900 text-white font-bold py-2 px-12 rounded login_Next_Btn"
             onClick={handleNext}
             disabled={!selectedRole}
           >
-            <FontAwesomeIcon icon={faChevronRight} />
+            Next
           </button>
         )}
       </div>

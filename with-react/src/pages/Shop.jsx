@@ -143,7 +143,7 @@ const Shop = () => {
                       type="text"
                       name="search"
                       placeholder="Search"
-                      size="smNav"
+                      size="sm"
                       variant="OutlineGray300"
                     ></Input>
                     <Button

@@ -1,14 +1,18 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Column, Row, Divider, UserDetailInput, TextLogo } from "components";
 import SocialLogin from "components/common/SocialLogin";
 import RoleSelectionStepper from "components/RoleSelectionStepper";
 import animationGif from "../assets/images/online-courses.png";
 
+import axios from "axios";
+
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [selectedRole, setSelectedRole] = useState("");
+
+  const navigate = useNavigate();
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
@@ -24,13 +28,25 @@ const Login = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const formData = {
+    const userCredentials = {
       username: username,
       password: password,
       role: selectedRole,
     };
-    const jsonData = JSON.stringify(formData);
-    console.log(jsonData);
+    axios
+      .post(`http://localhost:3001/api/local/login`, userCredentials)
+      .then((res) => {
+        if (res.status === 200) {
+          alert("Woohoo Credentials");
+        } else {
+          navigate("/home", { replace: true });
+        }
+      })
+      .catch((err) => {
+        if (err.response.status === 401) {
+          alert("Wrong Credentials");
+        }
+      });
     // handle form submission here
   };
 
@@ -46,12 +62,12 @@ const Login = () => {
           <form className="flex flex-col pt-3 md:pt-8" onSubmit={handleSubmit}>
             <div className="flex flex-col pt-4 px-6">
               <UserDetailInput
-                label="Email"
-                type="email"
+                label="Username"
+                type="text"
                 value={username}
                 onChange={handleUsernameChange}
-                id="email"
-                placeholder="your@email.com"
+                id="username"
+                placeholder="username"
                 autoFocus
               />
             </div>
@@ -73,9 +89,9 @@ const Login = () => {
               Log In
             </button>
           </form>
-          <div className="text-center ">
-            <div className="text-center pt-12 pb-6">
-              <p className>
+          <div className="text-center">
+            <div className="text-center pt-12 pb-6]">
+              <p className="text-left ml-[1.5rem]">
                 Don't have an account?{" "}
                 <Link
                   to="/signup"
@@ -96,44 +112,44 @@ const Login = () => {
 
   return (
     <React.Fragment>
-      <div className="shadow-2xl rounded-2xl m-16  border-2 border-gray-300">
-        <div className="h-screen rounded-2xl bg-faint_green">
-          <div className="w-full rounded-2xl h-fit flex flex-wrap bg-faint_green">
-            {/* <!-- Login Section --> */}
-            <Column className="w-1/2  sm:w-full md:w-full  flex flex-col">
-              <Row className="flex justify-center md:justify-start pt-12 md:pl-12 ">
-                <Link
-                  to="/"
-                  component="a"
-                  className="text-white font-bold text-xl  p-4"
-                >
-                  {TextLogo(2.2)}
-                </Link>
-              </Row>
-              <Row>
-                <p className="w-full text-center font-semibold text-dark_green text-3xl">
-                  Welcome back.
-                </p>
-                <RoleSelectionStepper
-                  steps={loginSteps}
-                  onRoleSelect={handleRoleSelect}
-                />
-              </Row>
-            </Column>
-            {/* <!-- Image Section --> */}
-            <div
-              className="w-1/2 h-screen sm:hidden md:hidden lg:block relative"
-              style={{
-                backgroundImage: `url(${animationGif})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                borderRadius: "0 1rem 1rem 0",
-              }}
-            >
-              {/* <div className="absolute inset-0  bg-gradient-to-t from-transparent to-dark_green"></div> */}
-            </div>
+      <div className="w-[85rem] flex flex-row justify-center items-center shadow-2xl rounded-2xl m-auto mt-[2rem] mb-[2rem]  border-2 border-gray-300 sm:w-[100%] sm:m-[0]">
+        {/* <div className="h-screen rounded-2xl bg-white"> */}
+        <div className="w-full rounded-2xl h-fit flex flex-wrap bg-white">
+          {/* <!-- Login Section --> */}
+          <Column className="w-1/2  sm:w-full md:w-full  flex flex-col">
+            <Row className="flex justify-center md:justify-start pt-12 md:pl-12 ">
+              <Link
+                to="/"
+                component="a"
+                className="text-white font-bold text-xl  p-4"
+              >
+                {TextLogo(2.2)}
+              </Link>
+            </Row>
+            <Row>
+              <p className="w-full text-center font-semibold text-dark_green text-3xl">
+                Welcome back.
+              </p>
+              <RoleSelectionStepper
+                steps={loginSteps}
+                onRoleSelect={handleRoleSelect}
+              />
+            </Row>
+          </Column>
+          {/* <!-- Image Section --> */}
+          <div
+            className="w-1/2 h-screen sm:hidden md:hidden lg:block relative"
+            style={{
+              backgroundImage: `url(${animationGif})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              borderRadius: "0 1rem 1rem 0",
+            }}
+          >
+            {/* <div className="absolute inset-0  bg-gradient-to-t from-transparent to-dark_green"></div> */}
           </div>
         </div>
+        {/* </div> */}
       </div>
     </React.Fragment>
   );
