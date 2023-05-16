@@ -86,6 +86,8 @@ Button.propTypes = {
     "icbFillDeeporange400",
     "icbFillRed300",
     "icbFillWhiteA700",
+    "NavyBlue",
+    "DarkBlueBlack",
     "OutlineGray500",
   ]),
   size: PropTypes.oneOf([
