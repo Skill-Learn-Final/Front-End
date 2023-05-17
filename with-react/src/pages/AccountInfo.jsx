@@ -91,7 +91,6 @@ const AccountInfo = (userid) => {
   const UserDetailInputClass = `flex-1 w-full rounded-md enabled:border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 disabled:bg-transparent  disabled:border-none`;
   return (
     <Column className="bg-faint_green flex flex-col font-inter items-center justify-start mx-[auto] w-[100%]">
-      <NavBarP />
       <div className="w-2/3 h-fit sm:w-full flex flex-wrap justify-evenly items-center bg-faint_green p-10 my-8 shadow-xl rounded-2xl border-2 border-gray-300">
         <div className="w-full h-screen ">
           {/* Top Buttons */}

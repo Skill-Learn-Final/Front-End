@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   Column,
   Row,
@@ -12,6 +12,7 @@ import SocialLogin from "components/common/SocialLogin";
 import RoleSelectionStepper from "components/RoleSelectionStepper";
 import animationGif from "../assets/images/online-courses.png";
 
+import axios from "axios";
 
 const Signup = ({ onClose }) => {
   const [fullName, setFullName] = useState("");
@@ -20,6 +21,8 @@ const Signup = ({ onClose }) => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [selectedRole, setSelectedRole] = useState("");
+
+  const navigate = useNavigate();
 
   const handlefullNameChange = (event) => {
     setFullName(event.target.value);
@@ -47,16 +50,26 @@ const Signup = ({ onClose }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const formData = {
+    const userCredentials = {
       fullName,
       email,
       username,
       password,
-      confirmPassword,
       role: selectedRole,
     };
-    const jsonData = JSON.stringify(formData);
-    console.log(jsonData);
+    // const jsonData = JSON.stringify(formData);
+    axios
+      .post(`http://localhost:3001/api/local/register`, userCredentials)
+      .then((res) => {
+        if (res.status === 200) {
+          alert("Woohoo Credentials");
+        } else {
+          navigate("/home", { replace: true });
+        }
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
     // handle form submission here
   };
 
@@ -181,10 +194,10 @@ const Signup = ({ onClose }) => {
             </Column>
             {/* <!-- Image Section --> */}
             <div
-              className="w-1/2 h-screen sm:hidden md:hidden lg:block relative"
+              className="w-1/2 h-screen sm:hidden md:hidden lg:block relative flex items-center"
               style={{
                 backgroundImage: `url(${animationGif})`,
-                backgroundSize: "cover",
+                backgroundSize: "contain",
                 backgroundPosition: "center",
                 borderRadius: "0 1rem 1rem 0",
               }}
