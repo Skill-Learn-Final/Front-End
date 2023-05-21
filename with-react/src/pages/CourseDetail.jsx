@@ -52,7 +52,7 @@ const CourseDetail = () => {
       <Column className="bg-light_green flex flex-col font-inter items-center justify-start mx-[auto] w-[100%]">
         <Column className="flex flex-col items-center justify-start w-[100%]">
           <Column className="flex flex-col items-center justify-start sm:mt-[26px] md:mt-[34px] mt-[50px] w-[100%]">
-            <Row className="bg-very_light_green flex flex-row md:flex-wrap sm:flex-wrap items-start max-w-[auto] ml-[auto] mr-[auto] sm:mx-[0] sm:p-[15px] md:p-[17px] p-[25px] sm:pl-[15px] sm:pr-[15px] rounded-radius20 w-[90%]">
+            <Row className="bg-black_900/80 flex flex-row md:flex-wrap sm:flex-wrap items-start max-w-[auto] ml-[auto] mr-[auto] sm:mx-[0] sm:p-[15px] md:p-[17px] p-[25px] sm:pl-[15px] sm:pr-[15px] rounded-radius20 w-[90%]">
               <Column className="flex flex-col justify-start md:ml-[3px] ml-[5px] sm:mx-[0] my-[4px] sm:px-[0] sm:w-[100%] w-[63%]">
                 <Column className="flex flex-col justify-start sm:mt-[15px] md:mt-[20px] mt-[30px] w-[100%]">
                   <Column
@@ -123,28 +123,7 @@ const CourseDetail = () => {
                     consectetur adipiscing elit.
                   </Text>
                 </Column>
-                <Column className="flex flex-row justify-between justify-start sm:mt-[13px] md:mt-[17px] mt-[25px] w-[100%] courseDetailsCards">
-                  <div className="flex flex-col text-center courseDetailsCard">
-                    <FontAwesomeIcon icon={faChartSimple} size="2x" />
-                    <p>All Levels</p>
-                  </div>
-                  <div className="flex flex-col text-center courseDetailsCard">
-                    <FontAwesomeIcon icon={faCertificate} size="2x" />
-                    <p> Certificate:X</p>
-                  </div>
-                  <div className="flex flex-col text-center courseDetailsCard">
-                    <FontAwesomeIcon icon={faClock} size="2x" />
-                    <p>10 Days</p>
-                  </div>
-                  <div className="flex flex-col text-center courseDetailsCard">
-                    <FontAwesomeIcon icon={faLanguage} size="2x" />
-                    <p>English</p>
-                  </div>
-                  <div className="flex flex-col text-center courseDetailsCard">
-                    <FontAwesomeIcon icon={faStar} size="2x" />
-                    <p>Avg. Rating</p>
-                  </div>
-                </Column>
+
                 <Column className="flex flex-col justify-start w-[100%] courseDetailsWhatYoullLearn">
                   <Text
                     className="font-semibold text-black_900 w-[auto]"
@@ -205,6 +184,28 @@ const CourseDetail = () => {
                   </span>
                 </Column>
               </Column>
+              <div className="grid grid-cols-2 gap-5 sm:mt-[13px] md:mt-[17px] w-[33%] courseDetailsCards">
+                <div className="flex flex-col text-center courseDetailsCard">
+                  <FontAwesomeIcon icon={faChartSimple} size="2x" />
+                  <p>All Levels</p>
+                </div>
+                <div className="flex flex-col text-center courseDetailsCard">
+                  <FontAwesomeIcon icon={faCertificate} size="2x" />
+                  <p> Certificate:X</p>
+                </div>
+                <div className="flex flex-col text-center courseDetailsCard">
+                  <FontAwesomeIcon icon={faClock} size="2x" />
+                  <p>10 Days</p>
+                </div>
+                <div className="flex flex-col text-center courseDetailsCard">
+                  <FontAwesomeIcon icon={faLanguage} size="2x" />
+                  <p>English</p>
+                </div>
+                <div className="col-span-2 text-center courseDetailsCard">
+                  <FontAwesomeIcon icon={faStar} size="2x" />
+                  <p>Avg. Rating</p>
+                </div>
+              </div>
               {/* <Column className="flex flex-col items-center justify-start md:ml-[27px] ml-[40px] sm:mx-[0] sm:px-[0] sm:w-[100%] w-[32%]">
                 <Column className="bg-white_A700 flex flex-col items-center justify-center md:p-[13px] sm:p-[15px] p-[20px] rounded-radius10 w-[100%]">
                   <Row className="flex flex-row md:flex-wrap sm:flex-wrap items-center justify-between mt-[10px] sm:mt-[5px] md:mt-[6px] sm:px-[0] w-[100%]">

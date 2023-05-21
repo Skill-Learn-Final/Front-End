@@ -357,11 +357,12 @@ footer {
 
 .courseDetailsCards {
   /* background-color: #c2e9fb; */
-  margin-bottom: 4rem;
+  margin: 0 auto;
+  padding: 0 2rem;
 }
 .courseDetailsCard {
   background-color: white;
-  width: 10rem;
+  /* width: 10rem; */
   border-radius: 0.5rem;
   padding: 1rem 2rem;
   cursor: pointer;
@@ -387,20 +388,38 @@ footer {
 }
 
 /* ============================================== For Login Page ==================== */
+.loginFormHolder {
+  position: relative;
+  /* background-color: black; */
+}
 
 .login_Next_Btn {
   /* background-color: black; */
   font-family: "Montserrat";
   position: relative;
-  bottom: -25rem;
+  bottom: -27rem;
   left: 17.5rem;
 }
 .login_Back_Btn {
   /* background-color: black; */
+  font-size: 1.1rem;
+  color: #43593f;
   font-family: "Montserrat";
   font-weight: bold;
-  position: relative;
-  bottom: -23.25rem;
-  left: 9.5rem;
-  text-decoration: underline;
+  position: absolute;
+  bottom: 6.5rem;
+  margin: 0 20rem;
+}
+.roleSelect {
+  margin: 1.5rem 0;
+  text-align: start;
+  padding: 0 1rem;
+}
+.roleSelectHeader {
+  font-family: "Montserrat";
+}
+.roleSelectDescription > p {
+  color: black;
+  line-height: 28px;
+  font-family: "Lato";
 }

@@ -28,12 +28,16 @@ import {
 } from "./";
 import { useNavigate } from "react-router-dom";
 import Sticky from "react-stickynode";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useContext } from "react";
+
+import { LoginContext } from "../LoginContext";
 
 const NavBarP = () => {
   const navigate = useNavigate();
   const menuRef = useRef();
   const notificationRef = useRef();
+
+  const [LoginStatus, setLoginStatus] = useContext(LoginContext);
 
   function home() {
     navigate("/home");
@@ -49,7 +53,14 @@ const NavBarP = () => {
   const [notificationPanel, setNotificationPanel] = useState(false);
 
   useEffect(() => {
-    if (localStorage.getItem("id") !== null) {
+    if (localStorage.getItem("id") === null) {
+      // console.log(LoginStatus);
+      setLoginStatus(false);
+    }
+  }, [LoginStatus]);
+
+  useEffect(() => {
+    if (LoginStatus) {
       let handler = (e) => {
         if (!menuRef.current.contains(e.target)) {
           setOpen(false);
@@ -60,7 +71,7 @@ const NavBarP = () => {
       };
 
       document.addEventListener("mousedown", handler);
-      console.log("running");
+      // console.log("running");
 
       return () => {
         document.removeEventListener("mousedown", handler);
@@ -70,8 +81,8 @@ const NavBarP = () => {
 
   let conditionalNav;
 
-  if (localStorage.getItem("id") === null) {
-    console.log(localStorage.getItem("id"));
+  if (LoginStatus) {
+    // console.log(localStorage.getItem("id"));
     conditionalNav = (
       <div className="flex flex-row p-[0.5rem] justify-between w-[10rem]">
         <a
@@ -135,11 +146,19 @@ const NavBarP = () => {
               text={"Manage Profile"}
               navigate={"/account_info"}
             />
-            <DropdownItem
-              icon={faArrowRightFromBracket}
-              text={"Logout"}
-              navigate={"/"}
-            />
+            <li
+              className="dropdownItem"
+              onClick={() => {
+                setLoginStatus(false);
+                navigate("/login", { replace: true });
+              }}
+            >
+              <FontAwesomeIcon
+                icon={faArrowRightFromBracket}
+                className="dropdownIcon"
+              />
+              <a className="dropdownTexts"> Logout </a>
+            </li>
           </ul>
         </div>
       </div>

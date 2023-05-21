@@ -9,3 +9,4 @@ export { default as Instructor } from "./Instructor";
 export { default as Library } from "./Library";
 export { default as Wishlist } from "./Wishlist";
 export { default as BuyCurrency } from "./BuyCurrency";
+export { default as ResetPassword } from "./ResetPassword";

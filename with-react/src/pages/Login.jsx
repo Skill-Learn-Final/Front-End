@@ -1,21 +1,30 @@
-import React, { useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Column, Row, Divider, UserDetailInput, TextLogo } from "components";
 import SocialLogin from "components/common/SocialLogin";
 import RoleSelectionStepper from "components/RoleSelectionStepper";
 import animationGif from "../assets/images/online-courses.png";
 
+import { LoginContext } from "LoginContext";
+
 import axios from "axios";
 
 const Login = () => {
-  const [username, setUsername] = useState("");
+  const [LoginStatus, setLoginStatus] = useContext(LoginContext);
+
+  useEffect(() => {
+    localStorage.removeItem("id");
+    setLoginStatus(false);
+  }, []);
+
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [selectedRole, setSelectedRole] = useState("");
 
   const navigate = useNavigate();
 
-  const handleUsernameChange = (event) => {
-    setUsername(event.target.value);
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
   };
 
   const handlePasswordChange = (event) => {
@@ -29,86 +38,98 @@ const Login = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const userCredentials = {
-      username: username,
+      email: email,
       password: password,
-      role: selectedRole,
     };
     axios
-      .post(`http://localhost:3001/api/local/login`, userCredentials)
+      .post(`/local/login`, userCredentials)
       .then((res) => {
         if (res.status === 200) {
-          alert("Woohoo Credentials");
+          localStorage.setItem("id", res.data.id);
+          setLoginStatus(true);
+          if (res.data.role === "creator") {
+            navigate("/creator/dashboard", { replace: true });
+          } else if (res.data.role === "admin") {
+            navigate("/admin/dashboard", { replace: true });
+          } else {
+            navigate("/shop", { replace: true });
+          }
         } else {
-          navigate("/home", { replace: true });
         }
       })
       .catch((err) => {
-        if (err.response.status === 401) {
-          alert("Wrong Credentials");
+        if (err.response.status === 401 || err.response.status === 404) {
+          alert(err.response.data);
         }
       });
     // handle form submission here
   };
 
-  const loginSteps = [
-    {
-      title: "Select your role",
-      form: <></>,
-    },
-    {
-      title: "Login Form",
-      form: (
-        <>
-          <form className="flex flex-col pt-3 md:pt-8" onSubmit={handleSubmit}>
-            <div className="flex flex-col pt-4 px-6">
-              <UserDetailInput
-                label="Username"
-                type="text"
-                value={username}
-                onChange={handleUsernameChange}
-                id="username"
-                placeholder="username"
-                autoFocus
-              />
-            </div>
-            <div className="flex flex-col pt-4 px-6">
-              <UserDetailInput
-                id="pass-word"
-                label="Password"
-                type="password"
-                value={password}
-                onChange={handlePasswordChange}
-                placeholder="Password"
-                autoComplete="password"
-              />
-            </div>
-            <button
-              type="submit"
-              className="bg-dark_green text-white font-bold text-lg rounded-lg hover:bg-green-900/80 focus:bg-dark_green p-2 mt-8 mx-6"
+  const loginSteps = (
+    <>
+      <form
+        className="flex flex-col pt-3 md:pt-8 sm:px-2 sm:w-full pt-10 px-[10rem]"
+        onSubmit={handleSubmit}
+      >
+        <div className="flex flex-col pt-4 px-6">
+          <UserDetailInput
+            label="Email"
+            type="email"
+            value={email}
+            onChange={handleEmailChange}
+            id="email"
+            placeholder="sample@gmail.com"
+            autoFocus
+          />
+        </div>
+        <div className="flex flex-col pt-4 px-6">
+          <UserDetailInput
+            id="pass-word"
+            label="Password"
+            type="password"
+            value={password}
+            onChange={handlePasswordChange}
+            placeholder="Password"
+            autoComplete="password"
+          />
+        </div>
+        <button
+          type="submit"
+          className="bg-dark_green text-white font-bold text-lg rounded-lg hover:bg-green-900/80 focus:bg-dark_green p-2 mt-8 mx-6"
+        >
+          Log In
+        </button>
+      </form>
+      <div className="">
+        <div className="text-center pt-12 pb-6]">
+          <p
+            className="font-semibold underline cursor-pointer text-green-900"
+            onClick={() => {
+              navigate("/reset_password");
+            }}
+          >
+            Forgot Password?
+          </p>
+          <Divider />
+          <p className="text-center">
+            Don't have an account?{" "}
+            <Link
+              to="/signup"
+              className="underline font-semibold hover:text-green-700"
             >
-              Log In
-            </button>
-          </form>
-          <div className="text-center">
-            <div className="text-center pt-12 pb-6]">
-              <p className="text-left ml-[1.5rem]">
-                Don't have an account?{" "}
-                <Link
-                  to="/signup"
-                  className="underline font-semibold hover:text-green-700"
-                >
-                  Register here.
-                </Link>
-              </p>
-            </div>
-            <Divider />
-            <p className="text-sm">Or continue with:</p>
-            <SocialLogin />
-          </div>
-        </>
-      ),
-    },
-  ];
+              Register here.
+            </Link>
+          </p>
+        </div>
+      </div>
+    </>
+  );
+  // },
+  // {
+  //   title: "Select your role",
+  //   form: <></>,
+  // },
+  // ];
 
   return (
     <React.Fragment>
@@ -117,7 +138,7 @@ const Login = () => {
         <div className="w-full rounded-2xl h-fit flex flex-wrap bg-white">
           {/* <!-- Login Section --> */}
           <Column className="w-1/2  sm:w-full md:w-full  flex flex-col">
-            <Row className="flex justify-center md:justify-start pt-12 md:pl-12 ">
+            {/* <Row className="flex justify-center md:justify-start pt-12 md:pl-12 ">
               <Link
                 to="/"
                 component="a"
@@ -125,15 +146,16 @@ const Login = () => {
               >
                 {TextLogo(2.2)}
               </Link>
-            </Row>
+            </Row> */}
             <Row>
-              <p className="w-full text-center font-semibold text-dark_green text-3xl">
-                Welcome back.
+              <p className="w-full text-center font-semibold text-dark_green text-3xl mt-[8rem]">
+                Welcome back
               </p>
-              <RoleSelectionStepper
+              {loginSteps}
+              {/* <RoleSelectionStepper
                 steps={loginSteps}
                 onRoleSelect={handleRoleSelect}
-              />
+              /> */}
             </Row>
           </Column>
           {/* <!-- Image Section --> */}
