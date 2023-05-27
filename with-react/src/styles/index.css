@@ -368,6 +368,13 @@ footer {
   cursor: pointer;
   /* box-shadow: 0 0 7px 2px rgb(150, 150, 150); */
 }
+.purchaseButton {
+  background-color: rgb(194, 101, 9);
+  color: white;
+}
+.purchaseButton:hover {
+  background-color: #4d1717;
+}
 
 .courseDetailsCard > * {
   margin: 0.5rem 0;
@@ -413,7 +420,7 @@ footer {
 .roleSelect {
   margin: 1.5rem 0;
   text-align: start;
-  padding: 0 1rem;
+  padding: 0 1rem 1rem;
 }
 .roleSelectHeader {
   font-family: "Montserrat";
@@ -422,4 +429,10 @@ footer {
   color: black;
   line-height: 28px;
   font-family: "Lato";
+}
+.error {
+  color: red;
+  font-size: 0.75rem;
+  text-align: left;
+  margin-top: 0.5rem;
 }

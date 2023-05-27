@@ -16,7 +16,7 @@ import CheckBox from "./CheckBox";
 import PagerIndicator from "./PagerIndicator";
 import SelectBox from "./SelectBox";
 import Footer from "./Footer";
-import CourseDet from "./CourseDetHome";
+import CourseDet from "./CourseDet";
 import PopularCourses from "./PopularCourses";
 import CourseDetHome from "./CourseDetHome";
 import PlusSigns from "./PlusSigns";
@@ -29,6 +29,7 @@ import UserDetailInput from "./UserDetailInput";
 import Table from "./Table";
 import Rating from "./Rating";
 import DropdownItem from "./DropdownItem";
+import VideoSection from "./VideoSection";
 export {
   Column,
   Datepicker,
@@ -61,4 +62,5 @@ export {
   Table,
   Rating,
   DropdownItem,
+  VideoSection,
 };

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import {
   Column,
@@ -13,8 +13,11 @@ import {
   Input,
   Footer,
   Rating,
+  VideoSection,
 } from "components";
 import { useNavigate } from "react-router-dom";
+
+import Modal from "react-modal";
 
 import Accordion from "components/Accordion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -26,75 +29,61 @@ import {
   faLanguage,
   faStar,
   faUser,
+  faClose,
+  faPlay,
 } from "@fortawesome/free-solid-svg-icons";
+
+const customStyles = {
+  content: {
+    width: "50%",
+    height: "50%",
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    position: "relative",
+    // marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+  },
+};
 
 const CourseDetail = () => {
   const navigate = useNavigate();
 
-  function handleNavigate6() {
-    navigate("/allmentors");
-  }
-  function handleNavigate7() {
-    navigate("/eduvicourses");
-  }
-  function handleNavigate8() {
-    navigate("/eduvishop");
-  }
-  function handleNavigate9() {
-    navigate("/login");
-  }
-  function handleNavigate10() {
-    navigate("/eduvicoursespricing");
+  const [modalState, setModalState] = useState(false);
+  const [modalContent, setModalContent] = useState();
+  // let modalContent;
+
+  // function openModal(content) {
+  //   setModalState(true);
+  // }
+  function closeModal() {
+    setModalState(false);
   }
 
   return (
     <>
+      <Modal
+        isOpen={modalState}
+        // onAfterOpen={afterOpenModal}
+        onRequestClose={closeModal}
+        style={customStyles}
+        contentLabel="Example Modal"
+      >
+        <div className="flex flex-col text-lg absolute top-[40%] left-[20%] font-bold">
+          {modalContent}
+        </div>
+        <FontAwesomeIcon
+          className="text-gray_600 cursor-pointer absolute right-5 top-5"
+          size="2x"
+          icon={faClose}
+          onClick={closeModal}
+        />
+      </Modal>
       <Column className="bg-light_green flex flex-col font-inter items-center justify-start mx-[auto] w-[100%]">
         <Column className="flex flex-col items-center justify-start w-[100%]">
           <Column className="flex flex-col items-center justify-start sm:mt-[26px] md:mt-[34px] mt-[50px] w-[100%]">
-            <Row className="bg-black_900/80 flex flex-row md:flex-wrap sm:flex-wrap items-start max-w-[auto] ml-[auto] mr-[auto] sm:mx-[0] sm:p-[15px] md:p-[17px] p-[25px] sm:pl-[15px] sm:pr-[15px] rounded-radius20 w-[90%]">
-              <Column className="flex flex-col justify-start md:ml-[3px] ml-[5px] sm:mx-[0] my-[4px] sm:px-[0] sm:w-[100%] w-[63%]">
-                <Column className="flex flex-col justify-start sm:mt-[15px] md:mt-[20px] mt-[30px] w-[100%]">
-                  <Column
-                    className="bg-cover bg-no-repeat flex flex-col items-center justify-start md:p-[135px] sm:p-[15px] p-[197px] rounded-radius20 w-[100%]"
-                    style={{
-                      backgroundColor: "white",
-                    }}
-                  >
-                    <Button
-                      className="flex sm:h-[32px] md:h-[42px] h-[60px] items-center justify-center mb-[1px] rounded-radius50 sm:w-[31px] md:w-[41px] w-[60px]"
-                      size="2xlIcn"
-                      variant="icbFillRed300"
-                    >
-                      <Img
-                        src="images/img_play.svg"
-                        className="h-[16px] sm:h-[9px] md:h-[12px] flex items-center justify-center"
-                        alt="play"
-                      />
-                    </Button>
-                  </Column>
-                  <Text
-                    className="sm:mt-[15px] md:mt-[19px] mt-[29px] text-black_900 w-[auto]"
-                    as="h5"
-                    variant="h5"
-                  >
-                    Maths - for Standard 3 Students | Episode 2
-                  </Text>
-                </Column>
-              </Column>
-              <Column className="flex flex-col justify-start md:ml-[46px] ml-[68px] sm:mx-[0] sm:px-[0] sm:w-[100%] w-[32%]">
-                <Text className="text-black_900 w-[auto]" as="h5" variant="h5">
-                  Chapters
-                </Text>
-
-                <Column
-                  style={{ backgroundColor: "#3330", minHeight: "500px" }}
-                  className="flex flex-col items-center justify-start md:mt-[10px] mt-[15px] sm:mt-[7px] p-[1rem] w-[100%]"
-                >
-                  <Accordion></Accordion>
-                </Column>
-              </Column>
-            </Row>
+            <VideoSection />
             <Row className="flex flex-row md:flex-wrap sm:flex-wrap items-start max-w-[auto] ml-[auto] mr-[auto] sm:mt-[37px] md:mt-[48px] mt-[70px] sm:mx-[0] sm:pl-[15px] sm:pr-[15px] sm:px-[0] px-[5rem] py-[2rem] w-[100%]">
               <Column className="flex flex-col justify-start sm:mx-[0] sm:px-[0] sm:w-[100%] w-[66%]">
                 <Column className="flex flex-col justify-start w-[100%] courseDetailsDescription">
@@ -158,12 +147,22 @@ const CourseDetail = () => {
                   >
                     Meet your Teacher
                   </Text>
-                  <span className="mt-[10px]">
-                    <FontAwesomeIcon
-                      icon={faUser}
-                      size="2x"
-                      className="m-[1rem]"
-                    />
+                  <div className="mt-[10px]">
+                    <span className="flex w-1/3">
+                      <FontAwesomeIcon
+                        icon={faUser}
+                        size="2x"
+                        className="m-[1rem]"
+                      />
+                      <p
+                        className="mt-4 ml-2 font-bold cursor-pointer"
+                        onClick={() => {
+                          navigate(`/instructor/${1}`);
+                        }}
+                      >
+                        Teacher Name
+                      </p>
+                    </span>
                     <Text
                       className="font-normal leading-[30.00px] md:leading-[normal] sm:leading-[normal] sm:mt-[4px] md:mt-[6px] mt-[9px] not-italic text-gray_700 w-[100%]"
                       variant="body5"
@@ -181,30 +180,71 @@ const CourseDetail = () => {
                       commodo viverra maecenas accumsan lacus vel facilisis
                       consectetur adipiscing elit.
                     </Text>
-                  </span>
+                  </div>
                 </Column>
               </Column>
-              <div className="grid grid-cols-2 gap-5 sm:mt-[13px] md:mt-[17px] w-[33%] courseDetailsCards">
-                <div className="flex flex-col text-center courseDetailsCard">
+              <div className="grid grid-cols-2 gap-5 sm:mt-[13px] md:mt-[17px] w-[33%] sticky top-20 courseDetailsCards">
+                <div
+                  className="flex flex-col text-center courseDetailsCard"
+                  onClick={() => {
+                    setModalContent("Suitable For All Levels");
+                    setModalState(true);
+                  }}
+                >
                   <FontAwesomeIcon icon={faChartSimple} size="2x" />
                   <p>All Levels</p>
                 </div>
-                <div className="flex flex-col text-center courseDetailsCard">
+                <div
+                  className="flex flex-col text-center courseDetailsCard"
+                  onClick={() => {
+                    setModalContent(
+                      "This course does not offer any certificates"
+                    );
+                    setModalState(true);
+                  }}
+                >
                   <FontAwesomeIcon icon={faCertificate} size="2x" />
                   <p> Certificate:X</p>
                 </div>
-                <div className="flex flex-col text-center courseDetailsCard">
+                <div
+                  className="flex flex-col text-center courseDetailsCard"
+                  onClick={() => {
+                    setModalContent(
+                      "This course will take 10 days to complete on average"
+                    );
+                    setModalState(true);
+                  }}
+                >
                   <FontAwesomeIcon icon={faClock} size="2x" />
                   <p>10 Days</p>
                 </div>
-                <div className="flex flex-col text-center courseDetailsCard">
+                <div
+                  className="flex flex-col text-center courseDetailsCard"
+                  onClick={() => {
+                    setModalContent(
+                      "This Course is taught in the English Language"
+                    );
+                    setModalState(true);
+                  }}
+                >
                   <FontAwesomeIcon icon={faLanguage} size="2x" />
                   <p>English</p>
                 </div>
                 <div className="col-span-2 text-center courseDetailsCard">
                   <FontAwesomeIcon icon={faStar} size="2x" />
-                  <p>Avg. Rating</p>
+                  <p>4.5 </p>
                 </div>
+                {/* <button className="col-span-2 courseDetailsCard purchaseButton">
+                  Add to Cart
+                </button> */}
+                <button
+                  className="col-span-2 courseDetailsCard purchaseButton"
+                  onClick={() => {
+                    navigate(`/purchase_course/${1}`);
+                  }}
+                >
+                  Purchase Course
+                </button>
               </div>
               {/* <Column className="flex flex-col items-center justify-start md:ml-[27px] ml-[40px] sm:mx-[0] sm:px-[0] sm:w-[100%] w-[32%]">
                 <Column className="bg-white_A700 flex flex-col items-center justify-center md:p-[13px] sm:p-[15px] p-[20px] rounded-radius10 w-[100%]">

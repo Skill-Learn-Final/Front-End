@@ -303,7 +303,7 @@ const AccountInfo = (userid) => {
                       />
                     </div>
                   </div>
-                  <div className=" p-4 rounded-md col-span-full grid grid-cols-4 gaps-2">
+                  {/* <div className=" p-4 rounded-md col-span-full grid grid-cols-4 gaps-2">
                     <label
                       htmlFor="new-password"
                       className="text-sm col-span-1 sm:col-span-4 self-center sm:pb-2 pr-4 font-medium text-gray-900  mt-5"
@@ -332,7 +332,7 @@ const AccountInfo = (userid) => {
                         }}
                       />
                     </div>
-                  </div>
+                  </div> */}
                   <div className=" p-4 rounded-md col-span-full grid grid-cols-4 gaps-2">
                     <label
                       htmlFor="email"

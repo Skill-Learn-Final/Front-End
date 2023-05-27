@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { UserDetailInput } from "components";
 import axios from "axios";
+
+import { ToastContainer, Zoom, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+import { BeatLoader } from "react-spinners";
 
 const ResetPassword = () => {
   const [email, setEmail] = useState();
@@ -9,6 +14,9 @@ const ResetPassword = () => {
   const [confirmPassword, setConfirmPassword] = useState();
   const [emailSent, setEmailSent] = useState(false);
   const { id, token } = useParams();
+  const navigate = useNavigate();
+
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -16,14 +24,35 @@ const ResetPassword = () => {
       email,
     };
     // console.log(myEmail);
+    setLoading(true);
     axios
       .post("/local/reset_password/send_email", myEmail)
       .then((res) => {
-        alert(res.data);
+        setLoading(false);
+        toast.success(res.data, {
+          position: "top-center",
+          autoClose: false,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
       })
       .catch((err) => {
+        setLoading(false);
         if (err.response.status === 404) {
-          alert("No Account found with given email");
+          toast.error("No Account found with the given email", {
+            position: "top-center",
+            autoClose: false,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+          });
         }
         // console.log(err.response.status);
       });
@@ -35,15 +64,38 @@ const ResetPassword = () => {
       token,
       password: newPassword,
     };
+    // console.log(newCredentials);
     axios
       .post("/local/reset_password/changePassword", newCredentials)
       .then((res) => {
-        alert(res.data);
+        if (res.status === 200) {
+          toast.success(
+            "Password Change. You can now login with your new credentials",
+            {
+              position: "top-center",
+              autoClose: false,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "colored",
+            }
+          );
+        }
       })
       .catch((err) => {
-        console.log(err);
+        toast.error("Invalid Token", {
+          position: "top-center",
+          autoClose: false,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
       });
-    // alert("Password Changed");
   };
 
   const handleEmailChange = (event) => {
@@ -133,7 +185,19 @@ const ResetPassword = () => {
     );
   }
 
-  return <div className="bg-light_green emptyPage">{resetPassword}</div>;
+  return (
+    <>
+      <BeatLoader
+        color={"#754"}
+        loading={loading}
+        size={50}
+        // cssOverride={override}
+        aria-label="Loading Spinner"
+        data-testid="loader"
+      />
+      <div className="bg-light_green emptyPage">{resetPassword}</div>;
+    </>
+  );
 };
 
 export default ResetPassword;

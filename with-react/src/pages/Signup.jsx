@@ -15,6 +15,9 @@ import animationGif from "../assets/images/online-courses.png";
 import axios from "axios";
 import { LoginContext } from "LoginContext";
 
+import { ToastContainer, Zoom, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const Signup = ({ onClose }) => {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
@@ -55,25 +58,74 @@ const Signup = ({ onClose }) => {
       role: selectedRole,
     };
     // const jsonData = JSON.stringify(formData);
+
     axios
       .post(`/local/register`, userCredentials)
       .then((res) => {
         if (res.status === 200) {
-          console.log(res.data);
-          localStorage.setItem("id", res.data.id);
-          setLoginStatus(true);
-          if (res.data.role === "creator") {
-            navigate("/creator/dashboard", { replace: true });
-          } else if (res.data.role === "admin") {
-            navigate("/admin/dashboard", { replace: true });
-          } else {
-            navigate("/shop", { replace: true });
-          }
-        } else {
+          toast.success(
+            "Confirm your Email. We've sent a confirmation link to your email",
+            {
+              position: "top-center",
+              autoClose: false,
+              hideProgressBar: true,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "colored",
+            }
+          );
+          // localStorage.setItem("id", res.data.id);
+          // setLoginStatus(true);
+          // if (res.data.role === "creator") {
+          //   navigate("/creator/dashboard", { replace: true });
+          // } else if (res.data.role === "admin") {
+          //   navigate("/admin/dashboard", { replace: true });
+          // } else {
+          //   navigate("/shop", { replace: true });
+          // }
+        } else if (res.status === 409) {
+          alert(res.status);
         }
       })
       .catch((err) => {
-        console.log(err.message);
+        if (err.message !== "Network Error") {
+          if (err.message.includes(409)) {
+            toast.error("Account with the given email already exists", {
+              position: "top-center",
+              autoClose: false,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "colored",
+            });
+          }
+
+          toast.error(err.response.data, {
+            position: "top-center",
+            autoClose: false,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+          });
+        } else {
+          toast.error("Network Error", {
+            position: "top-center",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+          });
+        }
       });
     // handle form submission here
   };

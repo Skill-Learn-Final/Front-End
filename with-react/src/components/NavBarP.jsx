@@ -53,8 +53,9 @@ const NavBarP = () => {
   const [notificationPanel, setNotificationPanel] = useState(false);
 
   useEffect(() => {
+    console.log(LoginStatus);
     if (localStorage.getItem("id") === null) {
-      // console.log(LoginStatus);
+      // console.log(document.cookie);
       setLoginStatus(false);
     }
   }, [LoginStatus]);
@@ -170,7 +171,7 @@ const NavBarP = () => {
           className="cursor-pointer font-medium w-1/2 text-[12px] text-center mx-[1rem]"
           size="mdNavIcn"
           variant="OutlineGray500"
-          shape="RoundedBorder1"
+          shape="RoundedBorder5"
           onClick={login}
         >
           <b>Login</b>
@@ -178,7 +179,7 @@ const NavBarP = () => {
         <Button
           className="cursor-pointer font-medium text-[12px] text-center text-white_A700 w-1/2"
           size="mdNavIcn"
-          shape="RoundedBorder1"
+          shape="RoundedBorder5"
           variant="DarkBlueBlack"
           onClick={signup}
         >
@@ -257,7 +258,7 @@ const NavBarP = () => {
     <div className="bg-white flex flex-row md:flex-wrap sm:flex-wrap items-center justify-between max-w-[auto] ml-[auto] mr-[auto] md:p-[5px] p-[1rem] sm:pl-[15px] sm:pr-[15px] sm:px-[15px] sm:py-[11px] w-[100%]">
       <div className="brandLogo flex mx-[2rem]">
         <Img
-          src="images/logo.png"
+          src="/images/logo.png"
           className="flex-shrink-0 sm:h-[16px] md:h-[21px] h-[30px] max-w-[100%] sm:w-[15px] md:w-[20px] w-[30px]"
           alt="logo"
         />

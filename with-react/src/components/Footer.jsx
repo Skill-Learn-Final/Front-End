@@ -33,13 +33,13 @@ import {
 const Footer = () => {
   return (
     <footer className="font-inter w-[100%]">
-      <Row className="flex flex-row md:flex-wrap sm:flex-wrap items-start justify-around max-w-[auto] sm:mb-[42px] md:mb-[55px] mb-[80px] ml-[auto] mr-[auto] mt-[100px] sm:mt-[53px] md:mt-[68px] sm:mx-[0] mx-[auto] sm:pl-[15px] sm:pr-[15px] sm:px-[0] w-[100%]">
+      <Row className="flex flex-row md:flex-wrap sm:flex-wrap items-start justify-around max-w-[auto] sm:mb-[42px] md:mb-[55px] mb-[80px] ml-[auto] mr-[auto] pt-8 sm:mt-[53px] md:mt-[68px] sm:mx-[0] mx-[auto] sm:pl-[15px] sm:pr-[15px] sm:px-[0] w-[100%]">
         <Column className="flex flex-col justify-start sm:mx-[0] sm:px-[0] sm:w-[100%] w-[16%] common-column-list">
           <ul className="flex flex-col">
             <li className="w-[92%] sm:w-[100%] sm:mx-[0] sm:px-[0] flex-row flex">
               <Row className="cursor-pointer flex flex-row md:flex-wrap sm:flex-wrap items-center">
                 <Img
-                  src="images/logo.png"
+                  src="/images/logo.png"
                   className="flex-shrink-0 sm:h-[16px] md:h-[21px] h-[30px] max-w-[100%] sm:w-[15px] md:w-[20px] w-[30px]"
                   alt="location One"
                 />

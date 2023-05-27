@@ -85,16 +85,16 @@ const RoleSelectionStepper = ({ steps, onRoleSelect }) => {
               <hr />
               <div className="roleSelectDescription mt-2">
                 <p className="text-sm font-semibold">
-                  <FontAwesomeIcon icon={faCheck} /> &nbsp; Some Description
+                  <FontAwesomeIcon icon={faCheck} /> &nbsp; Create Courses
                 </p>
                 <p className="text-sm font-semibold">
-                  <FontAwesomeIcon icon={faCheck} /> &nbsp; Some Description
+                  <FontAwesomeIcon icon={faCheck} /> &nbsp; Withdraw Money
                 </p>
                 <p className="text-sm font-semibold">
-                  <FontAwesomeIcon icon={faCheck} /> &nbsp; Some Description
+                  <FontAwesomeIcon icon={faCheck} /> &nbsp; Share Knowledge
                 </p>
                 <p className="text-sm font-semibold">
-                  <FontAwesomeIcon icon={faCheck} /> &nbsp; Some Description
+                  <FontAwesomeIcon icon={faCheck} /> &nbsp; Org Verification
                 </p>
               </div>
             </button>
@@ -124,16 +124,16 @@ const RoleSelectionStepper = ({ steps, onRoleSelect }) => {
               <hr />
               <div className="roleSelectDescription mt-2">
                 <p className="text-sm font-semibold">
-                  <FontAwesomeIcon icon={faCheck} /> &nbsp; Some Description
+                  <FontAwesomeIcon icon={faCheck} /> &nbsp; Buy Courses
                 </p>
                 <p className="text-sm font-semibold">
-                  <FontAwesomeIcon icon={faCheck} /> &nbsp; Some Description
+                  <FontAwesomeIcon icon={faCheck} /> &nbsp; Buy Currency
                 </p>
                 <p className="text-sm font-semibold">
-                  <FontAwesomeIcon icon={faCheck} /> &nbsp; Some Description
+                  <FontAwesomeIcon icon={faCheck} /> &nbsp; Learn New things
                 </p>
                 <p className="text-sm font-semibold">
-                  <FontAwesomeIcon icon={faCheck} /> &nbsp; Some Description
+                  <FontAwesomeIcon icon={faCheck} /> &nbsp; Attend Live Classes
                 </p>
               </div>
             </button>

@@ -10,3 +10,4 @@ export { default as Library } from "./Library";
 export { default as Wishlist } from "./Wishlist";
 export { default as BuyCurrency } from "./BuyCurrency";
 export { default as ResetPassword } from "./ResetPassword";
+export { default as PurchaseCourse } from "./PurchaseCourse";
