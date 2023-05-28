@@ -82,10 +82,8 @@ const Login = () => {
           localStorage.setItem("id", res.data.id);
           localStorage.setItem("balance", res.data.balance);
           setLoginStatus(true);
-          if (res.data.role === "creator") {
-            navigate("/creator/dashboard", { replace: true });
-          } else if (res.data.role === "admin") {
-            navigate("/admin/dashboard", { replace: true });
+          if (res.data.role === "creator" || res.data.role === "admin") {
+            navigate("/dashboard", { replace: true });
           } else {
             navigate("/shop", { replace: true });
           }

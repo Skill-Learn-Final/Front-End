@@ -59,7 +59,7 @@ export default function ManageCoursesPage() {
 
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
-    axios.get("http://localhost:8080/categories/").then((res) => {
+    axios.get("/categories/").then((res) => {
       setOpen(true);
       setCategories(res.data.data);
     });
@@ -74,7 +74,7 @@ export default function ManageCoursesPage() {
   const [difficulty, setDifficulty] = React.useState("Beginner");
 
   const fetchCourses = () => {
-    axios.get("http://localhost:8080/courses").then((response) => {
+    axios.get("/courses").then((response) => {
       setCourses(response.data.data);
     });
   };
@@ -96,7 +96,7 @@ export default function ManageCoursesPage() {
     form.append("courseCategories", JSON.stringify(courseCategories));
 
     axios
-      .post("http://localhost:8080/courses", form)
+      .post("/courses", form)
       .then(function (response) {
         fetchCourses();
         setOpen(false);

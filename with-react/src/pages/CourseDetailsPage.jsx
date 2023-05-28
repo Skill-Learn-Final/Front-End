@@ -55,7 +55,7 @@ export default function CourseDetailsPage() {
   const { id } = useParams();
 
   const fetchCourse = () => {
-    axios.get("http://localhost:8080/courses/" + id).then((res) => {
+    axios.get("/courses/" + id).then((res) => {
       setCourse(res.data.data);
     });
   };
@@ -64,7 +64,7 @@ export default function CourseDetailsPage() {
     e.preventDefault();
 
     axios
-      .post(`http://localhost:8080/courses/${course.id}/chapters/`, {
+      .post(`/courses/${course.id}/chapters/`, {
         title,
         description,
       })

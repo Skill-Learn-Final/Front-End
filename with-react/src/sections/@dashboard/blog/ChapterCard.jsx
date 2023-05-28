@@ -31,9 +31,7 @@ export default function ChapterCard({ chapter, courseId }) {
 
   const fetchLessons = () => {
     axios
-      .get(
-        `http://localhost:8080/courses/${courseId}/chapters/${chapter.id}/lessons/`
-      )
+      .get(`/courses/${courseId}/chapters/${chapter.id}/lessons/`)
       .then((res) => {
         setLessons(res.data.data);
       });
@@ -48,10 +46,7 @@ export default function ChapterCard({ chapter, courseId }) {
 
     axios
 
-      .post(
-        `http://localhost:8080/courses/${courseId}/chapters/${chapter.id}/lessons/`,
-        formData
-      )
+      .post(`/courses/${courseId}/chapters/${chapter.id}/lessons/`, formData)
       .then((res) => {
         fetchLessons();
         handleClose();
