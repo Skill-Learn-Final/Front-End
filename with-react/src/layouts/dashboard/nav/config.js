@@ -1,20 +1,25 @@
 // component
-import SvgColor from '../../../components/svg-color';
+import SvgColor from "../../../components/svg-color";
 
 // ----------------------------------------------------------------------
 
-const icon = (name) => <SvgColor src={`/assets/icons/navbar/${name}.svg`} sx={{ width: 1, height: 1 }} />;
+const icon = (name) => (
+  <SvgColor
+    src={`/assets/icons/navbar/${name}.svg`}
+    sx={{ width: 1, height: 1 }}
+  />
+);
 
 const navConfig = [
   {
-    title: 'dashboard',
-    path: '/dashboard/app',
-    icon: icon('ic_analytics'),
+    title: "dashboard",
+    path: "/dashboard/app",
+    icon: icon("ic_analytics"),
   },
   {
-    title: 'user',
-    path: '/dashboard/user',
-    icon: icon('ic_user'),
+    title: "user",
+    path: "/dashboard/user",
+    icon: icon("ic_user"),
   },
   // {
   //   title: 'product',
@@ -22,15 +27,15 @@ const navConfig = [
   //   icon: icon('ic_cart'),
   // },
   {
-    title: 'posts',
-    path: '/dashboard/posts',
-    icon: icon('ic_blog'),
+    title: "Manage Courses",
+    path: "/dashboard/manage-courses",
+    icon: icon("ic_blog"),
   },
-  {
-    title: 'Post Course',
-    path: '/dashboard/postCourse',
-    icon: icon('ic_blog'),
-  },
+  // {
+  //   title: "Post Course",
+  //   path: "/dashboard/postCourse",
+  //   icon: icon("ic_blog"),
+  // },
   // {
   //   title: 'login',
   //   path: '/login',
