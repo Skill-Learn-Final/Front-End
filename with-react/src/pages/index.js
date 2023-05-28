@@ -1,4 +1,13 @@
 export { default as Login } from "./Login";
 export { default as Signup } from "./Signup";
 export { default as Home } from "./homepage";
-export { default as Home1 } from "./Home";
+export { default as Shop } from "./Shop";
+export { default as Courses } from "./Courses";
+export { default as CourseDetail } from "./CourseDetail";
+export { default as Cart } from "./Cart";
+export { default as Instructor } from "./Instructor";
+export { default as Library } from "./Library";
+export { default as Wishlist } from "./Wishlist";
+export { default as BuyCurrency } from "./BuyCurrency";
+export { default as ResetPassword } from "./ResetPassword";
+export { default as PurchaseCourse } from "./PurchaseCourse";

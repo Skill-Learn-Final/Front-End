@@ -6,14 +6,19 @@ module.exports = {
   ],
   darkMode: "class",
   theme: {
-    screens: {
-      sm: { min: "200px", max: "767px" },
-      md: { min: "768px", max: "991px" },
-    },
     extend: {
+      screens: {
+        sm: { min: "200px", max: "767px" },
+        md: { min: "768px", max: "1023px" },
+      },
       colors: {
-        light_green :"#E1F2DF",
-        light_green_nav :"#EFF9EE",
+        medium_green: "#7F8C7D",
+        dark_green: "#43593F",
+        faint_green: "#f2f6f2",
+        very_light_green: "#D2FB7B",
+        light_blue: "#6780C9",
+        light_green: "#E1F2DF",
+        light_green_nav: "#EFF9EE",
         green_300: "#82b378",
         bluegray_50: "#ebf2f9",
         navy_blue: "#000080",
@@ -142,12 +147,21 @@ module.exports = {
         gradient: "linear-gradient(180deg ,#0a023c00,#0a033c,#0a023c00)",
       },
       boxShadow: {
+        outline: "0 0 0 3px rgba(66, 153, 225, 0.5)",
+        inner: "inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)",
+        "slate-400":
+          "0 1px 3px rgba(15, 20, 25, 0.15), 0 1px 2px rgba(15, 20, 25, 0.1)",
         bs2: "0px 15px  50px 0px #ff665233",
         bs: "0px 50px  80px 0px #0000000c",
         bs3: "0px 50px  170px 0px #0000000c",
         bs1: "0px 50px  50px 0px #00000019",
       },
       letterSpacing: { ls1: "1px", ls048: "0.48px" },
+    },
+  },
+  variants: {
+    extend: {
+      boxShadow: ["active", "focus"],
     },
   },
   plugins: [require("@tailwindcss/forms")],

@@ -1,18 +1,17 @@
- /*
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
+  background-color: #f2f6f2;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
-} */
+}
 
 * {
   box-sizing: border-box;
@@ -22,18 +21,18 @@ body {
   margin: 0;
   padding: 0;
 }
-.dhiwise-code,
+/* .dhiwise-code,
 .dhiwise-navigation {
   min-height: 100%;
-}
+} */
 .common-pointer {
   cursor: pointer;
 }
-.dhiwise-navigation {
+/* .dhiwise-navigation {
   padding: 20px;
   background-color: #232323;
-}
-.dhiwise-navigation h1 {
+} */
+/* .dhiwise-navigation h1 {
   color: white;
 }
 .dhiwise-navigation .headline {
@@ -52,7 +51,7 @@ body {
 }
 .dhiwise-navigation a {
   color: #132cdc;
-}
+} */
 table {
   border-spacing: 0;
   width: 100%;
@@ -63,81 +62,81 @@ table {
 .react-datepicker-popper {
   z-index: 100000 !important;
 }
-.drawable-icon{
+.drawable-icon {
   position: absolute;
   margin: auto;
   z-index: 1000;
 }
-.input-wrap{
+.input-wrap {
   position: relative;
 }
-option{
+option {
   color: #000;
 }
-.table-wrap{
+.table-wrap {
   overflow: auto;
 }
-input:focus{
-  outline:none;
+input:focus {
+  outline: none;
 }
-.ReactModal__Body--open{
+.ReactModal__Body--open {
   overflow: hidden;
 }
-  .slider-indicator:first-child {
-    margin-left: 0;
+.slider-indicator:first-child {
+  margin-left: 0;
 }
 
 .slider-indicator:last-child {
-margin-right: 0;
+  margin-right: 0;
 }
 
-.rc-drawer-content-wrapper{
+.rc-drawer-content-wrapper {
   width: 100% !important;
 }
-.rc-drawer-right .rc-drawer-content-wrapper{
+.rc-drawer-right .rc-drawer-content-wrapper {
   display: flex;
   justify-content: flex-end;
 }
-.rc-drawer-left .rc-drawer-content-wrapper{
+.rc-drawer-left .rc-drawer-content-wrapper {
   display: flex;
   justify-content: flex-start;
 }
-.ReactModal__Overlay{
+.ReactModal__Overlay {
   z-index: 1051;
 }
 
-ul li a{
+ul li a {
   display: block;
 }
 
-.mobile-menu div{
+.mobile-menu div {
   height: 1.5px;
   width: 20px;
   background-color: #000;
-  margin:4px 0;
+  margin: 4px 0;
 }
 .mobile-menu {
   display: none;
   cursor: pointer;
 }
-.header-row{
-  align-items:center;
+.header-row {
+  align-items: center;
   justify-content: space-between;
 }
-@media only screen and (min-width: 200px) and (max-width: 767px)  {
+@media only screen and (min-width: 200px) and (max-width: 767px) {
   .mobile-menu {
     display: block;
   }
-  .header-row{
+  .header-row {
     width: 100% !important;
   }
-  .display-block{
+  .display-block {
     display: block;
   }
-  .display-none{
+  .display-none {
     display: none;
   }
-  .common-row-list > ul{
+  .common-row-list > ul {
     padding-left: 10px;
     padding-right: 10px;
     flex-wrap: wrap;
@@ -148,7 +147,7 @@ ul li a{
   right: 16px;
   top: 16px;
 }
-.menu-overlay{
+.menu-overlay {
   width: 100%;
   height: 100%;
   background-color: #000;
@@ -157,21 +156,283 @@ ul li a{
   left: 0px;
   top: 0px;
 }
-.close-line1{
-  transform: translate(0, 6px) rotate(-45deg) skewX(0) skewY(0) scaleX(1) scaleY(1);
+.close-line1 {
+  transform: translate(0, 6px) rotate(-45deg) skewX(0) skewY(0) scaleX(1)
+    scaleY(1);
 }
-.close-line2{
+.close-line2 {
   transform: translate(0, 0) rotate(45deg) skewX(0) skewY(0) scaleX(1) scaleY(1);
 }
-.common-row-list > ul{
+
+.common-row {
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+}
+
+.common-row-list > ul {
   display: flex;
   flex-direction: row;
   list-style-type: none;
   flex-grow: 1;
 }
 
-.common-column-list > ul{
+.common-column-list > ul {
   display: flex;
   flex-direction: column;
   list-style-type: none;
+}
+
+/* ===================== The following is css for the landing page, will be put in separate file later =================== */
+.landingText {
+  font-family: "Roboto";
+  line-height: 1.5rem;
+  max-width: 75%;
+}
+
+.landingDescription {
+  margin: 2rem 0 0 0;
+  font-size: 1.25rem;
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(245, 245, 245);
+  /* line-height: 1.5rem; */
+  max-width: 75%;
+}
+
+.landingFirstSection {
+  /* background-image: linear-gradient(blue, white); */
+  background-image: linear-gradient(135deg, #00bd45 0%, #8ff4d4 100%);
+  /* background-color: #132cdc; */
+}
+
+.landingJoinAsTeacher {
+  background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+}
+
+/* ===================== The following is css for the footer, will be put in separate file later =================== */
+
+footer {
+  background-color: #172b4d;
+  color: white;
+}
+.courseCardButton {
+  transition: all 0.75s;
+}
+.courseCardButton:hover {
+  background-color: #d97356;
+  color: white;
+  box-shadow: 4px 4px 8px 3px rgb(255, 212, 171);
+}
+/* ============================== The following is css for the navbar, will be put in separate file ============*/
+
+.brandLogo {
+  font-family: "Poppins";
+  text-transform: uppercase;
+  color: rgb(181, 181, 181);
+}
+
+.userIcon {
+  display: flex;
+  justify-content: space-evenly;
+  max-width: 2rem;
+}
+.userIcon li {
+  margin-left: 0.25rem;
+}
+.userIcon img {
+  aspect-ratio: 1;
+  border-radius: 50%;
+}
+
+.navLinks {
+  color: black;
+  padding-bottom: 0.25rem;
+}
+
+.navLinks .link {
+  font-size: 1.1rem;
+  font-family: "Montserrat";
+}
+.menu-trigger img {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+  background-color: #fff;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100px;
+  right: 20px;
+  background-color: white;
+  border-radius: 5px;
+  padding: 10px 20px;
+  width: 200px;
+  box-shadow: 0px 0px 8px 2px rgb(178, 178, 178);
+  z-index: 99;
+}
+
+.dropdown-menu::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  height: 20px;
+  width: 20px;
+  background: white;
+  transform: rotate(45deg);
+}
+.dropdown-right::before {
+  right: 20px;
+}
+.dropdown-center::before {
+  right: 60px;
+}
+
+.dropdown-menu.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-20px);
+  transition: 0.5s ease;
+}
+
+.dropdown-menu.inactive {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-40px);
+  transition: 0.5s ease;
+}
+
+.dropdown-menu ul li {
+  padding: 10px 0;
+  font-family: "Montserrat";
+  /* border-top: 1px solid rgba(0, 0, 0, 0.05); */
+}
+
+.dropdown-menu ul li:hover .dropdownTexts {
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.dropdown-menu ul li:hover .dropdownIcon {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.dropdownItem {
+  display: flex;
+  margin: 10px auto;
+}
+
+.dropdownIcon {
+  max-width: 20px;
+  margin-right: 10px;
+  opacity: 0.5;
+  transition: 0.5s;
+}
+
+.dropdownTexts {
+  max-width: 100px;
+  margin-left: 10px;
+  font-size: 0.75rem;
+  transition: 0.5s;
+}
+.dropdownTitle {
+  color: rgb(139, 158, 144);
+  font-size: 0.75rem;
+  font-weight: bolder;
+}
+
+/* ============================== The following is css for COURSE DETAILS, will be put in separate file ============*/
+
+.courseDetailsDescription {
+  background-color: rgb(220, 220, 220);
+  padding: 1rem;
+  border-radius: 1rem;
+  margin-bottom: 2rem;
+}
+
+.courseDetailsCards {
+  /* background-color: #c2e9fb; */
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+.courseDetailsCard {
+  background-color: white;
+  /* width: 10rem; */
+  border-radius: 0.5rem;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  /* box-shadow: 0 0 7px 2px rgb(150, 150, 150); */
+}
+.purchaseButton {
+  background-color: rgb(194, 101, 9);
+  color: white;
+}
+.purchaseButton:hover {
+  background-color: #4d1717;
+}
+
+.courseDetailsCard > * {
+  margin: 0.5rem 0;
+}
+
+.courseDetailsWhatYoullLearn {
+  background-color: rgb(220, 220, 220);
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+.emptyPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 88.5vh;
+  /* background-color: #ccc; */
+}
+
+/* ============================================== For Login Page ==================== */
+.loginFormHolder {
+  position: relative;
+  /* background-color: black; */
+}
+
+.login_Next_Btn {
+  /* background-color: black; */
+  font-family: "Montserrat";
+  position: relative;
+  bottom: -27rem;
+  left: 17.5rem;
+}
+.login_Back_Btn {
+  /* background-color: black; */
+  font-size: 1.1rem;
+  color: #43593f;
+  font-family: "Montserrat";
+  font-weight: bold;
+  position: absolute;
+  bottom: 6.5rem;
+  margin: 0 20rem;
+}
+.roleSelect {
+  margin: 1.5rem 0;
+  text-align: start;
+  padding: 0 1rem 1rem;
+}
+.roleSelectHeader {
+  font-family: "Montserrat";
+}
+.roleSelectDescription > p {
+  color: black;
+  line-height: 28px;
+  font-family: "Lato";
+}
+.error {
+  color: red;
+  font-size: 0.75rem;
+  text-align: left;
+  margin-top: 0.5rem;
 }
