@@ -7,7 +7,7 @@ const Cart = () => {
   return (
     <>
       <div className="bg-light_green flex flex-row text-center justify-center emptyPage">
-        <div className="cart-container">
+        <div className="shadow-lg cart-container">
           <img src={EmptyCart} alt="Empty Cart" />
           <h1>Once you add items to your cart, they will appear here</h1>
         </div>

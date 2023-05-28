@@ -1,10 +1,13 @@
 import React, { useState } from "react";
-import { Row, Img } from "./";
+import { Row, Img, Divider } from "./";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChevronLeft,
   faChevronRight,
+  faCheck,
 } from "@fortawesome/free-solid-svg-icons";
+
+// import teacher from "../../public/images/teacher.jpg";
 
 const RoleSelectionStepper = ({ steps, onRoleSelect }) => {
   const [activeStep, setActiveStep] = useState(0);
@@ -42,7 +45,7 @@ const RoleSelectionStepper = ({ steps, onRoleSelect }) => {
                   <p>{index + 1}</p>
                 </div>
                 <p
-                  className={`${
+                  className={` ${
                     index === activeStep
                       ? "text-medium_green"
                       : "text-gray-500/80"
@@ -55,32 +58,84 @@ const RoleSelectionStepper = ({ steps, onRoleSelect }) => {
           })}
         </div>
         {activeStep === 0 ? (
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-6">
             <button
-              onClick={() => handleRoleSelect("author")}
-              className={`w-full bg-light_green col-span-1 sm:col-span-2 p-2  rounded-md  ${
-                selectedRole === "author"
+              onClick={() => handleRoleSelect("creator")}
+              className={`w-full bg-white col-span-1 sm:col-span-2 rounded-md h-[15rem] overflow-hidden roleSelect ${
+                selectedRole === "creator"
                   ? "  shadow-md shadow-green-300 border-2 border-green-900/40 border-medium_green text-grey-700/90"
-                  : " text-dark_green shadow-md hover:border-dark_green "
+                  : " text-dark_green shadow-2xl hover:shadow-md "
               }`}
             >
-              <div className="w-7/8 h-40 bg-white_A700_b2 m-4">
-                <Img src="images/teaching.png" />
+              <div
+                className="flex flex-row mb-[0.55rem] pl-[0.5rem] py-5 roleSelectHeader"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(to right, rgba(0, 0, 0, 0.75), rgba(0,0,0,0)), url(images/teacher.jpg)",
+                  backgroundSize: "cover",
+                }}
+              >
+                <p className="w-1 text-xl text-white font-semibold roleSelectTitle">
+                  Creator
+                </p>
+                {/* <div className="w-full h-full rounded-full overflow-hidden bg-white_A700_b2 roleSelectImage">
+                  <Img src="images/teacher.jpg" />
+                </div> */}
               </div>
-              Author
+              <hr />
+              <div className="roleSelectDescription mt-2">
+                <p className="text-sm font-semibold">
+                  <FontAwesomeIcon icon={faCheck} /> &nbsp; Create Courses
+                </p>
+                <p className="text-sm font-semibold">
+                  <FontAwesomeIcon icon={faCheck} /> &nbsp; Withdraw Money
+                </p>
+                <p className="text-sm font-semibold">
+                  <FontAwesomeIcon icon={faCheck} /> &nbsp; Share Knowledge
+                </p>
+                <p className="text-sm font-semibold">
+                  <FontAwesomeIcon icon={faCheck} /> &nbsp; Org Verification
+                </p>
+              </div>
             </button>
             <button
               onClick={() => handleRoleSelect("learner")}
-              className={`w-full bg-light_green col-span-1 sm:col-span-2 p-2 rounded-md ${
+              className={`w-full bg-white col-span-1 sm:col-span-2 rounded-md h-[15rem] overflow-hidden roleSelect ${
                 selectedRole === "learner"
-                  ? " shadow-md shadow-green-300 border-2 border-green-900/40 border-medium_green text-grey-700/90"
-                  : "text-dark_green shadow-md hover:border-dark_green "
+                  ? "  shadow-md shadow-green-300 border-2 border-green-900/40 border-medium_green text-grey-700/90"
+                  : " text-dark_green shadow-2xl hover:shadow-md "
               }`}
             >
-              <div className="w-7/8 h-40 bg-white_A700_b2 m-4">
-                <Img src="images/students-in-a-class.png" />
+              <div
+                className="flex flex-row mb-[0.55rem] pl-[0.5rem] py-5 roleSelectHeader"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(to right, rgba(0, 0, 0, 0.75), rgba(0,0,0,0)), url(images/student.jpg)",
+                  backgroundSize: "cover",
+                }}
+              >
+                <p className="w-1 text-xl text-white font-semibold roleSelectTitle">
+                  Learner
+                </p>
+                {/* <div className="w-full h-full rounded-full overflow-hidden bg-white_A700_b2 roleSelectImage">
+                  <Img src="images/teacher.jpg" />
+                </div> */}
               </div>
-              Learner
+              <hr />
+              <div className="roleSelectDescription mt-2">
+                <p className="text-sm font-semibold">
+                  <FontAwesomeIcon icon={faCheck} /> &nbsp; Buy Courses
+                </p>
+                <p className="text-sm font-semibold">
+                  <FontAwesomeIcon icon={faCheck} /> &nbsp; Buy Currency
+                </p>
+                <p className="text-sm font-semibold">
+                  <FontAwesomeIcon icon={faCheck} /> &nbsp; Learn New things
+                </p>
+                <p className="text-sm font-semibold">
+                  <FontAwesomeIcon icon={faCheck} /> &nbsp; Attend Live Classes
+                </p>
+              </div>
             </button>
           </div>
         ) : (
@@ -91,24 +146,20 @@ const RoleSelectionStepper = ({ steps, onRoleSelect }) => {
   };
 
   return (
-    <div>
+    <div className="loginFormHolder">
       <div>
         {!(activeStep === 0) && (
-          <button
-            className="bg-dark_green hover:bg-green-900/80 text-white font-bold py-2 px-4 rounded-full"
-            onClick={handleBack}
-            disabled={activeStep === 0}
-          >
-            <FontAwesomeIcon icon={faChevronLeft} />
-          </button>
+          <a className="cursor-pointer login_Back_Btn" onClick={handleBack}>
+            Back
+          </a>
         )}
         {!(activeStep === steps.length - 1) && (
           <button
-            className="bg-dark_green hover:bg-green-900/80 text-white font-bold py-2 px-4 rounded-full"
+            className="bg-dark_green hover:bg-green-900 text-white font-bold py-2 px-12 rounded login_Next_Btn"
             onClick={handleNext}
             disabled={!selectedRole}
           >
-            <FontAwesomeIcon icon={faChevronRight} />
+            Next
           </button>
         )}
       </div>

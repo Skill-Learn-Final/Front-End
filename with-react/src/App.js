@@ -1,26 +1,17 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { HelmetProvider } from "react-helmet-async";
 import "./styles/App.css";
-import {
-  Login,
-  Home,
-  Shop,
-  Courses,
-  CourseDetail,
-  Signup,
-  Cart,
-  Instructor,
-  Library,
-  Wishlist,
-  BuyCurrency,
-} from "./pages";
-import AccountInfo from "pages/AccountInfo";
+
 import ScrollToTop from "./scrollToTop";
 
 import { register } from "swiper/element/bundle";
-import { NavBarP } from "components";
 import { useRef, useEffect } from "react";
-import LiveClasses from "pages/LiveClasses";
-import SwitchAccounts from "pages/SwitchAccounts";
+
+import { LoginProvider } from "LoginContext";
+import { ToastContainer, Zoom } from "react-toastify";
+import ThemeProvider from "theme";
+import { theme } from "styles/theme";
+import Router from "./routes";
 
 register();
 function App() {
@@ -28,27 +19,39 @@ function App() {
   // let openState;
 
   return (
-    <BrowserRouter>
-      <ScrollToTop />
-      <NavBarP />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/account_info" element={<AccountInfo />} />
-        <Route path="/shop" element={<Shop />} />
-        <Route path="/courses" element={<Courses />} />
-        <Route path="/course_detail" element={<CourseDetail />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/instructor" element={<Instructor />} />
-        <Route path="/library" element={<Library />} />
-        <Route path="/wishlist" element={<Wishlist />} />
-        <Route path="/buycurrency" element={<BuyCurrency />} />
-        <Route path="/live_classes" element={<LiveClasses />} />
-        <Route path="/switch_accounts" element={<SwitchAccounts />} />
-      </Routes>
-    </BrowserRouter>
+    <HelmetProvider>
+      <ThemeProvider theme={theme}>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            minHeight: "100vh",
+          }}
+          className="App"
+        >
+          <BrowserRouter>
+            <ScrollToTop />
+            <LoginProvider>
+              {/* <Footer /> */}
+              <ToastContainer
+                position="top-center"
+                autoClose={3000}
+                hideProgressBar={false}
+                newestOnTop={true}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="colored"
+                transition={Zoom}
+              />
+              <Router />
+            </LoginProvider>
+          </BrowserRouter>
+        </div>
+      </ThemeProvider>
+    </HelmetProvider>
   );
 }
 export default App;

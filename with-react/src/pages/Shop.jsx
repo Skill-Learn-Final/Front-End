@@ -19,6 +19,7 @@ import {
   PopularCourses,
   CourseDet,
   Nav,
+  CourseDetHome,
 } from "../components";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -30,6 +31,49 @@ import {
   faStar,
 } from "@fortawesome/free-solid-svg-icons";
 import Courses from "./Courses";
+
+const courses = [
+  {
+    id: 1,
+    title: "Introduction to programming: A hands on course",
+    description: "Some description about the course",
+    price: 25,
+    authorId: "John Smith",
+    posterLink: "images/teacher.jpg",
+    rating: 4.5,
+    comments: ["good", "amazing", "bad"],
+  },
+  {
+    id: 2,
+    title: "YouTube Success: Script, Shoot & Edit with MKBHD",
+    description: "Some description about the course",
+    price: 25,
+    authorId: "Patrick Stall",
+    posterLink: "images/teacher.jpg",
+    rating: 3.9,
+    comments: ["good", "amazing", "bad"],
+  },
+  {
+    id: 3,
+    title: "YouTube Success: Script, Shoot & Edit with MKBHD",
+    description: "Some description about the course",
+    price: 25,
+    authorId: "Jane Goodall",
+    posterLink: "images/teacher.jpg",
+    rating: 4.8,
+    comments: ["good", "amazing", "bad"],
+  },
+  {
+    id: 4,
+    title: "Instagram Success: Script, Shoot & Post with Walter",
+    description: "Some description about the course",
+    price: 25,
+    authorId: "Walter Whitman",
+    posterLink: "images/teacher.jpg",
+    rating: 4.2,
+    comments: ["good", "amazing", "bad"],
+  },
+];
 
 const Shop = () => {
   const navigate = useNavigate();
@@ -76,7 +120,7 @@ const Shop = () => {
                 className="sm:gap-[21px] md:gap-[27px] gap-[40px] grid min-h-[auto] w-[32%]"
                 orientation="vertical"
               >
-                <Column className="flex flex-col justify-start w-[100%]">
+                <Column className="flex flex-col justify-start w-[80%]">
                   <Text
                     className="font-semibold text-black_900 w-[auto]"
                     as="h4"
@@ -143,7 +187,7 @@ const Shop = () => {
                       type="text"
                       name="search"
                       placeholder="Search"
-                      size="smNav"
+                      size="sm"
                       variant="OutlineGray300"
                     ></Input>
                     <Button
@@ -167,66 +211,18 @@ const Shop = () => {
                   ></SelectBox>
                 </Row>
                 <Column className="flex flex-col items-center justify-start sm:mt-[15px] md:mt-[20px] mt-[30px] w-[100%]">
-                  <Grid className="md:gap-[10px] gap-[15px] sm:gap-[7px] grid sm:grid-cols-1 md:grid-cols-2 grid-cols-3 min-h-[auto] w-[100%]">
-                    <CourseDet
-                      imageDir={"images/img_image_90X75.png"}
-                      courseName={"Course Title"}
-                      price={40.0}
-                      rating={3}
-                    />
-
-                    <CourseDet
-                      imageDir={"images/img_image_90X75.png"}
-                      courseName={"Course Title"}
-                      price={40.0}
-                      rating={3}
-                    />
-
-                    <CourseDet
-                      imageDir={"images/img_image_90X75.png"}
-                      courseName={"Course Title"}
-                      price={40.0}
-                      rating={3}
-                    />
-
-                    <CourseDet
-                      imageDir={"images/img_image_90X75.png"}
-                      courseName={"Course Title"}
-                      price={40.0}
-                      rating={3}
-                    />
-
-                    <CourseDet
-                      imageDir={"images/img_image_90X75.png"}
-                      courseName={"Course Title"}
-                      price={40.0}
-                      rating={3}
-                    />
-
-                    <CourseDet
-                      imageDir={"images/img_image_90X75.png"}
-                      courseName={"Course Title"}
-                      price={40.0}
-                      rating={3}
-                    />
-                    <CourseDet
-                      imageDir={"images/img_image_90X75.png"}
-                      courseName={"Course Title"}
-                      price={40.0}
-                      rating={3}
-                    />
-                    <CourseDet
-                      imageDir={"images/img_image_90X75.png"}
-                      courseName={"Course Title"}
-                      price={40.0}
-                      rating={3}
-                    />
-                    <CourseDet
-                      imageDir={"images/img_image_90X75.png"}
-                      courseName={"Course Title"}
-                      price={40.0}
-                      rating={3}
-                    />
+                  <Grid className="md:gap-[10px] gap-[15px] sm:gap-[7px] grid sm:grid-cols-1 md:grid-cols-2 grid-cols-4 min-h-[auto] w-[100%]">
+                    {courses.map((item, i) => (
+                      <CourseDetHome
+                        id={item.id}
+                        imageDir={item.posterLink}
+                        courseName={item.title}
+                        price={item.price}
+                        rating={item.rating}
+                        authorId={item.authorId}
+                        description={item.description}
+                      />
+                    ))}
                   </Grid>
                 </Column>
                 <Row className="flex flex-row md:flex-wrap sm:flex-wrap items-start justify-center md:ml-[191px] ml-[278px] sm:mt-[26px] md:mt-[34px] mt-[50px] sm:mx-[0] sm:px-[0] sm:w-[100%] w-[34%]">
@@ -255,7 +251,7 @@ const Shop = () => {
                     className="font-medium md:ml-[10px] ml-[15px] sm:ml-[7px] mt-[14px] sm:mt-[7px] md:mt-[9px] text-gray_901 w-[auto]"
                     variant="body5"
                   >
-                    of 80
+                    of 1
                   </Text>
                   <Button
                     className="flex sm:h-[24px] md:h-[31px] h-[44px] items-center justify-center sm:ml-[11px] md:ml-[14px] ml-[21px] sm:w-[23px] md:w-[30px] w-[44px]"

@@ -3,7 +3,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
-    background-color: #f2f6f2 ;
+  background-color: #f2f6f2;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -21,18 +21,18 @@ body {
   margin: 0;
   padding: 0;
 }
-.dhiwise-code,
+/* .dhiwise-code,
 .dhiwise-navigation {
   min-height: 100%;
-}
+} */
 .common-pointer {
   cursor: pointer;
 }
-.dhiwise-navigation {
+/* .dhiwise-navigation {
   padding: 20px;
   background-color: #232323;
-}
-.dhiwise-navigation h1 {
+} */
+/* .dhiwise-navigation h1 {
   color: white;
 }
 .dhiwise-navigation .headline {
@@ -51,7 +51,7 @@ body {
 }
 .dhiwise-navigation a {
   color: #132cdc;
-}
+} */
 table {
   border-spacing: 0;
   width: 100%;
@@ -221,8 +221,13 @@ footer {
   background-color: #d97356;
   color: white;
   box-shadow: 4px 4px 8px 3px rgb(255, 212, 171);
+}
+/* ============================== The following is css for the navbar, will be put in separate file ============*/
 
-  /* ============================== The following is css for the navbar, will be put in separate file ============*/
+.brandLogo {
+  font-family: "Poppins";
+  text-transform: uppercase;
+  color: rgb(181, 181, 181);
 }
 
 .userIcon {
@@ -245,6 +250,7 @@ footer {
 
 .navLinks .link {
   font-size: 1.1rem;
+  font-family: "Montserrat";
 }
 .menu-trigger img {
   position: absolute;
@@ -267,6 +273,7 @@ footer {
   padding: 10px 20px;
   width: 200px;
   box-shadow: 0px 0px 8px 2px rgb(178, 178, 178);
+  z-index: 99;
 }
 
 .dropdown-menu::before {
@@ -301,11 +308,12 @@ footer {
 
 .dropdown-menu ul li {
   padding: 10px 0;
+  font-family: "Montserrat";
   /* border-top: 1px solid rgba(0, 0, 0, 0.05); */
 }
 
 .dropdown-menu ul li:hover .dropdownTexts {
-  color: rgb(212, 33, 9);
+  font-weight: bold;
   cursor: pointer;
 }
 
@@ -349,15 +357,23 @@ footer {
 
 .courseDetailsCards {
   /* background-color: #c2e9fb; */
-  margin-bottom: 4rem;
+  margin: 0 auto;
+  padding: 0 2rem;
 }
 .courseDetailsCard {
   background-color: white;
-  width: 10rem;
+  /* width: 10rem; */
   border-radius: 0.5rem;
   padding: 1rem 2rem;
   cursor: pointer;
   /* box-shadow: 0 0 7px 2px rgb(150, 150, 150); */
+}
+.purchaseButton {
+  background-color: rgb(194, 101, 9);
+  color: white;
+}
+.purchaseButton:hover {
+  background-color: #4d1717;
 }
 
 .courseDetailsCard > * {
@@ -376,4 +392,47 @@ footer {
   align-items: center;
   height: 88.5vh;
   /* background-color: #ccc; */
+}
+
+/* ============================================== For Login Page ==================== */
+.loginFormHolder {
+  position: relative;
+  /* background-color: black; */
+}
+
+.login_Next_Btn {
+  /* background-color: black; */
+  font-family: "Montserrat";
+  position: relative;
+  bottom: -27rem;
+  left: 17.5rem;
+}
+.login_Back_Btn {
+  /* background-color: black; */
+  font-size: 1.1rem;
+  color: #43593f;
+  font-family: "Montserrat";
+  font-weight: bold;
+  position: absolute;
+  bottom: 6.5rem;
+  margin: 0 20rem;
+}
+.roleSelect {
+  margin: 1.5rem 0;
+  text-align: start;
+  padding: 0 1rem 1rem;
+}
+.roleSelectHeader {
+  font-family: "Montserrat";
+}
+.roleSelectDescription > p {
+  color: black;
+  line-height: 28px;
+  font-family: "Lato";
+}
+.error {
+  color: red;
+  font-size: 0.75rem;
+  text-align: left;
+  margin-top: 0.5rem;
 }
