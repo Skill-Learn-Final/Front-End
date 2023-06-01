@@ -10,14 +10,13 @@ import "react-toastify/dist/ReactToastify.css";
 
 import { ClockLoader, BeatLoader } from "react-spinners";
 
-import { LoginContext } from "LoginContext";
-
 import axios from "axios";
 
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 import { loginSchema } from "../hooks/UserValidation";
+import { useAuth } from "hooks/useAuth";
 
 const override = {
   display: "block",
@@ -32,13 +31,12 @@ const override = {
 };
 
 const Login = () => {
-  const [LoginStatus, setLoginStatus] = useContext(LoginContext);
   const [loading, setLoading] = useState(false);
+  const { login } = useAuth();
 
-  useEffect(() => {
-    localStorage.clear();
-    setLoginStatus(false);
-  }, []);
+  // useEffect(() => {
+  //   localStorage.clear();
+  // }, []);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -75,13 +73,11 @@ const Login = () => {
     };
     setLoading(true);
     axios
-      .post(`/local/login`, userCredentials, { withCredentials: true })
+      .post(`/local/login/`, userCredentials, { withCredentials: true })
       .then((res) => {
         setLoading(false);
         if (res.status === 200) {
-          localStorage.setItem("id", res.data.id);
-          localStorage.setItem("balance", res.data.balance);
-          setLoginStatus(true);
+          login(res.data);
           if (res.data.role === "creator" || res.data.role === "admin") {
             navigate("/dashboard", { replace: true });
           } else {
@@ -108,6 +104,7 @@ const Login = () => {
           }
         } else {
           // setLoading(false);
+          console.log(err);
           toast.error("Network Error", {
             position: "top-center",
             autoClose: false,

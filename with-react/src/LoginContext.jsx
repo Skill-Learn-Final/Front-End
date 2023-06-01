@@ -1,17 +1,13 @@
-import { useState, createContext, useEffect } from "react";
-
-export const LoginContext = createContext();
+import { AuthContext } from "context/AuthContext";
+import { useAuth } from "hooks/useAuth";
+import { useState } from "react";
 
 export const LoginProvider = (props) => {
-  const [LoginStatus, setLoginStatus] = useState(
-    localStorage.getItem("id") !== null
-  );
-
-  useEffect(() => {}, [LoginStatus]);
+  const [user, setUser] = useState(null);
 
   return (
-    <LoginContext.Provider value={[LoginStatus, setLoginStatus]}>
+    <AuthContext.Provider value={{ user, setUser }}>
       {props.children}
-    </LoginContext.Provider>
+    </AuthContext.Provider>
   );
 };

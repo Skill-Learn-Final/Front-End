@@ -13,7 +13,6 @@ import RoleSelectionStepper from "components/RoleSelectionStepper";
 import animationGif from "../assets/images/online-courses.png";
 
 import axios from "axios";
-import { LoginContext } from "LoginContext";
 
 import { ToastContainer, Zoom, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -27,7 +26,6 @@ const Signup = ({ onClose }) => {
   const [selectedRole, setSelectedRole] = useState("");
 
   const navigate = useNavigate();
-  const [LoginStatus, setLoginStatus] = useContext(LoginContext);
 
   const handlefullNameChange = (event) => {
     setFullName(event.target.value);

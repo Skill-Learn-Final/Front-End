@@ -29,15 +29,13 @@ import {
 import { useNavigate } from "react-router-dom";
 import Sticky from "react-stickynode";
 import { useEffect, useRef, useState, useContext } from "react";
-
-import { LoginContext } from "../LoginContext";
+import { useAuth } from "hooks/useAuth";
 
 const NavBarP = () => {
   const navigate = useNavigate();
   const menuRef = useRef();
   const notificationRef = useRef();
-
-  const [LoginStatus, setLoginStatus] = useContext(LoginContext);
+  const { user, logout } = useAuth();
 
   function home() {
     navigate("/home");
@@ -53,15 +51,7 @@ const NavBarP = () => {
   const [notificationPanel, setNotificationPanel] = useState(false);
 
   useEffect(() => {
-    console.log(LoginStatus);
-    if (localStorage.getItem("id") === null) {
-      // console.log(document.cookie);
-      setLoginStatus(false);
-    }
-  }, [LoginStatus]);
-
-  useEffect(() => {
-    if (LoginStatus) {
+    if (user !== null) {
       let handler = (e) => {
         if (!menuRef.current.contains(e.target)) {
           setOpen(false);
@@ -82,7 +72,7 @@ const NavBarP = () => {
 
   let conditionalNav;
 
-  if (LoginStatus) {
+  if (user !== null) {
     // console.log(localStorage.getItem("id"));
     conditionalNav = (
       <div className="flex flex-row p-[0.5rem] justify-between w-[10rem]">
@@ -150,7 +140,7 @@ const NavBarP = () => {
             <li
               className="dropdownItem"
               onClick={() => {
-                setLoginStatus(false);
+                logout();
                 navigate("/login", { replace: true });
               }}
             >
