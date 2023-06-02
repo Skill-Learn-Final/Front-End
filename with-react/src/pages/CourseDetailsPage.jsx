@@ -60,6 +60,12 @@ export default function CourseDetailsPage() {
     });
   };
 
+  const publishCourse = () => {
+    axios.put(`/courses/${id}/publish`, {}).then(() => {
+      fetchCourse();
+    });
+  };
+
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
@@ -194,12 +200,14 @@ export default function CourseDetailsPage() {
               <Typography variant="h3" sx={{ textAlign: "start" }}>
                 Content
               </Typography>
-              <Button
-                startIcon={<Iconify icon="eva:plus-fill" />}
-                onClick={handleOpen}
-              >
-                Add Chapter
-              </Button>
+              {!course.isPublished && (
+                <Button
+                  startIcon={<Iconify icon="eva:plus-fill" />}
+                  onClick={handleOpen}
+                >
+                  Add Chapter
+                </Button>
+              )}
             </Stack>
 
             <Box sx={{ mt: 3 }}>
@@ -215,9 +223,36 @@ export default function CourseDetailsPage() {
                     key={chapter.id}
                     chapter={chapter}
                     courseId={course.id}
+                    canEdit={!course.isPublished}
                   />
                 ))}
             </Box>
+
+            <Stack
+              direction="row"
+              alignItems="center"
+              justifyContent="flex-end"
+              sx={{ mt: 6 }}
+            >
+              {course.isPublished && !course.isReviewed && (
+                <Typography
+                  variant="body2"
+                  color="primary"
+                  border={1}
+                  px={2}
+                  py={1}
+                  borderRadius={1}
+                >
+                  Your Course is Being Reviewed. Once the Review is done, your
+                  course will go live. Thank You!
+                </Typography>
+              )}
+              {!course.isPublished && (
+                <Button onClick={publishCourse} variant="outlined" size="large">
+                  Publish
+                </Button>
+              )}
+            </Stack>
           </Box>
         </Box>
       </Container>
