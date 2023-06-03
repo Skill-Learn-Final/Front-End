@@ -36,6 +36,7 @@ import GuardedRoute from "sections/auth/GuardedRoute";
 import { useAuth } from "hooks/useAuth";
 import { userHasRole } from "utils/helpers";
 import { Roles } from "utils/constants";
+import ManageReviewRequestsPage from "pages/ManageReviewRequestsPage";
 
 // ----------------------------------------------------------------------
 
@@ -117,7 +118,8 @@ export default function Router() {
               element: <CourseDetailsPage />,
             },
             { path: "postCourse", element: <PostCoursePage /> },
-            { path: "reviewCourse", element: <StreamPage /> },
+            { path: "reviewCourse/:id", element: <StreamPage /> },
+            { path: "manage-reviews", element: <ManageReviewRequestsPage /> },
           ],
         },
       ],
