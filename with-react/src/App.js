@@ -12,27 +12,39 @@ import { ToastContainer, Zoom } from "react-toastify";
 import ThemeProvider from "theme";
 import { theme } from "styles/theme";
 import Router from "./routes";
+import { useLocalStorage } from "hooks/useLocalStorage";
+import { useUser } from "hooks/useUser";
 
 register();
 function App() {
   let menuRef = useRef();
+  const { addUser } = useUser();
+  const { getItem } = useLocalStorage();
   // let openState;
 
+  useEffect(() => {
+    const user = getItem("user");
+    if (user) {
+      addUser(user);
+    }
+  }, []);
+
   return (
-    <HelmetProvider>
-      <ThemeProvider theme={theme}>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            minHeight: "100vh",
-          }}
-          className="App"
-        >
-          <BrowserRouter>
-            <ScrollToTop />
-            <LoginProvider>
-              {/* <Footer /> */}
+    <LoginProvider>
+      {/* <Footer /> */}
+      <HelmetProvider>
+        <ThemeProvider theme={theme}>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              minHeight: "100vh",
+            }}
+            className="App"
+          >
+            <BrowserRouter>
+              <ScrollToTop />
+
               <ToastContainer
                 position="top-center"
                 autoClose={3000}
@@ -47,11 +59,11 @@ function App() {
                 transition={Zoom}
               />
               <Router />
-            </LoginProvider>
-          </BrowserRouter>
-        </div>
-      </ThemeProvider>
-    </HelmetProvider>
+            </BrowserRouter>
+          </div>
+        </ThemeProvider>
+      </HelmetProvider>
+    </LoginProvider>
   );
 }
 export default App;
