@@ -11,7 +11,7 @@ const StyledCover = styled("img")({
   position: "absolute",
 });
 
-export default function LessonCard({ lesson }) {
+export default function LessonCard({ lesson, onClick }) {
   return (
     <Box sx={{ mt: 3 }}>
       <Card
@@ -26,7 +26,9 @@ export default function LessonCard({ lesson }) {
             sx={{
               width: "150px",
               height: "80px",
+              cursor: onClick ? "pointer" : "default",
             }}
+            onClick={onClick || (() => {})}
           >
             <StyledCover alt={lesson.title} src={lesson.thumbnailLink} />
           </Card>

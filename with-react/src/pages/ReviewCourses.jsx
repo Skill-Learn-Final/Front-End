@@ -1,9 +1,11 @@
 import { Container, Grid, Stack, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import BlogPostsSearch from "../BlogPostsSearch";
-import BlogPostsSort from "../BlogPostsSort";
-import BlogPostCard from "../BlogPostCard";
 import axios from "axios";
+import {
+  BlogPostCard,
+  BlogPostsSearch,
+  BlogPostsSort,
+} from "sections/@dashboard/blog";
 
 const SORT_OPTIONS = [
   { value: "latest", label: "Latest" },
@@ -11,11 +13,11 @@ const SORT_OPTIONS = [
   { value: "oldest", label: "Oldest" },
 ];
 
-const RejectedTab = () => {
+const ReviewCourses = () => {
   const [courses, setCourses] = useState([]);
 
   const fetchCourses = () => {
-    axios.get("/courses?status=rejected").then((res) => {
+    axios.get("/courses/byReviewer").then((res) => {
       setCourses(res.data.data);
     });
   };
@@ -33,7 +35,7 @@ const RejectedTab = () => {
         mb={5}
       >
         <Typography variant="h4" gutterBottom>
-          Rejected Courses
+          Courses To Review
         </Typography>
       </Stack>
 
@@ -49,16 +51,21 @@ const RejectedTab = () => {
 
       {courses.length === 0 && (
         <Typography variant="h6" marginTop={1}>
-          No Rejected Courses!
+          No Courses to Review Yet!
         </Typography>
       )}
       <Grid container spacing={3}>
         {courses.map((post, index) => (
-          <BlogPostCard key={post.id} post={post} index={index} />
+          <BlogPostCard
+            key={post.id}
+            post={post}
+            index={index}
+            link={"/dashboard/review-courses/" + post.id}
+          />
         ))}
       </Grid>
     </Container>
   );
 };
 
-export default RejectedTab;
+export default ReviewCourses;

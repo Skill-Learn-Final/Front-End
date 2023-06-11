@@ -75,7 +75,7 @@ const VideoSection = () => {
           </Column> */}
           <ReactPlayer
             controls={true}
-            url="/images/Endless Runner- Overview & Player Control - 01 - v4.7 Tutorial Series - Unreal Engine.mp4"
+            url="http://localhost:8080/uploads/video.mp4"
           />
           <Text
             className="sm:mt-[15px] md:mt-[19px] mt-[29px] text-black_900 w-[auto]"

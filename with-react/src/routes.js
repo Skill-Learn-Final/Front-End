@@ -37,6 +37,7 @@ import { useAuth } from "hooks/useAuth";
 import { userHasRole } from "utils/helpers";
 import { Roles } from "utils/constants";
 import ManageReviewRequestsPage from "pages/ManageReviewRequestsPage";
+import ReviewCourses from "pages/ReviewCourses";
 
 // ----------------------------------------------------------------------
 
@@ -98,6 +99,7 @@ export default function Router() {
             userHasRole(user, Roles.CREATOR) ||
             userHasRole(user, Roles.REVIEWER)
           }
+          redirectTo="/login"
         />
       ),
       children: [
@@ -117,8 +119,12 @@ export default function Router() {
               path: "manage-courses/:id",
               element: <CourseDetailsPage />,
             },
+            {
+              path: "review-courses",
+              element: <ReviewCourses />,
+            },
+            { path: "review-courses/:id", element: <StreamPage /> },
             { path: "postCourse", element: <PostCoursePage /> },
-            { path: "reviewCourse/:id", element: <StreamPage /> },
             { path: "manage-reviews", element: <ManageReviewRequestsPage /> },
           ],
         },

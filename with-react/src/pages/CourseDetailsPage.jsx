@@ -1,10 +1,16 @@
 import {
   Accordion,
+  AccordionDetails,
+  AccordionSummary,
   Box,
   Button,
   Card,
   Chip,
   Container,
+  Divider,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
   Modal,
   Stack,
   TextField,
@@ -19,6 +25,8 @@ import { useParams } from "react-router-dom";
 import Iconify from "components/iconify/Iconify";
 import ChapterCard from "sections/@dashboard/blog/ChapterCard";
 import { difficultyColor } from "utils/cssStyles";
+import { List } from "antd";
+import { Info } from "@mui/icons-material";
 
 const StyledCardMedia = styled("div")({
   position: "relative",
@@ -112,7 +120,7 @@ export default function CourseDetailsPage() {
           </Stack>
 
           <Box sx={{ mt: 3 }}>
-            {!course.chapters && (
+            {course && course.chapters?.length === 0 && (
               <Typography variant="body1" sx={{ textAlign: "center" }}>
                 No Content
               </Typography>
@@ -154,6 +162,30 @@ export default function CourseDetailsPage() {
               </Button>
             )}
           </Stack>
+
+          {course.isReviewed && !course.isApproved && (
+            <Accordion>
+              <AccordionSummary
+                expandIcon={<Iconify icon="mdi:chevron-down" />}
+              >
+                <Typography>
+                  Your Course was rejected for the following reasons
+                </Typography>
+              </AccordionSummary>
+              <AccordionDetails>
+                <List>
+                  {course.rejectionReasons.map((reason, i) => (
+                    <ListItem key={i}>
+                      <ListItemIcon>
+                        <Info />
+                      </ListItemIcon>
+                      <ListItemText primary={reason} />
+                    </ListItem>
+                  ))}
+                </List>
+              </AccordionDetails>
+            </Accordion>
+          )}
         </Box>
       </Container>
 
@@ -172,7 +204,7 @@ export default function CourseDetailsPage() {
           }}
         >
           <Typography id="modal-modal-title" variant="h6" component="h2">
-            New Course
+            New Chapter
           </Typography>
           <Box
             component="form"
@@ -281,35 +313,7 @@ export function CourseDetails({ course }) {
           {course.title}
         </Typography>
         <Typography variant="body1" sx={{ textAlign: "justify", mt: 3, px: 2 }}>
-          In today's data-driven world, the ability to extract insights and make
-          informed decisions from vast amounts of information is a valuable
-          skill. The Introduction to Data Science course offers a comprehensive
-          introduction to the exciting field of data science, providing students
-          with the foundational knowledge and practical skills necessary to
-          tackle real-world data challenges.
-          <br />
-          <br /> Throughout this course, students will explore the key concepts
-          and techniques used in data science, including data collection, data
-          cleaning, data visualization, statistical analysis, and machine
-          learning. They will gain hands-on experience with popular data science
-          tools and programming languages such as Python and R, enabling them to
-          manipulate and analyze data effectively. The course will also delve
-          into various data science methodologies and frameworks, such as
-          exploratory data analysis, predictive modeling, and data storytelling.
-          Students will learn how to apply these methodologies to extract
-          meaningful insights, identify patterns, and develop data-driven
-          solutions to complex problems.
-          <br />
-          <br /> Moreover, the course will emphasize the ethical considerations
-          and responsible use of data in today's society. Students will explore
-          topics such as data privacy, bias, and fairness, equipping them with
-          the knowledge to make ethical decisions when working with data. By the
-          end of the course, students will have a solid understanding of the
-          fundamental principles of data science and will be able to approach
-          data-related challenges with confidence. Whether pursuing a career in
-          data science or seeking to enhance their analytical skills, this
-          course provides a strong foundation for future learning and
-          application in the data-driven world.
+          {course.description}
         </Typography>
 
         <Stack direction="row" marginTop={5} px={2} alignItems="center">

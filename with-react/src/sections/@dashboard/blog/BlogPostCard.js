@@ -66,7 +66,19 @@ BlogPostCard.propTypes = {
   index: PropTypes.number,
 };
 
-export default function BlogPostCard({ post, index }) {
+function getStatusMessage(course) {
+  if (!course.isPublished) return "Draft";
+
+  if (!course.isReviewed) return "Under Review";
+
+  if (!course.isApproved) return "Rejected";
+
+  if (course.isApproved) return "Live";
+
+  return "Unknown";
+}
+
+export default function BlogPostCard({ post, index, link }) {
   const {
     coursePosterLink,
     title,
@@ -173,7 +185,7 @@ export default function BlogPostCard({ post, index }) {
                 color: "common.white",
               }),
             }}
-            href={"/dashboard/manage-courses/" + id}
+            href={link ?? "/dashboard/manage-courses/" + id}
           >
             {title}
           </StyledTitle>
@@ -185,15 +197,7 @@ export default function BlogPostCard({ post, index }) {
           />
 
           <StyledInfo>
-            {!post.isPublished && (
-              <Typography variant="body2">Draft</Typography>
-            )}
-            {post.isPublished && !post.isReviewed && (
-              <Typography variant="body2">In Review</Typography>
-            )}
-            {post.isPublished && post.isReviewed && (
-              <Typography variant="body2">Live</Typography>
-            )}
+            <Typography variant="body2">{getStatusMessage(post)}</Typography>
           </StyledInfo>
         </CardContent>
       </Card>

@@ -36,6 +36,11 @@ const navConfig = [
     path: "/dashboard/manage-reviews",
     icon: icon("ic_blog"),
   },
+  {
+    title: "Review Courses",
+    path: "/dashboard/review-courses",
+    icon: icon("ic_blog"),
+  },
   // {
   //   title: "Post Course",
   //   path: "/dashboard/postCourse",
