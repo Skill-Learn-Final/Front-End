@@ -11,6 +11,7 @@ import React from "react";
 import { Helmet } from "react-helmet-async";
 import TabPanel from "sections/@dashboard/TablePanel";
 import CourseReviewTab from "sections/@dashboard/admin/reviews/tabs/CourseReviewTab";
+import ProfileVerificationTab from "sections/@dashboard/admin/reviews/tabs/ProfileVerificationTab";
 
 const ManageReviewRequestsPage = () => {
   const [value, setValue] = React.useState(0);
@@ -34,7 +35,9 @@ const ManageReviewRequestsPage = () => {
       <TabPanel value={value} index={0}>
         <CourseReviewTab />
       </TabPanel>
-      <TabPanel value={value} index={1}></TabPanel>
+      <TabPanel value={value} index={1}>
+        <ProfileVerificationTab />
+      </TabPanel>
     </Box>
   );
 };

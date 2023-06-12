@@ -38,6 +38,7 @@ import { userHasRole } from "utils/helpers";
 import { Roles } from "utils/constants";
 import ManageReviewRequestsPage from "pages/ManageReviewRequestsPage";
 import ReviewCourses from "pages/ReviewCourses";
+import VerificationRequestPage from "pages/VerificationRequestPage";
 
 // ----------------------------------------------------------------------
 
@@ -124,6 +125,7 @@ export default function Router() {
               element: <ReviewCourses />,
             },
             { path: "review-courses/:id", element: <StreamPage /> },
+            { path: "verification", element: <VerificationRequestPage /> },
             { path: "postCourse", element: <PostCoursePage /> },
             { path: "manage-reviews", element: <ManageReviewRequestsPage /> },
           ],
