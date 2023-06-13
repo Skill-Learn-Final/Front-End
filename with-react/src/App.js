@@ -5,9 +5,9 @@ import "./styles/App.css";
 import ScrollToTop from "./scrollToTop";
 
 import { register } from "swiper/element/bundle";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useContext } from "react";
 
-import { LoginProvider } from "LoginContext";
+import { LoginContext, LoginProvider } from "LoginContext";
 import { ToastContainer, Zoom } from "react-toastify";
 import ThemeProvider from "theme";
 import { theme } from "styles/theme";
@@ -21,6 +21,7 @@ function App() {
   const { addUser } = useUser();
   const { getItem } = useLocalStorage();
   // let openState;
+  // const {user} = useContext(LoginContext);
 
   useEffect(() => {
     const user = getItem("user");

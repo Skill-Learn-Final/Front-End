@@ -39,7 +39,7 @@ import { Roles } from "utils/constants";
 import ManageReviewRequestsPage from "pages/ManageReviewRequestsPage";
 import ReviewCourses from "pages/ReviewCourses";
 import VerificationRequestPage from "pages/VerificationRequestPage";
-
+import ConfirmEmail from "components/ConfirmEmail";
 // ----------------------------------------------------------------------
 
 export default function Router() {
@@ -88,6 +88,7 @@ export default function Router() {
             { path: "/purchase_course/:id", element: <PurchaseCourse /> },
             { path: "/live_classes", element: <LiveClasses /> },
             { path: "/switch_accounts", element: <SwitchAccounts /> },
+            { path: "/confirm_email", element: <ConfirmEmail /> },
           ],
         },
       ],

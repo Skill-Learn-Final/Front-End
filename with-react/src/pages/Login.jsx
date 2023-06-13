@@ -81,7 +81,7 @@ const Login = () => {
           if (res.data.role === "creator" || res.data.role === "admin") {
             navigate("/dashboard", { replace: true });
           } else {
-            navigate("/shop", { replace: true });
+            navigate("/confirm_email", { replace: true });
           }
         } else {
         }
