@@ -66,7 +66,19 @@ BlogPostCard.propTypes = {
   index: PropTypes.number,
 };
 
-export default function BlogPostCard({ post, index }) {
+function getStatusMessage(course) {
+  if (!course.isPublished) return "Draft";
+
+  if (!course.isReviewed) return "Under Review";
+
+  if (!course.isApproved) return "Rejected";
+
+  if (course.isApproved) return "Live";
+
+  return "Unknown";
+}
+
+export default function BlogPostCard({ post, index, link }) {
   const {
     coursePosterLink,
     title,
@@ -173,7 +185,7 @@ export default function BlogPostCard({ post, index }) {
                 color: "common.white",
               }),
             }}
-            href={"/dashboard/manage-courses/" + id}
+            href={link ?? "/dashboard/manage-courses/" + id}
           >
             {title}
           </StyledTitle>
@@ -185,27 +197,7 @@ export default function BlogPostCard({ post, index }) {
           />
 
           <StyledInfo>
-            {POST_INFO.map((info, index) => (
-              <Box
-                key={index}
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  ml: index === 0 ? 0 : 1.5,
-                  ...((latestPostLarge || latestPost) && {
-                    color: "grey.500",
-                  }),
-                }}
-              >
-                <Iconify
-                  icon={info.icon}
-                  sx={{ width: 16, height: 16, mr: 0.5 }}
-                />
-                <Typography variant="caption">
-                  {fShortenNumber(info.number)}
-                </Typography>
-              </Box>
-            ))}
+            <Typography variant="body2">{getStatusMessage(post)}</Typography>
           </StyledInfo>
         </CardContent>
       </Card>

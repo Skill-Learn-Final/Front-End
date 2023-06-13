@@ -32,11 +32,19 @@ import LearnerSiteLayout from "layouts/LearnerSite/LearnerSiteLayout";
 import AccountInfo from "pages/AccountInfo";
 import LiveClasses from "pages/LiveClasses";
 import SwitchAccounts from "pages/SwitchAccounts";
+import GuardedRoute from "sections/auth/GuardedRoute";
+import { useAuth } from "hooks/useAuth";
+import { userHasRole } from "utils/helpers";
+import { Roles } from "utils/constants";
+import ManageReviewRequestsPage from "pages/ManageReviewRequestsPage";
+import ReviewCourses from "pages/ReviewCourses";
+import VerificationRequestPage from "pages/VerificationRequestPage";
 import ConfirmEmail from "components/ConfirmEmail";
-
 // ----------------------------------------------------------------------
 
 export default function Router() {
+  const { user } = useAuth();
+
   const routes = useRoutes([
     {
       path: "/",
@@ -44,45 +52,85 @@ export default function Router() {
       children: [
         { element: <Navigate to="/home" />, index: true },
         { path: "/home", element: <Home /> },
-        { path: "/login", element: <Login /> },
-        { path: "/signup", element: <Signup /> },
-        { path: "/home", element: <Home /> },
-        { path: "/account_info", element: <AccountInfo /> },
-        { path: "/shop", element: <Shop /> },
-        { path: "/courses", element: <Courses /> },
-        { path: "/course_detail/:id", element: <CourseDetail /> },
-        { path: "/cart", element: <Cart /> },
-        { path: "/instructor/:id", element: <Instructor /> },
-        { path: "/library", element: <Library /> },
-        { path: "/wishlist", element: <Wishlist /> },
-        { path: "/buycurrency", element: <BuyCurrency /> },
-        { path: "/purchase_course/:id", element: <PurchaseCourse /> },
-        { path: "/live_classes", element: <LiveClasses /> },
-        { path: "/switch_accounts", element: <SwitchAccounts /> },
-        { path: "/reset_password", element: <ResetPassword /> },
-        { path: "/reset_password/:id/:token", element: <ResetPassword /> },
-        { path: "/confirm_email", element: <ConfirmEmail /> },
+        {
+          element: (
+            <GuardedRoute
+              isAllowed={user === null}
+              redirectTo={
+                userHasRole(user, Roles.LEARNER) ? "/shop" : "/dashboard"
+              }
+            />
+          ),
+          children: [
+            { path: "/login", element: <Login /> },
+            { path: "/signup", element: <Signup /> },
+            { path: "/reset_password", element: <ResetPassword /> },
+            { path: "/reset_password/:id/:token", element: <ResetPassword /> },
+          ],
+        },
+        {
+          element: (
+            <GuardedRoute
+              isAllowed={userHasRole(user, Roles.LEARNER)}
+              redirectTo="/login"
+            />
+          ),
+          children: [
+            { path: "/account_info", element: <AccountInfo /> },
+            { path: "/shop", element: <Shop /> },
+            { path: "/courses", element: <Courses /> },
+            { path: "/course_detail/:id", element: <CourseDetail /> },
+            { path: "/cart", element: <Cart /> },
+            { path: "/instructor/:id", element: <Instructor /> },
+            { path: "/library", element: <Library /> },
+            { path: "/wishlist", element: <Wishlist /> },
+            { path: "/buycurrency", element: <BuyCurrency /> },
+            { path: "/purchase_course/:id", element: <PurchaseCourse /> },
+            { path: "/live_classes", element: <LiveClasses /> },
+            { path: "/switch_accounts", element: <SwitchAccounts /> },
+            { path: "/confirm_email", element: <ConfirmEmail /> },
+          ],
+        },
       ],
     },
     {
-      path: "/dashboard",
-      element: <DashboardLayout />,
+      element: (
+        <GuardedRoute
+          isAllowed={
+            userHasRole(user, Roles.ADMIN) ||
+            userHasRole(user, Roles.CREATOR) ||
+            userHasRole(user, Roles.REVIEWER)
+          }
+          redirectTo="/login"
+        />
+      ),
       children: [
-        { element: <Navigate to="/dashboard/app" />, index: true },
-        { path: "app", element: <DashboardAppPage /> },
-        { path: "user", element: <UserPage /> },
-        { path: "products", element: <ProductsPage /> },
         {
-          path: "manage-courses",
-          element: <ManageCoursesPage />,
+          path: "/dashboard",
+          element: <DashboardLayout />,
+          children: [
+            { element: <Navigate to="/dashboard/app" />, index: true },
+            { path: "app", element: <DashboardAppPage /> },
+            { path: "user", element: <UserPage /> },
+            { path: "products", element: <ProductsPage /> },
+            {
+              path: "manage-courses",
+              element: <ManageCoursesPage />,
+            },
+            {
+              path: "manage-courses/:id",
+              element: <CourseDetailsPage />,
+            },
+            {
+              path: "review-courses",
+              element: <ReviewCourses />,
+            },
+            { path: "review-courses/:id", element: <StreamPage /> },
+            { path: "verification", element: <VerificationRequestPage /> },
+            { path: "postCourse", element: <PostCoursePage /> },
+            { path: "manage-reviews", element: <ManageReviewRequestsPage /> },
+          ],
         },
-        {
-          path: "manage-courses/:id",
-          element: <CourseDetailsPage />,
-        },
-        { path: "postCourse", element: <PostCoursePage /> },
-        { path: "reviewCourse", element: <StreamPage /> },
-        // { path: "confirm_email", element: <ConfirmEmail /> },
       ],
     },
     {

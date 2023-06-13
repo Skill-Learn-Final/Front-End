@@ -10,7 +10,7 @@ const Video = styled("video")(({ theme }) => ({
 const VideoPlayer = ({ src, type }) => {
   return (
     <Video controls>
-      <source src={src} type={type} />
+      <source src={src} type={type} autoPlay />
       Your browser does not support the video tag.
     </Video>
   );

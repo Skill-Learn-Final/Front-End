@@ -1,17 +1,25 @@
-import { useState, createContext, useEffect } from "react";
-
-export const LoginContext = createContext();
+import { AuthContext } from "context/AuthContext";
+import { useAuth } from "hooks/useAuth";
+import { useLocalStorage } from "hooks/useLocalStorage";
+import { useEffect, useState } from "react";
 
 export const LoginProvider = (props) => {
-  const [LoginStatus, setLoginStatus] = useState(
-    localStorage.getItem("id") !== null
+  const [user, setUser] = useState(
+    localStorage.getItem("user") !== null
+      ? JSON.parse(localStorage.getItem("user"))
+      : null
   );
 
-  useEffect(() => {}, [LoginStatus]);
+  // useEffect(() => {
+  //   const user = getItem("user");
+  //   if (user) {
+  //     setUser(JSON.parse(user));
+  //   }
+  // }, []);
 
   return (
-    <LoginContext.Provider value={[LoginStatus, setLoginStatus]}>
+    <AuthContext.Provider value={{ user, setUser }}>
       {props.children}
-    </LoginContext.Provider>
+    </AuthContext.Provider>
   );
 };

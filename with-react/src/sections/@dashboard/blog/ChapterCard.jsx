@@ -17,7 +17,7 @@ import React from "react";
 import axios from "axios";
 import LessonCard from "./LessonCard";
 
-export default function ChapterCard({ chapter, courseId }) {
+export default function ChapterCard({ chapter, courseId, canEdit }) {
   const [lessons, setLessons] = React.useState([]);
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
@@ -80,12 +80,14 @@ export default function ChapterCard({ chapter, courseId }) {
                 <Typography variant="h5" textAlign="start">
                   Lessons
                 </Typography>
-                <Button
-                  startIcon={<Iconify icon="eva:plus-fill" />}
-                  onClick={handleOpen}
-                >
-                  Add Lesson
-                </Button>
+                {canEdit && (
+                  <Button
+                    startIcon={<Iconify icon="eva:plus-fill" />}
+                    onClick={handleOpen}
+                  >
+                    Add Lesson
+                  </Button>
+                )}
               </Stack>
               <Divider sx={{ mt: 1 }} />
 

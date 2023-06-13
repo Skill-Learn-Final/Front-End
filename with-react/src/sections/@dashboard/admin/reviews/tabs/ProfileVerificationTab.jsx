@@ -1,6 +1,4 @@
-import { Helmet } from "react-helmet-async";
 import { filter } from "lodash";
-import { sentenceCase } from "change-case";
 import { useEffect, useState } from "react";
 // @mui
 import {
@@ -8,12 +6,7 @@ import {
   Table,
   Stack,
   Paper,
-  Avatar,
-  Button,
-  Popover,
-  Checkbox,
   TableRow,
-  MenuItem,
   TableBody,
   TableCell,
   Container,
@@ -21,26 +14,30 @@ import {
   IconButton,
   TableContainer,
   TablePagination,
-  Modal,
+  Popover,
+  MenuItem,
+  Divider,
 } from "@mui/material";
 // components
-import Label from "../components/label";
-import Iconify from "../components/iconify";
-import Scrollbar from "../components/scrollbar";
 // sections
-import { UserListHead, UserListToolbar } from "../sections/@dashboard/user";
 import axios from "axios";
-import UserFormModal from "sections/@dashboard/user/UserFormModal";
+import Iconify from "components/iconify/Iconify";
+import { UserListHead } from "sections/@dashboard/user";
+import ReviewerSelect from "../../ReviewerSelect";
+import UserDisplay from "sections/@dashboard/user/UserDisplay";
+import { Cancel, Check, CheckCircle, Launch, Link } from "@mui/icons-material";
+import { getStatus } from "pages/VerificationRequestPage";
 // mock
 
 // ----------------------------------------------------------------------
 
 const TABLE_HEAD = [
-  { id: "name", label: "Name", alignRight: false },
-  { id: "email", label: "Email", alignRight: false },
-  { id: "roles", label: "Roles", alignRight: false },
-  { id: "emailConfirmed", label: "Email Confirmed", alignRight: false },
-  // { id: "status", label: "Status", alignRight: false },
+  { id: "professionalTitle", label: "Professional Title", alignRight: false },
+  { id: "creator", label: "Creator", alignRight: false },
+  { id: "address", label: "Address", alignRight: false },
+  { id: "governmentIdLink", label: "Government Id", alignRight: false },
+  { id: "proofDocumentLink", label: "Proof Document", alignRight: false },
+  { id: "", label: "Status", alignRight: false },
   { id: "" },
 ];
 
@@ -96,9 +93,8 @@ function EmptyTable({ children }) {
   );
 }
 
-export default function UserPage() {
+export default function ProfileVerificationTab() {
   const [openPopOver, setOpenPopOver] = useState(null);
-  const [openModal, setOpenModal] = useState(false);
 
   const [page, setPage] = useState(0);
 
@@ -112,7 +108,7 @@ export default function UserPage() {
 
   const [rowsPerPage, setRowsPerPage] = useState(5);
 
-  const [usersList, setUsersList] = useState([]);
+  const [requests, setRequests] = useState([]);
 
   const handleOpenPopOverMenu = (value) => {
     setOpenPopOver(value);
@@ -120,14 +116,6 @@ export default function UserPage() {
 
   const handleCloseMenu = () => {
     setOpenPopOver(null);
-  };
-
-  const handleOpenModal = () => {
-    setOpenModal(true);
-  };
-
-  const handleCloseModal = () => {
-    setOpenModal(false);
   };
 
   const handleRequestSort = (event, property) => {
@@ -138,29 +126,11 @@ export default function UserPage() {
 
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
-      const newSelecteds = usersList.map((n) => n.name);
+      const newSelecteds = requests.map((n) => n.name);
       setSelected(newSelecteds);
       return;
     }
     setSelected([]);
-  };
-
-  const handleClick = (event, name) => {
-    const selectedIndex = selected.indexOf(name);
-    let newSelected = [];
-    if (selectedIndex === -1) {
-      newSelected = newSelected.concat(selected, name);
-    } else if (selectedIndex === 0) {
-      newSelected = newSelected.concat(selected.slice(1));
-    } else if (selectedIndex === selected.length - 1) {
-      newSelected = newSelected.concat(selected.slice(0, -1));
-    } else if (selectedIndex > 0) {
-      newSelected = newSelected.concat(
-        selected.slice(0, selectedIndex),
-        selected.slice(selectedIndex + 1)
-      );
-    }
-    setSelected(newSelected);
   };
 
   const handleChangePage = (event, newPage) => {
@@ -178,45 +148,40 @@ export default function UserPage() {
   };
 
   const emptyRows =
-    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - usersList.length) : 0;
+    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - requests.length) : 0;
 
   const filteredUsers = applySortFilter(
-    usersList,
+    requests,
     getComparator(order, orderBy),
     filterName
   );
 
   const isNotFound = !filteredUsers.length && !!filterName;
 
-  const fetchUsers = () => {
+  const fetchRequests = () => {
+    axios.get("/users/profile-verification").then((res) => {
+      setRequests(res.data);
+    });
+  };
+
+  const handleApprove = () => {
     axios
-      .get("/users")
+      .put("/users/profile-verification/" + openPopOver.id + "/approve")
       .then((res) => {
-        console.log(res.data);
-        setUsersList(res.data);
+        fetchRequests();
+        setOpenPopOver(null);
       })
       .catch((err) => {
         console.log(err);
       });
   };
 
-  const createUser = (user) => {
+  const handleReject = () => {
     axios
-      .post("/users", user)
+      .put("/users/profile-verification/" + openPopOver.id + "/reject")
       .then((res) => {
-        fetchUsers();
-        handleCloseModal();
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
-  const deleteUser = () => {
-    axios
-      .delete("/users/" + openPopOver.id)
-      .then((res) => {
-        fetchUsers();
+        fetchRequests();
+        setOpenPopOver(null);
       })
       .catch((err) => {
         console.log(err);
@@ -224,14 +189,11 @@ export default function UserPage() {
   };
 
   useEffect(() => {
-    fetchUsers();
+    fetchRequests();
   }, []);
 
   return (
     <>
-      <Helmet>
-        <title> User | Skill Learn </title>
-      </Helmet>
       <Container>
         <Stack
           direction="row"
@@ -240,23 +202,11 @@ export default function UserPage() {
           mb={5}
         >
           <Typography variant="h4" gutterBottom>
-            User
+            Profile Verification Requests
           </Typography>
-          <Button
-            startIcon={<Iconify icon="eva:plus-fill" />}
-            onClick={handleOpenModal}
-          >
-            New User
-          </Button>
         </Stack>
 
         <Card>
-          <UserListToolbar
-            numSelected={selected.length}
-            filterName={filterName}
-            onFilterName={handleFilterByName}
-          />
-
           {/* <Scrollbar> */}
           <TableContainer sx={{ minWidth: 800 }}>
             <Table>
@@ -264,7 +214,7 @@ export default function UserPage() {
                 order={order}
                 orderBy={orderBy}
                 headLabel={TABLE_HEAD}
-                rowCount={usersList.length}
+                rowCount={requests.length}
                 numSelected={selected.length}
                 onRequestSort={handleRequestSort}
                 onSelectAllClick={handleSelectAllClick}
@@ -275,14 +225,16 @@ export default function UserPage() {
                   .map((row) => {
                     const {
                       id,
-                      firstName,
-                      lastName,
-                      roles,
-                      emailConfirmed,
-                      email,
+                      professionalTitle,
+                      creator,
+                      address,
+                      governmentIdLink,
+                      proofDocumentLink,
                     } = row;
-                    const name = `${firstName} ${lastName}`;
-                    const selectedUser = selected.indexOf(name) !== -1;
+                    const selectedUser =
+                      selected.indexOf(professionalTitle) !== -1;
+
+                    creator.name = creator.firstName + " " + creator.lastName;
 
                     return (
                       <TableRow
@@ -292,63 +244,46 @@ export default function UserPage() {
                         role="checkbox"
                         selected={selectedUser}
                       >
-                        {/* <TableCell padding="checkbox">
-                          <Checkbox
-                            checked={selectedUser}
-                            onChange={(event) => handleClick(event, name)}
-                          />
-                        </TableCell> */}
-
                         <TableCell component="th" scope="row" padding="normal">
-                          <Stack
-                            direction="row"
-                            alignItems="center"
-                            spacing={2}
-                          >
-                            <Avatar
-                              alt={name}
-                              src={"https://i.pravatar.cc/300" + id}
-                            />
-                            <Typography variant="subtitle2" noWrap>
-                              {name}
-                            </Typography>
-                          </Stack>
+                          <Typography variant="subtitle2" noWrap>
+                            {professionalTitle}
+                          </Typography>
                         </TableCell>
 
-                        <TableCell align="left">{email}</TableCell>
+                        <TableCell align="left">{creator.name}</TableCell>
+
+                        <TableCell align="left">{address}</TableCell>
 
                         <TableCell align="left">
-                          {roles.map((r) => r.role).join(", ")}
+                          <a href={governmentIdLink} target="_blank">
+                            <Launch color="primary" />
+                          </a>
                         </TableCell>
 
                         <TableCell align="left">
-                          {emailConfirmed ? "Yes" : "No"}
+                          <a href={proofDocumentLink} target="_blank">
+                            <Launch color="primary" />
+                          </a>
                         </TableCell>
 
-                        {/* <TableCell align="left">
-                            <Label
-                              color={
-                                (status === "banned" && "error") || "success"
+                        <TableCell align="left">{getStatus(row)}</TableCell>
+
+                        {getStatus(row) === "Pending" && (
+                          <TableCell align="right">
+                            <IconButton
+                              size="large"
+                              color="inherit"
+                              onClick={(e) =>
+                                handleOpenPopOverMenu({
+                                  id,
+                                  target: e.currentTarget,
+                                })
                               }
                             >
-                              {sentenceCase(status)}
-                            </Label>
-                          </TableCell> */}
-
-                        <TableCell align="right">
-                          <IconButton
-                            size="large"
-                            color="inherit"
-                            onClick={(e) =>
-                              handleOpenPopOverMenu({
-                                id,
-                                target: e.currentTarget,
-                              })
-                            }
-                          >
-                            <Iconify icon={"eva:more-vertical-fill"} />
-                          </IconButton>
-                        </TableCell>
+                              <Iconify icon={"eva:more-vertical-fill"} />
+                            </IconButton>
+                          </TableCell>
+                        )}
                       </TableRow>
                     );
                   })}
@@ -372,15 +307,10 @@ export default function UserPage() {
                   </Typography>
                 </EmptyTable>
               )}
-              {!isNotFound && usersList.length === 0 && (
+              {!isNotFound && requests.length === 0 && (
                 <EmptyTable>
                   <Typography variant="h6" paragraph>
-                    No Users
-                  </Typography>
-
-                  <Typography variant="body2">
-                    No results found.
-                    <br /> Be the first person create user!
+                    No Course Review Requests
                   </Typography>
                 </EmptyTable>
               )}
@@ -388,7 +318,7 @@ export default function UserPage() {
             <TablePagination
               rowsPerPageOptions={[5, 10, 25]}
               component="div"
-              count={usersList.length}
+              count={requests.length}
               rowsPerPage={rowsPerPage}
               page={page}
               onPageChange={handleChangePage}
@@ -398,6 +328,7 @@ export default function UserPage() {
           {/* </Scrollbar> */}
         </Card>
       </Container>
+
       <Popover
         open={Boolean(openPopOver)}
         anchorEl={openPopOver?.target}
@@ -416,18 +347,16 @@ export default function UserPage() {
           },
         }}
       >
-        <MenuItem sx={{ color: "error.main" }} onClick={deleteUser}>
-          <Iconify icon={"eva:trash-2-outline"} sx={{ mr: 2 }} />
-          Delete
+        <MenuItem sx={{ color: "success.main" }} onClick={handleApprove}>
+          <CheckCircle sx={{ mr: 2 }} />
+          Approve
+        </MenuItem>
+        <Divider />
+        <MenuItem sx={{ color: "error.main" }} onClick={handleReject}>
+          <Cancel sx={{ mr: 2 }} />
+          Reject
         </MenuItem>
       </Popover>
-
-      {/* Add User Form Modal */}
-      <UserFormModal
-        open={openModal}
-        onClose={handleCloseModal}
-        onSubmit={createUser}
-      />
     </>
   );
 }
