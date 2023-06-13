@@ -32,6 +32,7 @@ import LearnerSiteLayout from "layouts/LearnerSite/LearnerSiteLayout";
 import AccountInfo from "pages/AccountInfo";
 import LiveClasses from "pages/LiveClasses";
 import SwitchAccounts from "pages/SwitchAccounts";
+import ConfirmEmail from "components/ConfirmEmail";
 
 // ----------------------------------------------------------------------
 
@@ -60,6 +61,7 @@ export default function Router() {
         { path: "/switch_accounts", element: <SwitchAccounts /> },
         { path: "/reset_password", element: <ResetPassword /> },
         { path: "/reset_password/:id/:token", element: <ResetPassword /> },
+        { path: "/confirm_email", element: <ConfirmEmail /> },
       ],
     },
     {
@@ -80,6 +82,7 @@ export default function Router() {
         },
         { path: "postCourse", element: <PostCoursePage /> },
         { path: "reviewCourse", element: <StreamPage /> },
+        // { path: "confirm_email", element: <ConfirmEmail /> },
       ],
     },
     {

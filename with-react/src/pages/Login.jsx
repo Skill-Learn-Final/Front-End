@@ -82,10 +82,14 @@ const Login = () => {
           localStorage.setItem("id", res.data.id);
           localStorage.setItem("balance", res.data.balance);
           setLoginStatus(true);
-          if (res.data.role === "creator" || res.data.role === "admin") {
-            navigate("/dashboard", { replace: true });
+          if (res.data.emailConfirmed) {
+            if (res.data.role === "creator" || res.data.role === "admin") {
+              navigate("/dashboard", { replace: true });
+            } else {
+              navigate("/shop", { replace: true });
+            }
           } else {
-            navigate("/shop", { replace: true });
+            navigate("/confirm_email", { replace: true });
           }
         } else {
         }

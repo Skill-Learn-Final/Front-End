@@ -76,14 +76,16 @@ const Signup = ({ onClose }) => {
               theme: "colored",
             }
           );
-          // localStorage.setItem("id", res.data.id);
-          // setLoginStatus(true);
-          // if (res.data.role === "creator") {
-          //   navigate("/creator/dashboard", { replace: true });
-          // } else if (res.data.role === "admin") {
-          //   navigate("/admin/dashboard", { replace: true });
+          // if (res.data.emailConfirmed) {
+          //   if (res.data.role === "creator") {
+          //     navigate("/creator/dashboard", { replace: true });
+          //   } else if (res.data.role === "admin") {
+          //     navigate("/admin/dashboard", { replace: true });
+          //   } else {
+          //     navigate("/shop", { replace: true });
+          //   }
           // } else {
-          //   navigate("/shop", { replace: true });
+          //   navigate("/confirm_email", { replace: true });
           // }
         } else if (res.status === 409) {
           alert(res.status);

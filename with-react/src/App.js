@@ -5,9 +5,9 @@ import "./styles/App.css";
 import ScrollToTop from "./scrollToTop";
 
 import { register } from "swiper/element/bundle";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useContext } from "react";
 
-import { LoginProvider } from "LoginContext";
+import { LoginContext, LoginProvider } from "LoginContext";
 import { ToastContainer, Zoom } from "react-toastify";
 import ThemeProvider from "theme";
 import { theme } from "styles/theme";
@@ -17,6 +17,7 @@ register();
 function App() {
   let menuRef = useRef();
   // let openState;
+  // const {user} = useContext(LoginContext);
 
   return (
     <HelmetProvider>
@@ -46,7 +47,7 @@ function App() {
                 theme="colored"
                 transition={Zoom}
               />
-              <Router />
+              <Router/>
             </LoginProvider>
           </BrowserRouter>
         </div>
