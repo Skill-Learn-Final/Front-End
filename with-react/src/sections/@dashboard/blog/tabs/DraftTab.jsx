@@ -5,16 +5,10 @@ import {
   Container,
   Stack,
   Typography,
-  Modal,
-  Box,
   Button,
-  TextField,
-  inputClasses,
-  Autocomplete,
-  ToggleButtonGroup,
-  ToggleButton,
   Snackbar,
   Alert,
+  Dialog,
 } from "@mui/material";
 // components
 import { BlogPostCard, BlogPostsSort, BlogPostsSearch } from "../";
@@ -22,6 +16,8 @@ import { BlogPostCard, BlogPostsSort, BlogPostsSearch } from "../";
 import React, { useEffect } from "react";
 import axios from "axios";
 import Iconify from "components/iconify/Iconify";
+import CourseFormModal from "../CourseFormModal";
+import { toast } from "react-toastify";
 
 // ----------------------------------------------------------------------
 
@@ -45,27 +41,49 @@ const style = {
   borderRadius: 1,
 };
 
+const EMPTY_COURSE = {
+  title: "",
+  description: "",
+  price: 0,
+  difficulty: "Beginner",
+  poster: {},
+  courseCategories: [],
+  language: "English",
+  estimatedCompletionTime: "0 weeks",
+};
+
 const DraftTab = () => {
   const [courses, setCourses] = React.useState([]);
-  const [categories, setCategories] = React.useState([]);
   const [error, setError] = React.useState(false);
   const [errorMessage, setErrorMessage] = React.useState("");
 
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => {
-    axios.get("/categories/").then((res) => {
-      setOpen(true);
-      setCategories(res.data.data);
-    });
-  };
-  const handleClose = () => setOpen(false);
+  const [course, setCourse] = React.useState(EMPTY_COURSE);
+  const [edit, setEdit] = React.useState(false);
 
-  const [title, setTitle] = React.useState("");
-  const [price, setPrice] = React.useState(0);
-  const [description, setDescription] = React.useState("");
-  const [poster, setPoster] = React.useState({});
-  const [courseCategories, setCourseCategories] = React.useState([]);
-  const [difficulty, setDifficulty] = React.useState("Beginner");
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = (course = null) => {
+    if (course !== null) {
+      setCourse({
+        ...course,
+        poster: {},
+      });
+      setEdit(true);
+    } else {
+      setCourse(EMPTY_COURSE);
+      setEdit(false);
+    }
+
+    setOpen(true);
+  };
+
+  const handleClose = (refetch = false) => {
+    if (refetch) {
+      fetchCourses();
+    }
+
+    setCourse(EMPTY_COURSE);
+    setOpen(false);
+  };
 
   const fetchCourses = () => {
     axios.get("/courses?status=draft").then((response) => {
@@ -73,33 +91,50 @@ const DraftTab = () => {
     });
   };
 
+  const deleteCourse = (id) => {
+    axios
+      .delete(`/courses/${id}`)
+      .then(function (response) {
+        fetchCourses();
+        toast.success("Course deleted successfully");
+      })
+      .catch(function (error) {
+        toast.error(error.response.data.message);
+      });
+  };
+
   const closeErrorMessage = () => {
     setError(false);
     setErrorMessage("");
   };
 
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
+  // const handleFormSubmit = (e) => {
+  //   e.preventDefault();
 
-    const form = new FormData();
-    form.append("title", title);
-    form.append("description", description);
-    form.append("price", price);
-    form.append("difficulty", difficulty);
-    form.append("coursePoster", poster);
-    form.append("courseCategories", JSON.stringify(courseCategories));
+  //   const form = new FormData();
+  //   form.append("title", title);
+  //   form.append("description", description);
+  //   form.append("price", price);
+  //   form.append("difficulty", difficulty);
+  //   form.append("coursePoster", poster);
+  //   form.append("courseCategories", JSON.stringify(courseCategories));
+  //   form.append("language", language);
+  //   form.append(
+  //     "estimatedCompletionTime",
+  //     estimatedCompletionTime + " " + unitOfTime
+  //   );
 
-    axios
-      .post("/courses", form)
-      .then(function (response) {
-        fetchCourses();
-        setOpen(false);
-      })
-      .catch(function (error) {
-        setError(true);
-        setErrorMessage(error.response.data.message);
-      });
-  };
+  //   axios
+  //     .post("/courses", form)
+  //     .then(function (response) {
+  //       fetchCourses();
+  //       setOpen(false);
+  //     })
+  //     .catch(function (error) {
+  //       setError(true);
+  //       setErrorMessage(error.response.data.message);
+  //     });
+  // };
 
   useEffect(() => {
     fetchCourses();
@@ -122,7 +157,7 @@ const DraftTab = () => {
             Draft Courses
           </Typography>
           <Button
-            onClick={handleOpen}
+            onClick={() => handleOpen(null)}
             startIcon={<Iconify icon="eva:plus-fill" />}
           >
             New Course
@@ -147,7 +182,7 @@ const DraftTab = () => {
 
             <Typography variant="body2">Create a new course!</Typography>
             <Button
-              onClick={handleOpen}
+              onClick={() => handleOpen(null)}
               startIcon={<Iconify icon="eva:plus-fill" />}
             >
               New Course
@@ -156,135 +191,30 @@ const DraftTab = () => {
         )}
         <Grid container spacing={3}>
           {courses.map((post, index) => (
-            <BlogPostCard key={post.id} post={post} index={index} />
+            <BlogPostCard
+              key={post.id}
+              post={post}
+              index={index}
+              openToEdit={() => handleOpen(post)}
+              deleteCourse={() => deleteCourse(post.id)}
+            />
           ))}
         </Grid>
       </Container>
 
-      <Modal open={open} onClose={handleClose}>
-        <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            New Course
-          </Typography>
-          <Box
-            component="form"
-            style={{
-              padding: "20px",
-            }}
-          >
-            <TextField
-              id="outlined-basic"
-              label="Course Title"
-              variant="outlined"
-              fullWidth
-              sx={{ mb: 3 }}
-              onChange={(e) => setTitle(e.target.value)}
-              value={title}
-            />
-
-            <TextField
-              id="outlined-basic"
-              label="Course Slug"
-              variant="outlined"
-              fullWidth
-              sx={{ mb: 3 }}
-              value={title.toLowerCase().replace(/ /g, "-")}
-              disabled
-            />
-
-            <Box
-              sx={{
-                border: "1px solid #ccc",
-                borderRadius: "6px",
-                mb: 3,
-              }}
-              fullWidth
-            >
-              <Button
-                component="label"
-                variant="text"
-                startIcon={<Iconify icon="material-symbols:file-upload" />}
-                sx={{ marginRight: "1rem" }}
-              >
-                Course Poster
-                <input
-                  type="file"
-                  accept="image/*"
-                  hidden
-                  onChange={(e) => {
-                    console.log(e.target.files);
-                    setPoster(e.target.files[0]);
-                  }}
-                />
-              </Button>
-              {poster.name}
-            </Box>
-
-            <TextField
-              id="outlined-basic"
-              label="Course Price"
-              variant="outlined"
-              type="number"
-              fullWidth
-              sx={{ mb: 3 }}
-              onChange={(e) => setPrice(e.target.value)}
-              value={price}
-            />
-
-            <TextField
-              id="standard-textarea"
-              label="Course Description"
-              placeholder="Type something..."
-              multiline
-              rows={4}
-              variant="outlined"
-              fullWidth
-              sx={{ mb: 3 }}
-              onChange={(e) => setDescription(e.target.value)}
-              value={description}
-            />
-
-            <Autocomplete
-              multiple
-              sx={{ mb: 3 }}
-              id="tags-outlined"
-              options={categories}
-              getOptionLabel={(option) => option.category}
-              filterSelectedOptions
-              onChange={(_, value) => setCourseCategories(value)}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  label="Categories"
-                  placeholder="Course Categories"
-                />
-              )}
-            />
-
-            <Box sx={{ mb: 3 }}>
-              <ToggleButtonGroup
-                color="primary"
-                value={difficulty}
-                exclusive
-                onChange={(e, value) => setDifficulty(value)}
-                aria-label="Platform"
-              >
-                <ToggleButton value="Beginner">Beginner</ToggleButton>
-                <ToggleButton value="Intermediate">Intermediate</ToggleButton>
-                <ToggleButton value="Advanced">Advanced</ToggleButton>
-              </ToggleButtonGroup>
-            </Box>
-
-            <Button
-              variant="outlined"
-              sx={{ mt: 3 }}
-              onClick={handleFormSubmit}
-            >
-              Create Course
-            </Button>
-          </Box>
-        </Box>
-      </Modal>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        scroll="paper"
+        aria-labelledby="scroll-dialog-title"
+        aria-describedby="scroll-dialog-description"
+      >
+        <CourseFormModal
+          handleClose={handleClose}
+          course={course}
+          edit={edit}
+        />
+      </Dialog>
 
       <Snackbar
         open={error}

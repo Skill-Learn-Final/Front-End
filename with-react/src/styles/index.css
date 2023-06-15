@@ -436,3 +436,9 @@ footer {
   text-align: left;
   margin-top: 0.5rem;
 }
+
+/* Overrides */
+
+.MuiInputBase-input.MuiInputBase-input {
+  padding: 16.5px 14px;
+}

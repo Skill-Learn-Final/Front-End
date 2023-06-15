@@ -7,6 +7,7 @@ import {
   Card,
   Container,
   Divider,
+  IconButton,
   Modal,
   Stack,
   TextField,
@@ -16,8 +17,14 @@ import Iconify from "components/iconify/Iconify";
 import React from "react";
 import axios from "axios";
 import LessonCard from "./LessonCard";
+import { Edit } from "@mui/icons-material";
 
-export default function ChapterCard({ chapter, courseId, canEdit }) {
+export default function ChapterCard({
+  chapter,
+  courseId,
+  canEdit,
+  openToEdit,
+}) {
   const [lessons, setLessons] = React.useState([]);
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
@@ -65,7 +72,12 @@ export default function ChapterCard({ chapter, courseId, canEdit }) {
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <Typography variant="h4">{chapter.title}</Typography>
+          <Stack direction="row" alignItems="center">
+            <Typography variant="h4">{chapter.title}</Typography>
+            <IconButton onClick={openToEdit}>
+              <Edit />
+            </IconButton>
+          </Stack>
         </AccordionSummary>
         <AccordionDetails>
           <Box sx={{ width: "100%", px: 2 }}>

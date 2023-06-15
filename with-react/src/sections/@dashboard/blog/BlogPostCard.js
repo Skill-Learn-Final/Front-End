@@ -10,6 +10,8 @@ import {
   Typography,
   CardContent,
   Chip,
+  IconButton,
+  Stack,
 } from "@mui/material";
 // utils
 import { fDate } from "../../../utils/formatTime";
@@ -18,6 +20,7 @@ import { fShortenNumber } from "../../../utils/formatNumber";
 import SvgColor from "../../../components/svg-color";
 import Iconify from "../../../components/iconify";
 import { difficultyColor } from "utils/cssStyles";
+import { Delete, Edit } from "@mui/icons-material";
 
 // ----------------------------------------------------------------------
 
@@ -43,12 +46,13 @@ const StyledAvatar = styled(Avatar)(({ theme }) => ({
   bottom: theme.spacing(-2),
 }));
 
-const StyledInfo = styled("div")(({ theme }) => ({
+const StyledInfo = styled(Stack)(({ theme }) => ({
   display: "flex",
   flexWrap: "wrap",
-  justifyContent: "flex-end",
+  alignItems: "center",
   marginTop: theme.spacing(3),
   color: theme.palette.text.disabled,
+  flexDirection: "row",
 }));
 
 const StyledCover = styled("img")({
@@ -78,7 +82,13 @@ function getStatusMessage(course) {
   return "Unknown";
 }
 
-export default function BlogPostCard({ post, index, link }) {
+export default function BlogPostCard({
+  post,
+  index,
+  link,
+  openToEdit = null,
+  deleteCourse,
+}) {
   const {
     coursePosterLink,
     title,
@@ -196,7 +206,20 @@ export default function BlogPostCard({ post, index, link }) {
             color={difficultyColor(difficulty)}
           />
 
-          <StyledInfo>
+          <StyledInfo
+            justifyContent={openToEdit !== null ? "space-between" : "flex-end"}
+          >
+            {openToEdit !== null && (
+              <StyledInfo>
+                <IconButton onClick={openToEdit}>
+                  <Edit />
+                </IconButton>
+                <IconButton onClick={deleteCourse}>
+                  <Delete />
+                </IconButton>
+              </StyledInfo>
+            )}
+
             <Typography variant="body2">{getStatusMessage(post)}</Typography>
           </StyledInfo>
         </CardContent>

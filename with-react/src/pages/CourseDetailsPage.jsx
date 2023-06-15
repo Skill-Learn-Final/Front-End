@@ -7,6 +7,7 @@ import {
   Card,
   Chip,
   Container,
+  Dialog,
   Divider,
   ListItem,
   ListItemIcon,
@@ -27,6 +28,7 @@ import ChapterCard from "sections/@dashboard/blog/ChapterCard";
 import { difficultyColor } from "utils/cssStyles";
 import { List } from "antd";
 import { Info } from "@mui/icons-material";
+import ChapterForm from "sections/@dashboard/blog/ChapterForm";
 
 const StyledCardMedia = styled("div")({
   position: "relative",
@@ -49,15 +51,32 @@ const StyledCover = styled("img")({
   position: "absolute",
 });
 
+const EMPTY_CHAPTER = {
+  title: "",
+  description: "",
+  resource: {},
+};
+
 export default function CourseDetailsPage() {
   const [course, setCourse] = React.useState({});
+  const [chapter, setChapter] = React.useState({});
   const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const [edit, setEdit] = React.useState(false);
 
-  const [title, setTitle] = React.useState("");
-  const [description, setDescription] = React.useState("");
-  const [resource, setResource] = React.useState({});
+  const handleOpen = (chapter = null) => {
+    if (chapter) {
+      setChapter({
+        ...chapter,
+        resource: {},
+      });
+      setEdit(true);
+    } else {
+      setChapter(EMPTY_CHAPTER);
+      setEdit(false);
+    }
+
+    setOpen(true);
+  };
 
   const { id } = useParams();
 
@@ -67,24 +86,20 @@ export default function CourseDetailsPage() {
     });
   };
 
+  const handleClose = (fetch = false) => {
+    if (fetch) {
+      fetchCourse();
+    }
+
+    setChapter({});
+    setEdit(false);
+    setOpen(false);
+  };
+
   const publishCourse = () => {
     axios.put(`/courses/${id}/publish`, {}).then(() => {
       fetchCourse();
     });
-  };
-
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
-
-    axios
-      .post(`/courses/${course.id}/chapters/`, {
-        title,
-        description,
-      })
-      .then((res) => {
-        fetchCourse();
-        handleClose();
-      });
   };
 
   useEffect(() => {
@@ -112,7 +127,7 @@ export default function CourseDetailsPage() {
             {!course.isPublished && (
               <Button
                 startIcon={<Iconify icon="eva:plus-fill" />}
-                onClick={handleOpen}
+                onClick={() => handleOpen(null)}
               >
                 Add Chapter
               </Button>
@@ -133,6 +148,7 @@ export default function CourseDetailsPage() {
                   chapter={chapter}
                   courseId={course.id}
                   canEdit={!course.isPublished}
+                  openToEdit={() => handleOpen(chapter)}
                 />
               ))}
           </Box>
@@ -189,89 +205,20 @@ export default function CourseDetailsPage() {
         </Box>
       </Container>
 
-      <Modal open={open} onClose={handleClose}>
-        <Box
-          sx={{
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            width: 600,
-            bgcolor: "background.paper",
-            boxShadow: 24,
-            p: 4,
-            borderRadius: 1,
-          }}
-        >
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            New Chapter
-          </Typography>
-          <Box
-            component="form"
-            style={{
-              padding: "20px",
-            }}
-          >
-            <TextField
-              id="outlined-basic"
-              label="Course Title"
-              variant="outlined"
-              fullWidth
-              sx={{ mb: 3 }}
-              onChange={(e) => setTitle(e.target.value)}
-              value={title}
-            />
-
-            <TextField
-              id="standard-textarea"
-              label="Course Description"
-              placeholder="Type something..."
-              multiline
-              rows={4}
-              variant="outlined"
-              fullWidth
-              onChange={(e) => setDescription(e.target.value)}
-              value={description}
-              sx={{ mb: 3 }}
-            />
-
-            <Box
-              sx={{
-                border: "1px solid #ccc",
-                borderRadius: "6px",
-                mb: 3,
-              }}
-              fullWidth
-            >
-              <Button
-                component="label"
-                variant="text"
-                startIcon={<Iconify icon="material-symbols:file-upload" />}
-                sx={{ marginRight: "1rem" }}
-              >
-                Resource
-                <input
-                  type="file"
-                  accept=".zip,.rar,.7zip"
-                  hidden
-                  onChange={(e) => {
-                    setResource(e.target.files[0]);
-                  }}
-                />
-              </Button>
-              {resource.name}
-            </Box>
-
-            <Button
-              variant="outlined"
-              sx={{ mt: 3 }}
-              onClick={handleFormSubmit}
-            >
-              Create Chapter
-            </Button>
-          </Box>
-        </Box>
-      </Modal>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        scroll="paper"
+        aria-labelledby="scroll-dialog-title"
+        aria-describedby="scroll-dialog-description"
+      >
+        <ChapterForm
+          handleClose={handleClose}
+          edit={edit}
+          chapter={chapter}
+          courseId={course.id}
+        />
+      </Dialog>
     </>
   );
 }
@@ -341,6 +288,28 @@ export function CourseDetails({ course }) {
             color={difficultyColor(course.difficulty)}
             variant="outlined"
           />
+        </Stack>
+        <Stack direction="row" marginTop={2} px={2} alignItems="center">
+          <Typography
+            variant="subtitle1"
+            sx={{ textAlign: "start" }}
+            marginRight={3}
+          >
+            Language:
+          </Typography>
+          <Typography variant="subtitle1">{course.language}</Typography>
+        </Stack>
+        <Stack direction="row" marginTop={2} px={2} alignItems="center">
+          <Typography
+            variant="subtitle1"
+            sx={{ textAlign: "start" }}
+            marginRight={3}
+          >
+            Estimated Time:
+          </Typography>
+          <Typography variant="subtitle1">
+            {course.estimatedCompletionTime}
+          </Typography>
         </Stack>
       </Box>
     </>
