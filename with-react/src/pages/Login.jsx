@@ -17,6 +17,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 
 import { loginSchema } from "../hooks/UserValidation";
 import { useAuth } from "hooks/useAuth";
+import { useLocalStorage } from "hooks/useLocalStorage";
 
 const override = {
   display: "block",
@@ -32,7 +33,8 @@ const override = {
 
 const Login = () => {
   const [loading, setLoading] = useState(false);
-  const { login } = useAuth();
+  const { login, user } = useAuth();
+  const { getItem, setItem } = useLocalStorage();
 
   // useEffect(() => {
   //   localStorage.clear();
@@ -78,22 +80,27 @@ const Login = () => {
         setLoading(false);
         if (res.status === 200) {
           login(res.data);
-          if (res.data.role === "creator" || res.data.role === "admin") {
-            navigate("/dashboard", { replace: true });
-          } else {
-            navigate("/confirm_email", { replace: true });
+          if (user.emailConfirmed) {
+            if (res.data.role === "creator" || res.data.role === "admin") {
+              navigate("/dashboard", { replace: true });
+            }
           }
-        } else {
         }
       })
       .catch((err) => {
         // console.log(err.message === "Network Error");
         setLoading(false);
+        if (err.response.status === 401) {
+          console.log(err.response.data.id);
+          setItem("id", err.response.data.id);
+
+          navigate("/confirm_email", { replace: true });
+        }
         if (err.message !== "Network Error") {
-          if (err.response.status === 401 || err.response.status === 404) {
+          if (err.response.status === 404) {
             toast.error(err.response.data, {
               position: "top-center",
-              autoClose: false,
+              autoClose: true,
               hideProgressBar: false,
               closeOnClick: true,
               pauseOnHover: true,
@@ -107,7 +114,7 @@ const Login = () => {
           console.log(err);
           toast.error("Network Error", {
             position: "top-center",
-            autoClose: false,
+            autoClose: true,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,

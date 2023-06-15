@@ -13,6 +13,11 @@ import axios from "axios";
 import Iconify from "components/iconify/Iconify";
 import { Box, Button } from "@mui/material";
 import Modal from "react-modal";
+import { useAuth } from "hooks/useAuth";
+import { userHasRole } from "utils/helpers";
+import { toast } from "react-toastify";
+import { useParams } from "react-router-dom";
+import { useUser } from "hooks/useUser";
 
 const customStyles = {
   content: {
@@ -29,17 +34,18 @@ const customStyles = {
 };
 
 const AccountInfo = () => {
-  const [user, setUser] = useState({
-    id: localStorage.getItem("id"),
-  });
-
+  // const [user, setUser] = useState({
+  //   id: localStorage.getItem("id"),
+  // });
+  // console.log(`user: ${user.profilePicture }`);
+  const { user } = useUser();
+  const { token } = useParams();
   const [activeTab, setActiveTab] = useState("Profile");
   const [isEditable, setIsEditable] = useState(false);
 
   const [about, setAbout] = useState("");
 
   const [profilePicture, setProfilePicture] = useState("");
-  const [profilePictureUrl, setProfilePictureUrl] = useState("");
 
   const [firstName, setFirstName] = useState("");
 
@@ -55,14 +61,6 @@ const AccountInfo = () => {
   const [inAppNotifications, setInAppNotifications] = useState(false);
 
   const [modalState, setModalState] = useState(false);
-
-  const handleAboutChange = (event) => {
-    setAbout(event.target.value);
-  };
-
-  const handlePhotoChange = (event) => {
-    setProfilePicture(event.target.value);
-  };
 
   const handleFirstNameChange = (event) => {
     setFirstName(event.target.value);
@@ -101,64 +99,81 @@ const AccountInfo = () => {
     setActiveTab(tab);
   };
 
-  const handleChangePassword = async (e) => {
+  const handleChangePassword = (e) => {
     e.preventDefault();
-
-    try {
-      const response = await axios.post(`/local/user/:userId/change-password`, {
-        userId: user.id,
-        oldPassword,
-        newPassword,
+    const newCredentials = {
+      token,
+      newPassword,
+      oldPassword,
+    };
+    const formData = new FormData();
+    formData.append("token", token);
+    formData.append("newPassword", newPassword);
+    formData.append("oldPassword", oldPassword);
+    axios
+      .post(`/users/change-password/${user.id}`, newCredentials)
+      .then((res) => {
+        if (res.status === 200) {
+          toast.success("Password Changed. You can now use your new password", {
+            position: "top-center",
+            autoClose: false,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+          });
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        // toast.error(err, {
+        toast.error("Invalid Token", {
+          position: "top-center",
+          autoClose: true,
+          hideProgressBar: false,
+          closeOnClick: true,
+          delay: 2000,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
       });
-
-      setMessage(response.data.message);
-      setOldPassword("");
-      setNewPassword("");
-    } catch (error) {
-      if (error.response) {
-        setMessage(error.response.data.error);
-      } else {
-        setMessage("An error occurred while changing the password");
-      }
-    }
-    setModalState(false);
   };
 
   const handleSaveChanges = (e) => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append("userId", user.id);
-    formData.append("fields", JSON.stringify({ firstName, lastName }));
-    // if (profilePicture) {
-    //   formData.append("profilePicture", profilePicture);
-    // }
+    formData.append("firstName", firstName);
+    formData.append("lastName", lastName);
+    if (profilePicture) {
+      formData.append("profilePicture", profilePicture);
+    }
+    console.log(formData);
 
     axios
-      .put("/local/user/:userId", formData)
-      .then((response) => {
+      .put(`/users/${user.id}`, formData)
+      .then((res) => {
+        // console.log(res.data.message);
+        // addUser(res.data.user);
         fetchUserInfo();
       })
       .catch((error) => {
-        console.log(error); // Handle the error accordingly;
+        console.log(error);
       });
   };
 
   const fetchUserInfo = () => {
     axios
-      .get(`/local/user/${user.id}`)
+      .get(`/users/${user.id}`)
       .then((response) => {
         const { firstName, lastName, email, profilePicture } = response.data;
-        console.log(response.data);
-        setUser({
-          firstName: firstName,
-          lastName: lastName,
-          email: email,
-          profilePicture: profilePicture,
-        });
         setFirstName(firstName);
         setLastName(lastName);
         setEmail(email);
-        setProfilePictureUrl(profilePicture);
+        setProfilePicture(profilePicture);
       })
       .catch((error) => {
         console.log(error); // Handle the error accordingly;
@@ -166,6 +181,7 @@ const AccountInfo = () => {
   };
 
   useEffect(() => {
+    console.log(user);
     fetchUserInfo();
   }, [user]);
 
@@ -190,11 +206,21 @@ const AccountInfo = () => {
           <div className=" p-4 rounded-md col-span-full">
             <div className="grid grid-cols-4 gaps-2">
               <div className="text-sm col-span-1 sm:col-span-4 self-center sm:pb-2 pr-4 font-medium text-gray-900">
-                <FontAwesomeIcon
-                  icon={faCircleUser}
-                  className="h-24 w-24 rounded-full bg-medium_green text-slate-300"
-                  aria-hidden="true"
-                />
+                {!user.profilePicture && (
+                  <img
+                    className="h-24 w-24 rounded-full"
+                    // src={user.profilePicture}
+                    src="http://localhost:8080/uploads/profilePicture-1686789185292.png"
+                    alt="User Profile"
+                  />
+                )}
+                {user.profilePicture && (
+                  <FontAwesomeIcon
+                    icon={faCircleUser}
+                    className="h-24 w-24 rounded-full bg-medium_green text-slate-300"
+                    aria-hidden="true"
+                  />
+                )}
               </div>
               <div className="col-span-3 sm:col-span-4 flex items-center gap-x-3">
                 <Box
@@ -223,7 +249,7 @@ const AccountInfo = () => {
                       disabled={!isEditable}
                     />
                   </Button>
-                  {profilePicture.name}
+                  {profilePicture !== null && profilePicture.name}
                 </Box>
               </div>
             </div>
@@ -333,7 +359,7 @@ const AccountInfo = () => {
               autoComplete="email"
               className={`${UserDetailInputClass} pr-10`}
               onChange={handleEmailChange}
-              disabled={!isEditable}
+              disabled={true}
             />
           </div>
         </div>
@@ -353,7 +379,6 @@ const AccountInfo = () => {
               onClick={() => {
                 setModalState(true);
               }}
-              disabled={!isEditable}
             >
               Change Password
             </button>
@@ -475,8 +500,7 @@ const AccountInfo = () => {
                 value={oldPassword}
                 className={`${UserDetailInputClass} mt-5 pr-10`}
                 onChange={handleOldPasswordChange}
-                disabled={!isEditable}
-                required={false}
+                required={true}
               />
             </div>
           </div>
@@ -495,8 +519,7 @@ const AccountInfo = () => {
                 value={newPassword}
                 className={`${UserDetailInputClass} mt-5 pr-10`}
                 onChange={handleNewPasswordChange}
-                disabled={!isEditable}
-                required={false}
+                required={true}
               />
             </div>
           </div>
@@ -593,7 +616,7 @@ const AccountInfo = () => {
         style={customStyles}
         contentLabel="Example Modal"
       >
-        <form onSubmit={() => handleChangePassword}>
+        <form onSubmit={handleChangePassword}>
           {forms.passwordChange}
           <FontAwesomeIcon
             className="text-gray_600 cursor-pointer absolute right-5 top-5"

@@ -13,6 +13,8 @@ export const useUser = () => {
   const removeUser = () => {
     setUser(null);
   };
-
+  // const addField = (field) => {
+  //   setUser({ ...user, ...field });
+  // };
   return { user, addUser, removeUser };
 };

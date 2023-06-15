@@ -62,6 +62,7 @@ export default function Router() {
             />
           ),
           children: [
+            { path: "/confirm_email", element: <ConfirmEmail /> },
             { path: "/login", element: <Login /> },
             { path: "/signup", element: <Signup /> },
             { path: "/reset_password", element: <ResetPassword /> },
@@ -88,7 +89,6 @@ export default function Router() {
             { path: "/purchase_course/:id", element: <PurchaseCourse /> },
             { path: "/live_classes", element: <LiveClasses /> },
             { path: "/switch_accounts", element: <SwitchAccounts /> },
-            { path: "/confirm_email", element: <ConfirmEmail /> },
           ],
         },
       ],
