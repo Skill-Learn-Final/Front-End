@@ -74,9 +74,11 @@ export default function ChapterCard({
         >
           <Stack direction="row" alignItems="center">
             <Typography variant="h4">{chapter.title}</Typography>
-            <IconButton onClick={openToEdit}>
-              <Edit />
-            </IconButton>
+            {canEdit && (
+              <IconButton onClick={openToEdit}>
+                <Edit />
+              </IconButton>
+            )}
           </Stack>
         </AccordionSummary>
         <AccordionDetails>
