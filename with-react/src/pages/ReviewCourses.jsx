@@ -1,5 +1,6 @@
 import { Container, Grid, Stack, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import axios from "axios";
 import {
   BlogPostCard,
@@ -15,6 +16,8 @@ const SORT_OPTIONS = [
 
 const ReviewCourses = () => {
   const [courses, setCourses] = useState([]);
+
+  const { t } = useTranslation();
 
   const fetchCourses = () => {
     axios.get("/courses/byReviewer").then((res) => {
@@ -35,7 +38,7 @@ const ReviewCourses = () => {
         mb={5}
       >
         <Typography variant="h4" gutterBottom>
-          Courses To Review
+          {t("Courses_To_Review")}
         </Typography>
       </Stack>
 
@@ -51,7 +54,7 @@ const ReviewCourses = () => {
 
       {courses.length === 0 && (
         <Typography variant="h6" marginTop={1}>
-          No Courses to Review Yet!
+          {t("No_Courses_to_Review_Yet")}
         </Typography>
       )}
       <Grid container spacing={3}>

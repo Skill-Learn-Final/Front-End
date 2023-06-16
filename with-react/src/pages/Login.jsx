@@ -17,6 +17,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 
 import { loginSchema } from "../hooks/UserValidation";
 import { useAuth } from "hooks/useAuth";
+import { useTranslation } from "react-i18next";
 
 const override = {
   display: "block",
@@ -55,6 +56,8 @@ const Login = () => {
   const handleRoleSelect = (role) => {
     setSelectedRole(role);
   };
+
+  const { t } = useTranslation();
 
   // Register the form to check for validations witht the corrent schema
   // const {
@@ -128,7 +131,7 @@ const Login = () => {
       >
         <div className="flex flex-col pt-4 px-6">
           <UserDetailInput
-            label="Email"
+            label={t("email")}
             type="email"
             value={email}
             onChange={handleEmailChange}
@@ -142,11 +145,11 @@ const Login = () => {
         <div className="flex flex-col pt-4 px-6">
           <UserDetailInput
             id="pass-word"
-            label="Password"
+            label={t("Password")}
             type="password"
             value={password}
             onChange={handlePasswordChange}
-            placeholder="Password"
+            placeholder={t("Password")}
             autoComplete="password"
             // {...register("password")}
           />
@@ -156,7 +159,7 @@ const Login = () => {
           type="submit"
           className="bg-dark_green text-white font-bold text-lg rounded-lg hover:bg-green-900/80 focus:bg-dark_green p-2 mt-8 mx-6"
         >
-          Log In
+          {t("Log_In")}
         </button>
       </form>
       <div className="">
@@ -167,16 +170,16 @@ const Login = () => {
               navigate("/reset_password");
             }}
           >
-            Forgot Password?
+            {t("Forgot_Password")}
           </p>
           <Divider />
           <p className="text-center">
-            Don't have an account?{" "}
+            {t("Dont_have_an_account")}
             <Link
               to="/signup"
               className="underline font-semibold hover:text-green-700"
             >
-              Register here.
+              {t("Register_here")}
             </Link>
           </p>
         </div>
@@ -217,7 +220,7 @@ const Login = () => {
             </Row> */}
             <Row>
               <p className="w-full text-center font-semibold text-dark_green text-3xl mt-[8rem]">
-                Welcome back
+                {t("Welcome_back")}
               </p>
               {loginSteps}
               {/* <RoleSelectionStepper

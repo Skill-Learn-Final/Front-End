@@ -1,5 +1,6 @@
 import { filter } from "lodash";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 // @mui
 import {
   Card,
@@ -187,6 +188,8 @@ export default function CourseReviewTab() {
     fetchReviewers();
   }, []);
 
+  const { t } = useTranslation();
+
   return (
     <Container>
       <Stack
@@ -196,7 +199,7 @@ export default function CourseReviewTab() {
         mb={5}
       >
         <Typography variant="h4" gutterBottom>
-          Course Review Requests
+          {t("Course_Review_Requests")}
         </Typography>
       </Stack>
 
@@ -289,20 +292,20 @@ export default function CourseReviewTab() {
             {isNotFound && (
               <EmptyTable>
                 <Typography variant="h6" paragraph>
-                  Not found
+                  Not found {t("Not_found")}
                 </Typography>
 
                 <Typography variant="body2">
-                  No results found for &nbsp;
+                  {t("No_results_found_for")} &nbsp;
                   <strong>&quot;{filterName}&quot;</strong>.
-                  <br /> Try checking for typos or using complete words.
+                  <br /> {t("Try_checking_for_typos_or_using_complete_words")}
                 </Typography>
               </EmptyTable>
             )}
             {!isNotFound && courses.length === 0 && (
               <EmptyTable>
                 <Typography variant="h6" paragraph>
-                  No Course Review Requests
+                  {t("No_Course_Review_Requests")}
                 </Typography>
               </EmptyTable>
             )}

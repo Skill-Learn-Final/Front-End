@@ -1,5 +1,5 @@
 import React from "react";
-
+import { useTranslation } from "react-i18next";
 import {
   Column,
   Row,
@@ -91,6 +91,8 @@ const Shop = () => {
     <FontAwesomeIcon icon={faStar} />;
   }
 
+  const { t } = useTranslation();
+
   return (
     <>
       <Column className="bg-light_green flex flex-col font-inter items-center justify-start mx-[auto] w-[100%]">
@@ -107,7 +109,7 @@ const Shop = () => {
               >
                 Skill-Learn
                 <br />
-                Courses
+                {t("Courses")}
               </Text>
               <Img
                 src="images/img_kisspngbookcas.png"
@@ -126,7 +128,7 @@ const Shop = () => {
                     as="h4"
                     variant="h4"
                   >
-                    Popular Courses
+                    {t("Popular_Courses")}
                   </Text>
 
                   <PopularCourses
@@ -156,7 +158,7 @@ const Shop = () => {
                     as="h4"
                     variant="h4"
                   >
-                    New Arrivals
+                    {t("New_Arrivals")}
                   </Text>
                   <PopularCourses
                     imageDir={"images/img_image_90X75.png"}
@@ -238,7 +240,7 @@ const Shop = () => {
                     className="font-medium sm:ml-[10px] md:ml-[13px] ml-[20px] mt-[14px] sm:mt-[7px] md:mt-[9px] text-gray_901 w-[auto]"
                     variant="body5"
                   >
-                    Page
+                    {t("Page")}
                   </Text>
                   <Button
                     className="cursor-pointer font-medium sm:h-[24px] md:h-[31px] h-[44px] md:ml-[11px] ml-[16px] sm:ml-[8px] text-[18px] text-bluegray_800 text-center sm:w-[23px] md:w-[30px] w-[44px]"
@@ -251,7 +253,7 @@ const Shop = () => {
                     className="font-medium md:ml-[10px] ml-[15px] sm:ml-[7px] mt-[14px] sm:mt-[7px] md:mt-[9px] text-gray_901 w-[auto]"
                     variant="body5"
                   >
-                    of 1
+                    {t("of")} 1
                   </Text>
                   <Button
                     className="flex sm:h-[24px] md:h-[31px] h-[44px] items-center justify-center sm:ml-[11px] md:ml-[14px] ml-[21px] sm:w-[23px] md:w-[30px] w-[44px]"

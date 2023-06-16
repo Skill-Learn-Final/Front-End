@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { UserDetailInput } from "components";
+import { useTranslation } from "react-i18next";
 import axios from "axios";
 
 import { ToastContainer, Zoom, toast } from "react-toastify";
@@ -15,6 +16,8 @@ const ResetPassword = () => {
   const [emailSent, setEmailSent] = useState(false);
   const { id, token } = useParams();
   const navigate = useNavigate();
+
+  const { t } = useTranslation();
 
   const [loading, setLoading] = useState(false);
 
@@ -123,7 +126,9 @@ const ResetPassword = () => {
         className="bg-white text-center h-[30rem] w-[25rem] shadow-md rounded-md p-4"
         onSubmit={handleSubmit}
       >
-        <h2 className="font-semibold text-2xl m-4">Password Reset</h2>
+        <h2 className="font-semibold text-2xl m-4">
+          Password Reset {t("Password_Reset")}
+        </h2>
         <p className="text-gray-600 mb-10">
           Enter email to reset your password
         </p>
