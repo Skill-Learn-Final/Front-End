@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 import {
   Column,
@@ -60,6 +61,7 @@ const CourseDetail = () => {
   function closeModal() {
     setModalState(false);
   }
+  const { t } = useTranslation();
 
   return (
     <>
@@ -92,7 +94,7 @@ const CourseDetail = () => {
                     as="h4"
                     variant="h4"
                   >
-                    About the Course
+                    {t("About_the_Course")}
                   </Text>
                   <Text
                     className="font-normal leading-[30.00px] md:leading-[normal] sm:leading-[normal] sm:mt-[4px] md:mt-[6px] mt-[9px] not-italic text-gray_700 w-[100%]"
@@ -119,7 +121,7 @@ const CourseDetail = () => {
                     as="h4"
                     variant="h4"
                   >
-                    What You'll Learn
+                    {t("What_Youll_Learn")}
                   </Text>
                   <Text
                     className="font-normal leading-[30.00px] md:leading-[normal] sm:leading-[normal] sm:mt-[4px] md:mt-[6px] mt-[9px] not-italic text-gray_700 w-[100%]"

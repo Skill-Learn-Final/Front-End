@@ -2,6 +2,7 @@ import { Helmet } from "react-helmet-async";
 import { filter } from "lodash";
 import { sentenceCase } from "change-case";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 // @mui
 import {
   Card,
@@ -97,6 +98,8 @@ function EmptyTable({ children }) {
 }
 
 export default function UserPage() {
+  const { t } = useTranslation();
+
   const [openPopOver, setOpenPopOver] = useState(null);
   const [openModal, setOpenModal] = useState(false);
 
@@ -230,7 +233,7 @@ export default function UserPage() {
   return (
     <>
       <Helmet>
-        <title> User | Skill Learn </title>
+        <title> {t("User_Skill_Learn")} </title>
       </Helmet>
       <Container>
         <Stack
@@ -240,13 +243,13 @@ export default function UserPage() {
           mb={5}
         >
           <Typography variant="h4" gutterBottom>
-            User
+            {t("User")}
           </Typography>
           <Button
             startIcon={<Iconify icon="eva:plus-fill" />}
             onClick={handleOpenModal}
           >
-            New User
+            {t("New_User")}
           </Button>
         </Stack>
 
@@ -362,25 +365,26 @@ export default function UserPage() {
               {isNotFound && (
                 <EmptyTable>
                   <Typography variant="h6" paragraph>
-                    Not found
+                    {t("Not_found")}
                   </Typography>
 
                   <Typography variant="body2">
-                    No results found for &nbsp;
+                    {t("No_results_found_for")} &nbsp;
                     <strong>&quot;{filterName}&quot;</strong>.
-                    <br /> Try checking for typos or using complete words.
+                    <br />
+                    {t("Try_checking_for_typos_or_using_complete_words")}
                   </Typography>
                 </EmptyTable>
               )}
               {!isNotFound && usersList.length === 0 && (
                 <EmptyTable>
                   <Typography variant="h6" paragraph>
-                    No Users
+                    {t("No_Users")}
                   </Typography>
 
                   <Typography variant="body2">
-                    No results found.
-                    <br /> Be the first person create user!
+                    {t("No_results_found")}
+                    <br /> {t("Be_the_first_person_create_user")}
                   </Typography>
                 </EmptyTable>
               )}
@@ -418,7 +422,7 @@ export default function UserPage() {
       >
         <MenuItem sx={{ color: "error.main" }} onClick={deleteUser}>
           <Iconify icon={"eva:trash-2-outline"} sx={{ mr: 2 }} />
-          Delete
+          {t("Delete")}
         </MenuItem>
       </Popover>
 

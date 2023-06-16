@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import Modal from "react-modal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClose } from "@fortawesome/free-solid-svg-icons";
+import { useTranslation } from "react-i18next";
 
 const customStyles = {
   content: {
@@ -40,6 +41,7 @@ const BuyCurrency = () => {
   function handlePasswordChange(event) {
     setPassword(event.target.value);
   }
+  const { t } = useTranslation();
 
   const buyCurrencyRequest = () => {
     const user = {
@@ -89,8 +91,10 @@ const BuyCurrency = () => {
       >
         <div className="flex flex-col absolute top-[20%] left-[10%]">
           <p className="text-lg w-3/4">
-            You are about to purchase {modalContent} virtual currency. Confirm
-            your choice and input your password below :
+            {t("You_are_about_to_purchase")} {modalContent}{" "}
+            {t(
+              "virtual_currency_Confirm_your_choice_and_input_your_password_below"
+            )}
           </p>
           <div className="w-1/2 mt-8">
             <UserDetailInput
@@ -110,7 +114,7 @@ const BuyCurrency = () => {
               type="submit"
               className="bg-dark_green text-white font-bold text-lg rounded-md hover:bg-green-900/80 focus:bg-dark_green py-2 px-10 mt-8"
             >
-              Purchase Currency
+              {t("Purchase_Currency")}
             </button>
           </div>
         </div>
@@ -125,11 +129,13 @@ const BuyCurrency = () => {
         <div className="bg-white grid grid-cols-4 shadow-md w-3/4 h-4/5">
           <div className="flex flex-col p-4 col-span-1">
             <div className="flex flex-col w-3/4 h-1/2 bg-gray_600"></div>
-            <p>Current Balance: {currentBalance}</p>
+            <p>
+              {t("Current_Balance")} {currentBalance}
+            </p>
           </div>
           <div className="grid grid-cols-2 gap-4 p-8 col-span-3">
             <div className="flex flex-col font-bold justify-evenly p-4 text-lg col-span-1 text-center relative">
-              <p>Purchase Virtual Currency</p>
+              <p>{t("Purchase_Virtual_Currency")} </p>
               <input
                 type="text"
                 placeholder="Enter Amount"
@@ -138,7 +144,7 @@ const BuyCurrency = () => {
             </div>
             <div className="currencyDefualtOptions grid grid-cols-2 gap-4 relative">
               <p className="text-lg font-sans col-span-2 h-[1rem]">
-                Or Select default amount from below:
+                {t("Or_Select_default_amount_from_below")}
               </p>
               <div
                 className="cursor-pointer bg-gray_600"

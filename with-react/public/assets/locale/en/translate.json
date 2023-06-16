@@ -1,0 +1,220 @@
+{
+    "_comment_Homepage": "This is used for the homepage",
+    "Skill_learn_is_your_gateway_to_knowledge_and_personal_growth": "Skill Learn is your gateway to knowledge and personal growth!",
+    "A_diverse_selection_of_expertly_crafted_courses_designed_for_everyone": "A diverse selection of expertly crafted courses designed for everyone.", 
+    "Join_for_Free":"Join for Free", 
+    "High_quality_video_audio":"High quality video, audio", 
+    "Live_classes":"& live classes", 
+    "At_SkillLearn_we_take_great_pride":"At Skill-Learn, we take great pride in the quality and relevance of the videos on our platform. Our courses are created by experts in their fields and are designed to be engaging, informative, and practical.", 
+    "Join_our_platform_today_and_start_your_journey_towards_personal_and_professional_growth":"Join our platform today and start your journey towards personal and professional growth!",
+    "Group_Classes":"Group_Classes", 
+    "Live_Sessions":"Live Sessions", 
+    "Recorded_Class":"Recorded Class", 
+    "Popular_Courses":"Popular Courses", 
+    "At_SkillLearn_we_offer_a_wide_range_of_courses_taught_by_experts_in_their_fields":"At Skill-Learn, we offer a wide range of courses taught by experts in their fields. Here are some of our most popular courses:",
+    "Visit_More_Classes":"Visit More Classes",
+    "Beginner_friendly":"Beginner friendly", 
+    "Don’t_waste_time_in":"Don’t waste time in", 
+    "Doing_nothing":"Doing nothing & ", 
+    "Develop_your_skills":"Develop your skills.", 
+    "High_definition_video_is_video_of_higher_resolution_and":"High-definition video is video of higher resolution and quality than standard-definition. While there is no standardized", 
+    "meaning_for_high_definition_generally_any_video":"meaning for high-definition, generally any video.",
+    "Register_Now":"Register Now", 
+    "Want_to_share_your":"Want to share your <br /> knowledge? Join us <br /> as Educator",
+    "knowledge_join_us":"knowledge? Join us ",
+    "as_educator":" as Educator",
+    "Highdefinition_video_is_video_of_higher_resolution_and_quality":"High-definition video is video of higher resolution and quality than standard-definition. While there is no standardized meaning for high-definition, generally any video.",
+    "Career_Information":"Career Information",
+    "Copyright":"Copyright ©",
+
+
+    "_comment_Navbar_and_Footer": "This is used for the Navigation bar",
+    "Classroom_courses":"Classroom courses",
+    "Virtual_classroom_courses":"Virtual classroom courses",
+    "E_learning_courses":"E-learning courses", 
+    "Video_Courses":"Video Courses",
+    "Offline_Courses":"Offline Courses",
+    "Community":"Community",
+    "Learners":"Learners",
+    "Partners":"Partners",
+    "Developers":"Developers",
+    "Transactions":"Transactions",
+    "Blog":"Blog",
+    "Quick_links":"Quick links",
+    "Home":"Home",
+    "Professional_Education":"Professional Education",
+    "Courses":"Courses",
+    "Admissions":"Admissions",
+    "Programs":"Programs", 
+    "Wishlist":"Wishlist",
+    "Library":"Library",
+    "Store":"Store",
+    "Live":"Live",
+    "NOTIFICATIONS":"NOTIFICATIONS",
+    "You_have_no_notifations_yet":"You have no notifations yet",
+    "ACCOUNT":"ACCOUNT",
+    "Logout":"Logout",
+    "Search_Courses":"Search Courses",
+
+
+    "_comment_Login": "This is used for the Login",
+    "Log_In":"Login",
+    "Dont_have_an_account":"Don't have an account",
+    "Register_here":"Register here.",
+    "Or_continue_with":"Or continue with:",
+    "Welcome_back":"Welcome back.",
+    "Forgot_Password":"Forgot Password?",
+    "email":"Email",
+    
+
+
+
+    "_comment_signup": "This is used for the Signup",
+    "Sign_Up":"Sign Up",
+    "Already_have_an_account":"Already have an account",
+    "Login_here":"Login here.",
+    "Create_an_account":"Create an account",
+    "Full_Name":"Full Name",
+    "Choose_account_type":"Choose Account Type",
+    "contain_numbers_letters_and_symbols":"contain numbers, letters and symbols.",
+    "confirm_Password":"Confirm Password",
+    "Repeat_the_password_from_above":"Repeat the password from above.",
+
+
+    "_comment_BuyCurrency": "This is used for the BuyCurrency",
+    "Buy_Currency":"Buy Currency",
+    "You_are_about_to_purchase":"You are about to purchase",
+    "virtual_currency_Confirm_your_choice_and_input_your_password_below :":"virtual currency. Confirm your choice and input your password below :",
+    "Purchase_Currency":"Purchase Currency",
+    "Current_Balance":"Current Balance: ",
+    "Purchase_Virtual_Currency":"Purchase Virtual Currency",
+    "Or_Select_default_amount_from_below":"Or Select default amount from below:",
+
+
+
+    "_comment_Live": "This is used for the Live",
+
+
+    "_comment_Courses": "This is used for the Courses",
+    "Home_Courses":"Home | Courses",
+    "Skill_Courses":"Skill-Learn Courses",
+    "For_All_Standards":"For All Standards",
+    "All_Courses":"All Courses",
+    "category 1":"category 1",
+    "category 2":"category 2",
+    "category 3":"category 3",
+    "category 4":"category 4",
+    "category 5":"category 5",
+    "category 6":"category 6",
+    "Your_Courses":"Your Courses",
+    "Class Details":"Class Details",
+    
+
+    "_comment_Library": "This is used for the Library",
+    "You_have_not_purchased_any_courses_yet":"You have not purchased any courses yet.",
+    "Once_you_have_made_purchses_they_will_appear_here":"Once you have made purchses, they will appear here",
+
+
+    "_comment_AccountInfo": "This is used for the AccountInfo",
+    "Profile":"Profile",
+    "Personal_Information":"Personal Information",
+    "Account_Notifications":"Account Notifications",
+    "This_information_will_be_displayed_publicly_so_be_careful_what_you_share":"This information will be displayed publicly so be careful what you share.",
+    "Username":"Username",
+    "About":"About",
+    "Write_a_few_sentences_about_yourself":"Write a few sentences about yourself.",
+    "Photo":"Photo",
+    "Change":"Change",
+    "Personal Information":"Personal Information",
+    "Use_a_permanent_address_where_you_can_receive_mail.":"Use a permanent address where you can receive mail.",
+    "First_name":"First name",
+    "Last_name":"Last name",
+    "Password":"Password",
+    "Email address":"Email address",
+    "Notifications":"Notifications",
+    "We'll always let you know about important changes, but you pick what else you want to hear about":"We'll always let you know about important changes, but you pick what else you want to hear about.",
+    "By Email":"By Email",
+    "Comments":"Comments",
+    "Get_notified_when_someones_posts_a_comment_on_posting.":"Get notified when someones posts a comment on a posting.",
+    "Get_notified_when_a_candidate_applies_for_a_job":"Get notified when a candidate applies for a job.",
+    "Candidates":"Candidates",
+    "Offers":"Offers",
+    "Get_notified_when_a_candidate_accepts_or_rejects_an_offer":"Get notified when a candidate accepts or rejects an offer.",
+    "Cancel":"Cancel",
+    "Save":"Save",
+
+    "_comment_Shop": "This is used for the Shop",
+    "New_Arrivals":"New Arrivals",
+    "Page":"Page",
+    "of":"of",
+
+    "_comment_CourseDetail": "This is used for the Course Detail",
+    "About_the_Course":"About the Course",
+    "What_Youll_Learn":"What You'll Learn",
+    "Meet your Teacher":"Meet your Teacher",
+
+
+    "_comment_Dashboard": "Dashboard page",
+    "Dashboard | Skill Learn":"Dashboard | Skill Learn",
+    "Hi_Welcome_back":"Hi, Welcome back",
+
+
+    "_comment_Instructor": "Instructor page",
+    "Mr. Teacher":"Mr. Teacher",
+    "Lecturer_Language_Expert":"Lecturer, Language Expert",
+    "":"",
+
+    "Error404_page":"404 Page Not Found | Skill Learn",
+    "Sorry_page_not_found!":"Sorry, page not found!",
+    "Sorry_we_couldn’t_find_the_page_you’re_looking_for":"Sorry, we couldn’t find the page you’re looking for. Perhaps you’ve mistyped the URL? Be sure to check your spelling.",
+    "Go_to_Home":"Go to Home",
+
+
+    "PostCourse.js": "Course post page",
+    "Dashboard_Post_a_Course":"Dashboard: Post a Course | Skill Learn",
+    "Upload_Introduction":"Upload Introduction",
+    "Upload_Lesson":"Upload Lesson",
+    "Title":"Title",
+
+    "_comment_stream_page":"Streaming page",
+    "Categories":"Categories:",
+    "Difficulty":"Difficulty:",
+    "Approve":"Approve",
+    "Reject":"Reject",
+
+
+    "_comment_UserPage.js":"UserPage.js page",
+    "User_Skill_Learn":"User | Skill Learn",
+    "User":"User",
+    "New_User": "New User",
+    "Not_found":"Not found",
+    "No_results_found_for":"No results found for",
+    "Try_checking_for_typos_or_using_complete_words":"Try checking for typos or using complete words.",
+    "No_Users":"No Users",
+    "No_results_found":"No results found.",
+    "Be_the_first_person_create_user":"Be the first person create user!",
+    "Delete":"Delete",
+
+
+    "AdminDashboard":"This is the admin Dashboard",
+    "Assign":"Assign",
+    "Select_Reviewer":"Select Reviewer",
+    "Ok":"Ok",
+
+    "_comment_CourseReview part":"CourseReview part",
+    "Course_Review_Requests":"Course Review Requests",
+    "No_Course_Review_Requests":"No Course Review Requests",
+    "Profile_Verification_Requests":"Profile Verification Requests",
+
+    "_commentLabelSelect":"This is form the label select JS",
+    "Which_of_our_policies_does_this_content_break":"Which of our policies does this content break?",
+
+    "Review Course page":"Review course page translation",
+    "Courses_To_Review":"Courses To Review",
+    "No_Courses_to_Review_Yet":"No Courses to Review Yet!",
+
+
+    "Password_Reset":"Password Reset"    
+
+
+}

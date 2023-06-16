@@ -8,6 +8,7 @@ import {
   faMagnifyingGlass,
   faEnvelope,
 } from "@fortawesome/free-solid-svg-icons";
+import { useTranslation } from "react-i18next";
 
 import {
   Column,
@@ -31,6 +32,7 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 
 const Footer = () => {
+  const { t } = useTranslation();
   return (
     <footer className="font-inter w-[100%]">
       <Row className="flex flex-row md:flex-wrap sm:flex-wrap items-start justify-around max-w-[auto] sm:mb-[42px] md:mb-[55px] mb-[80px] ml-[auto] mr-[auto] pt-8 sm:mt-[53px] md:mt-[68px] sm:mx-[0] mx-[auto] sm:pl-[15px] sm:pr-[15px] sm:px-[0] w-[100%]">
@@ -64,7 +66,7 @@ const Footer = () => {
         </Column>
         <Column className="flex flex-col justify-start sm:mx-[0] sm:px-[0] sm:w-[100%] w-[16%]">
           <Text className="text-gray_901 w-[auto]" variant="body2">
-            Courses
+            Courses {t("Courses")}
           </Text>
           <Column className="flex flex-col justify-start sm:mt-[10px] md:mt-[13px] mt-[20px] w-[100%] common-column-list">
             <ul className="flex flex-col">
@@ -73,7 +75,7 @@ const Footer = () => {
                   className="cursor-pointer font-normal not-italic text-white"
                   variant="body5"
                 >
-                  Classroom courses
+                  {t("Classroom_courses")}
                 </Text>
               </li>
               <li className="w-[auto] mt-[17px] sm:mt-[9px] md:mt-[11px]">
@@ -82,7 +84,7 @@ const Footer = () => {
                   className="cursor-pointer font-normal not-italic text-[16px] text-white"
                   rel="noreferrer"
                 >
-                  Virtual classroom courses
+                  {t("Virtual_classroom_courses")}
                 </a>
               </li>
               <li className="w-[auto] mt-[17px] sm:mt-[9px] md:mt-[11px]">
@@ -91,7 +93,7 @@ const Footer = () => {
                   className="cursor-pointer font-normal not-italic text-[16px] text-white"
                   rel="noreferrer"
                 >
-                  E-learning courses
+                  {t("E_learning_courses")}
                 </a>
               </li>
               <li className="w-[auto] mt-[17px] sm:mt-[9px] md:mt-[11px]">
@@ -100,7 +102,7 @@ const Footer = () => {
                   className="cursor-pointer font-normal not-italic text-[16px] text-white"
                   rel="noreferrer"
                 >
-                  Video Courses
+                  {t("Video_Courses")}
                 </a>
               </li>
               <li className="w-[auto] mt-[17px] sm:mt-[9px] md:mt-[11px]">
@@ -109,7 +111,7 @@ const Footer = () => {
                   className="cursor-pointer font-normal not-italic text-[16px] text-white"
                   rel="noreferrer"
                 >
-                  Offline Courses
+                  {t("Offline_Courses")}
                 </a>
               </li>
             </ul>
@@ -117,7 +119,7 @@ const Footer = () => {
         </Column>
         <Column className="flex flex-col items-center justify-start sm:mx-[0] sm:px-[0] w-[10%] sm:w-[100%]">
           <Text className="text-gray_901 w-[auto]" variant="body2">
-            Community
+            {t("Community")}
           </Text>
           <Column className="flex flex-col justify-start sm:mt-[10px] md:mt-[13px] mt-[20px] w-[100%] common-column-list">
             <ul className="flex flex-col">
@@ -126,7 +128,7 @@ const Footer = () => {
                   className="cursor-pointer font-normal not-italic text-white"
                   variant="body5"
                 >
-                  Learners
+                  {t("Learners")}
                 </Text>
               </li>
               <li className="w-[auto] mt-[17px] sm:mt-[9px] md:mt-[11px]">
@@ -135,7 +137,7 @@ const Footer = () => {
                   className="cursor-pointer font-normal not-italic text-[16px] text-white"
                   rel="noreferrer"
                 >
-                  Partners
+                  {t("Partners")}
                 </a>
               </li>
               <li className="w-[auto] mt-[17px] sm:mt-[9px] md:mt-[11px]">
@@ -144,7 +146,7 @@ const Footer = () => {
                   className="cursor-pointer font-normal not-italic text-[16px] text-white"
                   rel="noreferrer"
                 >
-                  Developers
+                  {t("Developers")}
                 </a>
               </li>
               <li className="w-[auto] mt-[17px] sm:mt-[9px] md:mt-[11px]">
@@ -153,7 +155,7 @@ const Footer = () => {
                   className="cursor-pointer font-normal not-italic text-[16px] text-white"
                   rel="noreferrer"
                 >
-                  Transactions
+                  {t("Transactions")}
                 </a>
               </li>
               <li className="w-[auto] mt-[17px] sm:mt-[9px] md:mt-[11px]">
@@ -162,7 +164,7 @@ const Footer = () => {
                   className="cursor-pointer font-normal not-italic text-[16px] text-white"
                   rel="noreferrer"
                 >
-                  Blog
+                  {t("Blog")}
                 </a>
               </li>
             </ul>
@@ -170,7 +172,7 @@ const Footer = () => {
         </Column>
         <Column className="flex flex-col justify-start sm:mx-[0] sm:px-[0] sm:w-[100%] w-[14%]">
           <Text className="text-gray_901 w-[auto]" variant="body2">
-            Quick links
+            {t("Quick_links")}
           </Text>
           <Column className="flex flex-col justify-start sm:mt-[10px] md:mt-[13px] mt-[20px] sm:mx-[0] sm:px-[0] sm:w-[100%] w-[99%] common-column-list">
             <ul className="flex flex-col">
@@ -179,7 +181,7 @@ const Footer = () => {
                   className="cursor-pointer font-normal not-italic text-white"
                   variant="body5"
                 >
-                  Home
+                  {t("Home")}
                 </Text>
               </li>
               <li className="w-[auto] mt-[17px] sm:mt-[9px] md:mt-[11px]">
@@ -188,7 +190,7 @@ const Footer = () => {
                   className="cursor-pointer font-normal not-italic text-[16px] text-white"
                   rel="noreferrer"
                 >
-                  Professional Education
+                  {t("Professional_Education")}
                 </a>
               </li>
               <li className="w-[auto] mt-[17px] sm:mt-[9px] md:mt-[11px]">
@@ -197,7 +199,7 @@ const Footer = () => {
                   className="cursor-pointer font-normal not-italic text-[16px] text-white"
                   rel="noreferrer"
                 >
-                  Courses
+                  {t("Courses")}
                 </a>
               </li>
               <li className="w-[auto] mt-[17px] sm:mt-[9px] md:mt-[11px]">
@@ -206,7 +208,7 @@ const Footer = () => {
                   className="cursor-pointer font-normal not-italic text-[16px] text-white"
                   rel="noreferrer"
                 >
-                  Admissions
+                  {t("Admissions")}
                 </a>
               </li>
 
@@ -216,7 +218,7 @@ const Footer = () => {
                   className="cursor-pointer font-normal not-italic text-[16px] text-white"
                   rel="noreferrer"
                 >
-                  Programs
+                  {t("Programs")}
                 </a>
               </li>
             </ul>
@@ -231,7 +233,7 @@ const Footer = () => {
           className="font-normal not-italic text-white w-[auto]"
           variant="body5"
         >
-          {`Copyright © ${new Date().getFullYear().toString()} Skill-Learn.co`}
+          {t("Copyright")} {new Date().getFullYear().toString()} {`Skill-Learn`}
         </Text>
       </div>
     </footer>

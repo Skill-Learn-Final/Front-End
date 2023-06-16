@@ -9,6 +9,7 @@ import {
   faArrowRightFromBracket,
   faWallet,
 } from "@fortawesome/free-solid-svg-icons";
+import { useTranslation } from "react-i18next";
 
 import { faBell as bell } from "@fortawesome/free-regular-svg-icons";
 
@@ -30,6 +31,7 @@ import { useNavigate } from "react-router-dom";
 import Sticky from "react-stickynode";
 import { useEffect, useRef, useState, useContext } from "react";
 import { useAuth } from "hooks/useAuth";
+import LanguagePopover from "layouts/dashboard/header/LanguagePopover";
 
 const NavBarP = () => {
   const navigate = useNavigate();
@@ -46,6 +48,7 @@ const NavBarP = () => {
   function signup() {
     navigate("/signup");
   }
+  const { t } = useTranslation();
 
   const [open, setOpen] = useState(false);
   const [notificationPanel, setNotificationPanel] = useState(false);
@@ -100,9 +103,11 @@ const NavBarP = () => {
             notificationPanel ? "active" : "inactive"
           }`}
         >
-          <h3 className="dropdownTitle">NOTIFICATIONS</h3>
+          <h3 className="dropdownTitle">{t("NOTIFICATIONS")}</h3>
           <ul>
-            <li>You have no notifations yet </li>
+            <li>
+              You have no notifations yet {t("You_have_no_notifations_yet")}{" "}
+            </li>
           </ul>
         </div>
         <div
@@ -120,7 +125,7 @@ const NavBarP = () => {
             open ? "active" : "inactive"
           }`}
         >
-          <h3 className="dropdownTitle">ACCOUNT</h3>
+          <h3 className="dropdownTitle">ACCOUNT {t("ACCOUNT")}</h3>
           <ul>
             <DropdownItem
               icon={faUser}
@@ -148,7 +153,7 @@ const NavBarP = () => {
                 icon={faArrowRightFromBracket}
                 className="dropdownIcon"
               />
-              <a className="dropdownTexts"> Logout </a>
+              <a className="dropdownTexts"> {t("Logout")}</a>
             </li>
           </ul>
         </div>
@@ -164,7 +169,7 @@ const NavBarP = () => {
           shape="RoundedBorder5"
           onClick={login}
         >
-          <b>Login</b>
+          <b> {t("Log_In")}</b>
         </Button>
         <Button
           className="cursor-pointer font-medium text-[12px] text-center text-white_A700 w-1/2"
@@ -173,7 +178,7 @@ const NavBarP = () => {
           variant="DarkBlueBlack"
           onClick={signup}
         >
-          <b>Signup</b>
+          <b> {t("Sign_Up")}</b>
         </Button>
       </div>
     );
@@ -261,26 +266,29 @@ const NavBarP = () => {
           Skill Learn
         </Text>
       </div>
+
+      <LanguagePopover />
+
       <div className="w-[20rem]">
         <ul className="flex flex-row justify-between navlinkHolder">
           <li className="navLinks">
             <Link to={"/library"} className="link">
-              Library
+              {t("Library")}
             </Link>
           </li>
           <li className="navLinks">
             <Link to={"/wishlist"} className="link">
-              Wishlist
+              {t("Wishlist")}
             </Link>
           </li>
           <li className="navLinks">
             <Link to={"/shop"} className="link">
-              Store
+              {t("Store")}
             </Link>
           </li>
           <li className="navLinks">
             <Link to={"/live_classes"} className="link">
-              Live
+              {t("Live")}
             </Link>
           </li>
         </ul>
@@ -291,7 +299,7 @@ const NavBarP = () => {
           wrapClassName="flex p-[0] sm:mx-[0] sm:w-[100%] w-[100%]"
           type="text"
           name="search"
-          placeholder="Search Courses"
+          placeholder={t("Search_Courses")}
           size="sm"
           variant="OutlineGray300"
         ></Input>

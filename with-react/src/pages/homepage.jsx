@@ -1,4 +1,8 @@
 import React from "react";
+import i18n from "i18next";
+import { useTranslation } from "react-i18next";
+import LanguageDetector from "i18next-browser-languagedetector";
+import HttpApi from "i18next-http-backend";
 
 import {
   Column,
@@ -32,10 +36,10 @@ const Home1Page = () => {
   function shop() {
     navigate("/shop");
   }
+  const { t } = useTranslation();
 
   return (
     <>
-
       {/* <Column className="bg-light_green flex flex-col font-inter items-center justify-start mx-[auto] w-[100%]"> */}
 
       <Column className="bg-light_green flex flex-col items-center justify-start sm:mt-[0px] md:mt-[0px] w-[100%]">
@@ -47,11 +51,14 @@ const Home1Page = () => {
                 as="h3"
                 variant="h3"
               >
-                Skill Learn is your gateway to knowledge and personal growth!
+                {t(
+                  "Skill_learn_is_your_gateway_to_knowledge_and_personal_growth"
+                )}
               </Text>
               <Text className={"landingDescription"} as="p" variant="p">
-                A diverse selection of expertly crafted courses designed for
-                everyone.
+                {t(
+                  "A_diverse_selection_of_expertly_crafted_courses_designed_for_everyone"
+                )}
               </Text>
               {/* <Text
                   className="font-normal leading-[30.00px] md:leading-[normal] sm:leading-[normal] sm:mt-[15px] md:mt-[20px] mt-[30px] not-italic text-gray_700 w-[100%]"
@@ -71,7 +78,7 @@ const Home1Page = () => {
                   variant="NavyBlue"
                   onClick={shop}
                 >
-                  Join for Free
+                  {t("Join_for_Free")}
                 </Button>
               </Column>
             </Column>
@@ -90,20 +97,20 @@ const Home1Page = () => {
                 as="h2"
                 variant="h2"
               >
-                High quality video, audio
-                <br />& live classes
+                {t("High_quality_video_audio")}
+                <br />
+                {t("Live_classes")}
               </Text>
               <Text
                 className="font-inter font-normal leading-[30.00px] md:leading-[normal] sm:leading-[normal] sm:mt-[10px] md:mt-[13px] mt-[20px] not-italic  text-gray_700 w-[100%]"
                 variant="body5"
               >
-                At Skill-Learn, we take great pride in the quality and relevance
-                of the videos on our platform. Our courses are created by
-                experts in their fields and are designed to be engaging,
-                informative, and practical.
+                {t("At_SkillLearn_we_take_great_pride")}
                 <br />
-                Join our platform today and start your journey towards personal
-                and professional growth!
+
+                {t(
+                  "Join_our_platform_today_and_start_your_journey_towards_personal_and_professional_growth"
+                )}
               </Text>
               {/* <Button
                 className="common-pointer cursor-pointer font-inter font-medium min-w-[20%] sm:mt-[21px] md:mt-[27px] mt-[40px] text-[16px] text-white_A700 w-[max-content]"
@@ -147,7 +154,7 @@ const Home1Page = () => {
                   as="h5"
                   variant="h5"
                 >
-                  Group Classes
+                  {t("Group_Classes")}
                 </Text>
               </Row>
               <Row className="bg-gray_100 flex flex-row md:flex-wrap sm:flex-wrap items-center md:p-[10px] p-[15px] sm:p-[7px] rounded-radius10 w-[100%]">
@@ -163,7 +170,7 @@ const Home1Page = () => {
                   as="h5"
                   variant="h5"
                 >
-                  Live Sessions
+                  {t("Live_Sessions")}
                 </Text>
               </Row>
               <Row className="bg-gray_100 flex flex-row md:flex-wrap sm:flex-wrap items-center md:p-[10px] p-[15px] sm:p-[7px] rounded-radius10 w-[100%]">
@@ -179,7 +186,7 @@ const Home1Page = () => {
                   as="h5"
                   variant="h5"
                 >
-                  Recorded Class
+                  {t("Recorded_Class")}
                 </Text>
               </Row>
             </List>
@@ -192,14 +199,15 @@ const Home1Page = () => {
               as="h2"
               variant="h2"
             >
-              Popular Courses
+              {t("Popular_Courses")}
             </Text>
             <Text
               className="font-inter font-normal leading-[30.00px] md:leading-[normal] sm:leading-[normal] sm:mt-[10px] md:mt-[13px] mt-[20px] not-italic text-center text-gray_700 w-[100%]"
               variant="body5"
             >
-              At Skill-Learn, we offer a wide range of courses taught by experts
-              in their fields. Here are some of our most popular courses:
+              {t(
+                "At_SkillLearn_we_offer_a_wide_range_of_courses_taught_by_experts_in_their_fields"
+              )}
             </Text>
           </Column>
 
@@ -257,7 +265,7 @@ const Home1Page = () => {
             size="lg"
             variant="DarkBlueBlack"
           >
-            Visit More Classes
+            {t("Visit_More_Classes")}
           </Button>
         </Column>
         <Column className="bg-very_light_green flex flex-col font-inter items-end justify-start max-w-[1280px] max-h-[650px] ml-[auto] mr-[auto] md:mt-[103px] mt-[75px] sm:mt-[79px] sm:mx-[0] sm:pl-[15px] md:pl-[26px] pl-[38px] sm:pr-[15px] sm:py-[15px] md:py-[26px] py-[3rem] rounded-radius20 w-[100%]">
@@ -268,7 +276,7 @@ const Home1Page = () => {
                 size="sm"
                 variant="FillBlack900"
               >
-                Beginner friendly
+                {t("Beginner_friendly")}
               </Button>
               <Column className="flex flex-col justify-start md:mt-[10px] mt-[15px] sm:mt-[7px] w-[100%]">
                 <Text
@@ -276,21 +284,19 @@ const Home1Page = () => {
                   as="h2"
                   variant="h2"
                 >
-                  Don’t waste time in
+                  {t("Don’t_waste_time_in")}
                   <br />
-                  Doing nothing &
+                  {t("Doing_nothing")}
                   <br />
-                  Develop your skills.
+                  {t("Develop_your_skills")}
                 </Text>
                 <Text
                   className="font-inter font-normal leading-[30.00px] md:leading-[normal] sm:leading-[normal] sm:mt-[10px] md:mt-[13px] mt-[20px] not-italic text-gray_700 w-[100%]"
                   variant="body5"
                 >
-                  High-definition video is video of higher resolution and
-                  quality than standard-definition. While there is no
-                  standardized
+                  {t("High_definition_video_is_video_of_higher_resolution_and")}
                   <br />
-                  meaning for high-definition, generally any video.
+                  {t("meaning_for_high_definition_generally_any_video")}
                 </Text>
               </Column>
               <Button
@@ -298,7 +304,7 @@ const Home1Page = () => {
                 size="lg"
                 variant="DarkBlueBlack"
               >
-                Register Now
+                {t("Register_Now")}
               </Button>
             </Column>
             <Img
@@ -307,7 +313,6 @@ const Home1Page = () => {
               alt="group7647"
             />
           </Row>
-
         </Column>
         <Row className="flex flex-row md:flex-wrap sm:flex-wrap font-inter items-center max-w-[auto] ml-[auto] mr-[auto] md:mt-[103px] mt-[100px] mb-[0px] sm:mt-[79px] sm:mx-[0] sm:pl-[15px] sm:pr-[15px] sm:px-[0] px-[4rem] py-[5rem] w-[100%] landingJoinAsTeacher">
           <Img
@@ -323,19 +328,19 @@ const Home1Page = () => {
                 as="h2"
                 variant="h2"
               >
-                Want to share your
+                {t("Want_to_share_your")}
                 <br />
-                knowledge? Join us
+                {t("knowledge_join_us")}
                 <br />
-                as Educator
+                {t("as_educator")}
               </Text>
               <Text
                 className="font-inter font-normal leading-[30.00px] md:leading-[normal] sm:leading-[normal] sm:mt-[10px] md:mt-[13px] mt-[20px] not-italic text-gray_700 w-[100%]"
                 variant="body5"
               >
-                High-definition video is video of higher resolution and quality
-                than standard-definition. While there is no standardized meaning
-                for high-definition, generally any video.
+                {t(
+                  "Highdefinition_video_is_video_of_higher_resolution_and_quality"
+                )}
               </Text>
             </Column>
             <Button
@@ -346,7 +351,7 @@ const Home1Page = () => {
               size="lg"
               variant="DarkBlueBlack"
             >
-              Career Information
+              {t("Career_Information")}
             </Button>
           </Column>
         </Row>

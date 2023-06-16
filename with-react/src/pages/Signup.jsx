@@ -15,6 +15,7 @@ import animationGif from "../assets/images/online-courses.png";
 import axios from "axios";
 
 import { ToastContainer, Zoom, toast } from "react-toastify";
+import { useTranslation } from "react-i18next";
 import "react-toastify/dist/ReactToastify.css";
 
 const Signup = ({ onClose }) => {
@@ -26,6 +27,7 @@ const Signup = ({ onClose }) => {
   const [selectedRole, setSelectedRole] = useState("");
 
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const handlefullNameChange = (event) => {
     setFullName(event.target.value);
@@ -132,6 +134,7 @@ const Signup = ({ onClose }) => {
 
   const signupSteps = [
     {
+      // title: t("Choose_account_type")},
       title: "Choose Account Type",
       form: <></>,
     },
@@ -142,10 +145,10 @@ const Signup = ({ onClose }) => {
           <form className="flex flex-col pt-3 md:pt-8" onSubmit={handleSubmit}>
             <div className="flex flex-col pt-4 px-6">
               <UserDetailInput
-                label="Full Name"
+                label={t("Full_Name")}
                 type="text"
                 value={fullName}
-                placeholder="Full Name"
+                placeholder={t("Full_Name")}
                 onChange={handlefullNameChange}
                 autoComplete="name"
                 autoFocus
@@ -154,7 +157,7 @@ const Signup = ({ onClose }) => {
             <div className="flex flex-col pt-4 px-6">
               <UserDetailInput
                 id="email"
-                label="Email"
+                label={t("email")}
                 type="email"
                 value={email}
                 placeholder="your@email.com"
@@ -165,10 +168,10 @@ const Signup = ({ onClose }) => {
             <div className="flex flex-col pt-4 px-6">
               <UserDetailInput
                 id="pass-word"
-                label="Password"
+                label={t("Password")}
                 type="password"
                 value={password}
-                placeholder="contain numbers, letters and symbols."
+                placeholder={t("contain_numbers_letters_and_symbols")}
                 onChange={handlePasswordChange}
                 autoComplete="new-password"
               />
@@ -176,10 +179,10 @@ const Signup = ({ onClose }) => {
             <div className="flex flex-col pt-4 px-6">
               <UserDetailInput
                 id="confirm-password"
-                label="Confirm Password"
+                label={t("confirm_Password")}
                 type="password"
                 value={confirmPassword}
-                placeholder="Repeat the password from above."
+                placeholder={t("Repeat_the_password_from_above")}
                 onChange={handleConfirmPasswordChange}
                 autoComplete="new-password"
               />
@@ -188,19 +191,19 @@ const Signup = ({ onClose }) => {
               type="submit"
               className="bg-dark_green text-white font-bold text-lg rounded-lg hover:bg-green-900/80 focus:bg-dark_green p-2 mt-8 mx-10"
             >
-              Sign Up
+              {t("Sign_Up")}
             </button>
           </form>
           <div className="text-center ">
             <div className="text-center pt-6 pb-4 mt-[2rem]">
               <Divider />
               <p>
-                Already have an account?{" "}
+                {t("Already_have_an_account")}
                 <Link
                   to="/login"
                   className="underline font-semibold hover:text-green-700"
                 >
-                  Login here.
+                  {t("Login_here")}
                 </Link>
               </p>
             </div>
@@ -231,7 +234,7 @@ const Signup = ({ onClose }) => {
             </Row> */}
             <Row className="mt-10">
               <p className="w-full text-center font-semibold text-dark_green text-3xl">
-                Create an account
+                {t("Create_an_account")}
               </p>
               <RoleSelectionStepper
                 steps={signupSteps}
