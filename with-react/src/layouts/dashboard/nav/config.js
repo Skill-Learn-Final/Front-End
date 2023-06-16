@@ -1,4 +1,5 @@
 // component
+import { Roles } from "utils/constants";
 import SvgColor from "../../../components/svg-color";
 
 // ----------------------------------------------------------------------
@@ -15,11 +16,13 @@ const navConfig = [
     title: "dashboard",
     path: "/dashboard/app",
     icon: icon("ic_analytics"),
+    roles: [Roles.ADMIN, Roles.CREATOR, Roles.REVIEWER],
   },
   {
     title: "user",
     path: "/dashboard/user",
     icon: icon("ic_user"),
+    roles: [Roles.ADMIN],
   },
   // {
   //   title: 'product',
@@ -30,21 +33,25 @@ const navConfig = [
     title: "Manage Courses",
     path: "/dashboard/manage-courses",
     icon: icon("ic_blog"),
+    roles: [Roles.CREATOR],
   },
   {
     title: "Manage Review Requests",
     path: "/dashboard/manage-reviews",
     icon: icon("ic_blog"),
+    roles: [Roles.ADMIN],
   },
   {
     title: "Review Courses",
     path: "/dashboard/review-courses",
     icon: icon("ic_blog"),
+    roles: [Roles.REVIEWER],
   },
   {
     title: "Verification Requests",
     path: "/dashboard/verification",
     icon: icon("ic_blog"),
+    roles: [Roles.CREATOR],
   },
   // {
   //   title: "Post Course",

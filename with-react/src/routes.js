@@ -111,24 +111,57 @@ export default function Router() {
           children: [
             { element: <Navigate to="/dashboard/app" />, index: true },
             { path: "app", element: <DashboardAppPage /> },
-            { path: "user", element: <UserPage /> },
+            {
+              element: (
+                <GuardedRoute
+                  isAllowed={userHasRole(user, Roles.ADMIN)}
+                  redirectTo="/dashboard"
+                />
+              ),
+              children: [
+                { path: "user", element: <UserPage /> },
+                {
+                  path: "manage-reviews",
+                  element: <ManageReviewRequestsPage />,
+                },
+              ],
+            },
             { path: "products", element: <ProductsPage /> },
             {
-              path: "manage-courses",
-              element: <ManageCoursesPage />,
+              element: (
+                <GuardedRoute
+                  isAllowed={userHasRole(user, Roles.CREATOR)}
+                  redirectTo="/dashboard"
+                />
+              ),
+              children: [
+                {
+                  path: "manage-courses",
+                  element: <ManageCoursesPage />,
+                },
+                { path: "verification", element: <VerificationRequestPage /> },
+                {
+                  path: "manage-courses/:id",
+                  element: <CourseDetailsPage />,
+                },
+              ],
             },
             {
-              path: "manage-courses/:id",
-              element: <CourseDetailsPage />,
+              element: (
+                <GuardedRoute
+                  isAllowed={userHasRole(user, Roles.REVIEWER)}
+                  redirectTo="/dashboard"
+                />
+              ),
+              children: [
+                {
+                  path: "review-courses",
+                  element: <ReviewCourses />,
+                },
+                { path: "review-courses/:id", element: <StreamPage /> },
+              ],
             },
-            {
-              path: "review-courses",
-              element: <ReviewCourses />,
-            },
-            { path: "review-courses/:id", element: <StreamPage /> },
-            { path: "verification", element: <VerificationRequestPage /> },
             { path: "postCourse", element: <PostCoursePage /> },
-            { path: "manage-reviews", element: <ManageReviewRequestsPage /> },
           ],
         },
       ],
